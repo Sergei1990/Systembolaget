@@ -26,13 +26,13 @@ class App {
 			this.categories.push(new Category(catName, this.products));
 		}
 			//Make a dictinary based on category names
-			this.categoryByName = {};
-			for(let category of this.categories){
-				this.categoryByName[category.name] = category;
-			}
+		this.categoryByName = {};
+		for(let category of this.categories){
+			this.categoryByName[category.name] = category;
+		}
 
-			//add a list of active/logged in users
-			this.users = [];
+		//add a list of active/logged in users
+		this.users = [];
 	}
 
 	addUser(name,age){
@@ -43,6 +43,8 @@ class App {
 //Create an app to start the application
 let app = new App();
 module.exports = app;
+
+//global.app = app;
 
 //console.log(app.categoryByName["Öl från Tyskland"]);
 

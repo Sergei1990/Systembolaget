@@ -1,4 +1,5 @@
 let app = require('../app.js');
+let Product = require('../product.js');
 let Person = require('../person.js');
 let ShoppingCart = require('../shopping-cart.js');
 

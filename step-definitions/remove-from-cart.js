@@ -1,4 +1,5 @@
 let app = require('../app.js');
+let Product = require('../product.js');
 let Person = require('../person.js');
 let ShoppingCart = require('../shopping-cart.js');
 
@@ -17,6 +18,7 @@ module.exports = function() {
 	});
 
 	this.Given(/^there are (\d+) bottles of beverage with id (\d+) in my shopping cart$/, function (arg1, arg2, callback) {
+        console.warn(app.products[0]);
         if (arg2/1 == 0){	    	
 	    	beverageAmount1 = app.products[arg2/1].prisinklmoms * (arg1/1);
 	    	quantityInStorehouseBefore1 = app.products[arg2/1].iLager;

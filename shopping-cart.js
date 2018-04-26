@@ -1,5 +1,5 @@
-let app = require('./app.js');
 let assert = require('assert');
+let Product = require('./product.js');
 
 module.exports = class ShoppingCart {
 	
@@ -45,9 +45,17 @@ module.exports = class ShoppingCart {
 		let indexInCart = this.findProductInCart(product); //index of the product in the CART
 		assert(indexInCart >= 0,"Cant remove a product not in the cart");
 
+		
+		assert(product instanceof Product, "The product is not an instance of Product class"); // one alternative
+		//(app.products.includes(product), "Oh no! Not in app.products!"); // another alternative
+
+		// If variabel app är global in app.js:
+		//assert(global.app, "Can't find a global app :( Please require app ONCE before any other classes!");
+
+
 		// //return the products on the storehouse ?????????????????????????????????????????????????????
 		// //app.products is NOT defined?????????????????????????????
-		// let indexInSortiment;  //index of the product in the sortiment (myApp.products)
+		// let indexInSortiment;  //index of the product in the sortiment (App.products)
 		// for(let i = 0; i < app.products.length; i++){
 		// 	if(app.products[i].artikelid === product.artikelid){
 		// 		indexInSortiment = i;
