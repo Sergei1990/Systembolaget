@@ -4,8 +4,6 @@ let Category = require('../category.js');
 
 module.exports = function(){
 
-  let category ;
-  let product ;
   let article ;
   let search ;
   let searchResult ; 
@@ -17,7 +15,7 @@ module.exports = function(){
        });
 
   this.When(/^the user writes the name of the beverage$/, function (callback) {
-        app.products["Mariestad Öl"];        
+        app.products[342];        
          callback();
        });
 
