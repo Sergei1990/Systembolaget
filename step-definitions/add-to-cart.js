@@ -1,8 +1,9 @@
-let myApp = require('../app.js');
+let App = require('../app.js');
 let Person = require('../person.js');
 let ShoppingCart = require('../shopping-cart.js');
 let Category = require('../category.js');
-//let Systembolaget = require('../systembolaget.js');
+let Systembolaget = require('../systembolaget.js');
+
 
 module.exports = function(){
 
@@ -22,7 +23,7 @@ let quantity = 1;
        });
  
  this.When(/^I have decided what I want to buy$/, function (callback) {
- 	  product = myApp.products[62];
+ 	  product = app.products[62];
  	
          // Write code here that turns the phrase above into concrete actions
          callback();
