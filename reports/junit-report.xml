@@ -1,45 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-    <testsuite name="function-to-remove-items-from-the-shopping-cart;remove-the-beverages-from-the-shopping-cart" tests="8" failures="0" skipped="0">
+    <testsuite name="add-to-shopping-cart;add-a-beverage-in-a-shopping-cart" tests="4" failures="0" skipped="0">
         <properties>
-            <property name="URI" value="C:\Users\forge\Desktop\Systembolaget\features\remove-from-cart.feature">
+            <property name="URI" value="C:\Users\Sergei\Documents\Systembolaget\features\add-to-cart.feature">
             </property>
         </properties>
-        <testcase name="Given that I am a registrered user with a legal age" classname="function-to-remove-items-from-the-shopping-cart;remove-the-beverages-from-the-shopping-cart" time="0.000538431">
+        <testcase name="Given that I&apos;m in Systembolaget" classname="add-to-shopping-cart;add-a-beverage-in-a-shopping-cart" time="0.004354048">
         </testcase>
-        <testcase name="And there are 5 bottles of beverage with id 0 in my shopping cart" classname="function-to-remove-items-from-the-shopping-cart;remove-the-beverages-from-the-shopping-cart" time="0.000355304">
+        <testcase name="When I have decided what I want to buy" classname="add-to-shopping-cart;add-a-beverage-in-a-shopping-cart" time="0.000132103">
         </testcase>
-        <testcase name="And there are 2 bottles of beverage with id 1 in my shopping cart" classname="function-to-remove-items-from-the-shopping-cart;remove-the-beverages-from-the-shopping-cart" time="0.000114784">
+        <testcase name="And I have decided how much of a certain beverage I want" classname="add-to-shopping-cart;add-a-beverage-in-a-shopping-cart" time="0.000132102">
         </testcase>
-        <testcase name="And there are 9 bottles of beverage with id 2 in my shopping cart" classname="function-to-remove-items-from-the-shopping-cart;remove-the-beverages-from-the-shopping-cart" time="0.000265063">
-        </testcase>
-        <testcase name="When I click on the button Remove for beverages with id 1 and 2 in my cart" classname="function-to-remove-items-from-the-shopping-cart;remove-the-beverages-from-the-shopping-cart" time="0.000421381">
-        </testcase>
-        <testcase name="Then these beverages are removed" classname="function-to-remove-items-from-the-shopping-cart;remove-the-beverages-from-the-shopping-cart" time="0.000781216">
-        </testcase>
-        <testcase name="And total ammount in the shopping cart is changed accordingly" classname="function-to-remove-items-from-the-shopping-cart;remove-the-beverages-from-the-shopping-cart" time="0.000208047">
-        </testcase>
-        <testcase name="And these beverges are returned into the storehouse" classname="function-to-remove-items-from-the-shopping-cart;remove-the-beverages-from-the-shopping-cart" time="0.000298667">
-        </testcase>
-    </testsuite>
-    <testsuite name="function-to-remove-items-from-the-shopping-cart;remove-all-beverages-from-the-shopping-cart" tests="7" failures="0" skipped="0">
-        <properties>
-            <property name="URI" value="C:\Users\forge\Desktop\Systembolaget\features\remove-from-cart.feature">
-            </property>
-        </properties>
-        <testcase name="Given that I am a registrered user with a legal age" classname="function-to-remove-items-from-the-shopping-cart;remove-all-beverages-from-the-shopping-cart" time="0.000092885">
-        </testcase>
-        <testcase name="And there are 5 bottles of beverage with id 0 in my shopping cart" classname="function-to-remove-items-from-the-shopping-cart;remove-all-beverages-from-the-shopping-cart" time="0.000092885">
-        </testcase>
-        <testcase name="And there are 2 bottles of beverage with id 1 in my shopping cart" classname="function-to-remove-items-from-the-shopping-cart;remove-all-beverages-from-the-shopping-cart" time="0.000081935">
-        </testcase>
-        <testcase name="And there are 9 bottles of beverage with id 2 in my shopping cart" classname="function-to-remove-items-from-the-shopping-cart;remove-all-beverages-from-the-shopping-cart" time="0.000144236">
-        </testcase>
-        <testcase name="When I click on the button Clear Cart" classname="function-to-remove-items-from-the-shopping-cart;remove-all-beverages-from-the-shopping-cart" time="0.000276011">
-        </testcase>
-        <testcase name="Then all the beverages are removed" classname="function-to-remove-items-from-the-shopping-cart;remove-all-beverages-from-the-shopping-cart" time="0.000194833">
-        </testcase>
-        <testcase name="And total ammount in the shopping cart is 0" classname="function-to-remove-items-from-the-shopping-cart;remove-all-beverages-from-the-shopping-cart" time="0.000278278">
+        <testcase name="Then I add a bevarege in a cart" classname="add-to-shopping-cart;add-a-beverage-in-a-shopping-cart" time="0.00031959">
         </testcase>
     </testsuite>
 </testsuites>
