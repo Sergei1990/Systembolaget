@@ -3,6 +3,7 @@ let ShoppingCart = require('../shopping-cart.js');
 let Category = require('../category.js');
 let assert = require('assert');
 let Person = require('../person.js');
+let Product = require('../product.js');
 
 
 module.exports = function(){
