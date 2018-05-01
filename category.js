@@ -13,8 +13,6 @@ module.exports = class Category {
 				return product.varugrupp === varugrupp;
 			}
 			return product.varugrupp === varugrupp && product.ursprunglandnamn === ursprunglandnamn;
-	});
-	
+	    });	
 	}
-
 }

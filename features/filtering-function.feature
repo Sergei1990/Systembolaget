@@ -23,9 +23,9 @@ Feature: Function filtering by price, category,country, in the storage/not in th
 
     Scenario: Filter beverages by several parameters
 		Given that I am a registrered user with age over 20
-	    When I choose to filter the products by category Rött
-	    And by lands Italien and Frankrike
-	    And which are chipper than 100 kr
+	    When I choose to filter the products by category "Rött vin" and "Vitt vin"
+	    And by countries "Italien" and "Frankrike"
+	    And which are chipper than 500 kr
 	    Then there are just beverages with chosen parameters on the product page
 
 	
