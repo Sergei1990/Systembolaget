@@ -1,6 +1,7 @@
 module.exports = class Category {
 	
 	constructor(name, allProducts){
+		
 		this.name = name;
 
 		let splitted = name.split(" från ");

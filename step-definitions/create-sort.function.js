@@ -1,5 +1,5 @@
 let app = require('../app.js');
-let products = require('../products.js');
+let Product = require('../product.js');
 let Category = require('../category.js');
 
 module.exports = function(){

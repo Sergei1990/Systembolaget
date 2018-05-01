@@ -33,6 +33,29 @@
             "match": {
               "location": "C:\\Users\\Sergei\\Documents\\Systembolaget\\step-definitions\\add-to-cart.js:21"
             }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "id": "class-shopping-cart;the-user-wants-to-know-a-total-amount-in-the-shopping-cart",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "The user wants to know a total amount in the shopping cart",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "that I'm a registrered user with a legal age",
+            "result": {
+              "status": "passed",
+              "duration": 196342
+            },
+            "line": 14,
+            "match": {
+              "location": "C:\\Users\\forge\\Desktop\\Systembolaget\\step-definitions\\class-shopping-cart.js:42"
+            }
           },
           {
             "arguments": [],

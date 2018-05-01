@@ -4,11 +4,12 @@ let ShoppingCart = require('../shopping-cart.js')
 module.exports = function(){
 
 let renat = app.products[0];
+let user;
 
 
 this.Given(/^a customer with an empty shopping cart$/, function (callback) {
         // öka antal av vald produkt
-        app.addUser('Rutger', 97);
+        user = app.addUser('Rutger', 97);
 
          callback();
        });
@@ -36,7 +37,7 @@ this.Then(/^the quantity of Renat should increase from zero to 10$/, function (c
 
 this.Given(/^a customer with non-empty shopping cart$/, function (callback) {
          // minska antal av vald produkt
-         app.addUser('Rutger', 97);
+        user = app.addUser('Rutger', 97);
          app.users[0].shoppingCart.add(renat, 10);
 
        
