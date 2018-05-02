@@ -15,13 +15,13 @@ class App {
 		let categoryData = require('./json/categories.json');
 
 		// Make instaces of product from the productData
-		this.products = [];
+		this.products = [];  // 18695 - length
 		for(let p of productData){
 		  this.products.push(new Product(p));
 		}
 
 		// make instaces of category from categoryData
-		this.categories = [];
+		this.categories = [];  // 587 - length
 		for(let catName of categoryData){
 			this.categories.push(new Category(catName, this.products));
 		}
@@ -40,19 +40,24 @@ class App {
 	addUser(name,age){
 		let user = new Person(name,age);
 		this.users.push(user);
-		////////////// Needs to be checked //////////////////////////////////////////
-		if (age < 20){/////////////////////////////////////////
-			this.products = [];//////////////////////////////////////
-			for(let p of productData){////////////////////////////////
-				if ((p.alkoholhalt/1) <= 0.5)/////////////////////////
-		    		this.products.push(new Product(p));////////////////////
+
+		// creat restricted list of products and categories for user under 20:
+		let productData = require('./json/sortiment.json');
+		let categoryData = require('./json/categories.json');
+		if (age < 20){
+			this.products = [];// 106 - length
+			for(let p of productData){
+				if ((p.alkoholhalt/1) <= 0.5)
+		    		this.products.push(new Product(p));
 			}
-			this.categories = [];//////////////////////////////////////////
-			for(let catName of categoryData){////////////////////////////////
-				if (catName.includes("Alkoholfritt"))/////////////////////////////
-				this.categories.push(new Category(catName, this.products));////////////////////////
+			this.categories = [];// 16 - length
+			for(let catName of categoryData){
+				if (catName.includes("Alkoholfritt"))
+				this.categories.push(new Category(catName, this.products));
 			}
 		}
+		// console.log("this products " + this.products.length);
+		//console.log("this categories " + this.categories.length);
 		return user;
 	}	
 
@@ -71,7 +76,8 @@ class App {
 			category === null ||category.constructor === Array,
 			"Variable category in the filtering function should be an array of strings or null"
 		);
-	
+
+
 		if (category !== null){
 			for (let c = 0; c < category.length; c++){
 				let i = this.findNameInCategory(category[c]);			
@@ -174,11 +180,13 @@ class App {
 				productsForFiltrering.push(filteredProducts[p]);
 			}
 		}	
-		//console.log("filteredProducts " + filteredProducts.length);//4121
+		//console.log("filteredProducts " + filteredProducts.length);
 		return filteredProducts;
     }
 
- //    findProductInCategory(productToFind){ //function is wrong: this.categories[i].productS - is also array!
+
+ //function is WRONG: this.categories[i].productS - is also array!
+ //    findProductInCategory(productToFind){ 
  //    	for ( let i = 0; i < this.categories.length; i++){
  //                if(this.categories[i].product.artikelid === productToFind.artikelid){ // det går inte att jämföra två lika objekt om de har två olika adresser
  //                	return i;
@@ -186,6 +194,7 @@ class App {
  //        }
  //        return -1;
 	// }
+	
 
 	checkProductIsInCategory(categoryName, productToFind){ // function doesn't work (return just first category but not all)
     	let ind = this.findNameInCategory(categoryName);   	

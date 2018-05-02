@@ -11,6 +11,8 @@ module.exports = function() {
     let chosenCategory1, chosenCategory2;
     let chosenCountry1, chosenCountry2;
     let priceLevel1, priceLevel2;
+    let categoryToTry;
+    let categoryIsFound;
 
     this.Given(/^that I am a registrered user with age over (\d+)$/, function (arg1, callback) {
         user = app.addUser('Erik', 27);                 
@@ -159,7 +161,7 @@ module.exports = function() {
 
 //------------------------SCENARIO 2-------------------------------------------------------------
 
-    this.When(/^I choose to filter the products by category "([^"]*)" and "([^"]*)"$/, function (arg1, arg2, callback) {
+    this.When(/^I choose to filter the products by categories "([^"]*)" and "([^"]*)"$/, function (arg1, arg2, callback) {
         chosenCategory1 = arg1; // Rött vin
         chosenCategory2 = arg2; // Vitt vin
         callback();
@@ -212,9 +214,50 @@ module.exports = function() {
         callback();
     });
 
+//-------------------------SCENARIO 3--------------------------------------------------------------
 
+        this.Given(/^that I am a registrered user with age under (\d+)$/, function (arg1, callback) {
+            user = app.addUser("Tommy", 19);
+            callback();
+        });
 
-	
+        this.When(/^I try to find category "([^"]*)" in the options' list for filtering$/, function (arg1, callback) {
+            categoryToTry = arg1;
+            if (app.findNameInCategory(categoryToTry) === -1){
+                categoryIsFound = false;
+            }
+            else{
+                categoryIsFound = true;
+            }
+            callback();
+       });
 
+        this.Then(/^there are just "([^"]*)"\-categories which are available$/, function (arg1, callback) {
+            assert(
+                categoryIsFound === false,
+                "The beverages of the category " + categoryToTry + " are available for the person under 20 years old"
+            );
+
+            let c = 0;
+            let err;
+            for (c; c < app.categories.length; c++){
+                if(app.categories[c].name.includes("Alkoholfritt")){
+                    err = false;
+                }
+                else{
+                    err = true;
+                    c=c+1;
+                    break;
+                }
+            }
+
+            assert(
+                err === false,
+                "The filtering's options of the user under 20 years old includes category " + app.categories[c-1].name + " which is not 'Alkoholfritt'"
+            );
+
+            callback();
+
+       });
 
 }
