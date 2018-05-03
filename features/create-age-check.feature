@@ -11,7 +11,7 @@ Feature: Create age-check
 		And the person click yes to enter the site
 
 
- 		Scenario Outline: When a user under the legal age <age> tries to see our products then a warning should <warning> be displayed
+ 		Scenario Outline: When a user under the legal age tries to see our products then a warning should be displayed
 		  Given that I am a registrered user with a known age of "<age>"
 		  When I try to see products on the web site
 		  Then a warning should "<warning>" be displayed
@@ -19,6 +19,4 @@ Feature: Create age-check
 			Examples:
 		    | age | warning |
 		    | 15  |         |
-		    | 19  |         |
 		    | 25  | not     |
-		    | 40  | not     |
