@@ -6,6 +6,7 @@ module.exports = function(){
 	let shoppingCart;
 	let beverages;
 	let quantity;
+  let user;
 
 
 this.Given(/^that a user have selected an amout of beverages in to the shopping cart$/, function (callback) {
@@ -39,7 +40,7 @@ this.Given(/^that the beverage is not in stock$/, function (callback) {
        });
 
 this.When(/^a customer wants to add to cart$/, function (callback) {
-        app.addUser('Märta', 22);
+        user = app.addUser('Märta', 22);
         app.users[0].shoppingCart.add(80, quantity); //adds product nr 80, quantity is set to zero.
          callback();
        });

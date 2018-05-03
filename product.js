@@ -1,9 +1,10 @@
 module.exports = class Product {
 
-  constructor(data){
+    constructor(data){
     // just transfer all properties 
     // from data to "this" 
-    Object.assign(this, data);
-  }
+    	Object.assign(this, data);
+    }
+
 
 }

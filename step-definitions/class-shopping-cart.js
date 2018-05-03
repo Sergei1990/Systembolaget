@@ -21,8 +21,7 @@ module.exports = function() {
     });
 
     this.When(/^I register  myself on the site$/, function (callback) {
-        user = new Person(name, 27);
-        app.users.push(user);                 
+        user = app.addUser(name, age);                
         callback();
     });
 
@@ -41,8 +40,7 @@ module.exports = function() {
 //_______________________________Scenario 2 ______________________________________________
 
 	this.Given(/^that I'm a registrered user with a legal age$/, function (callback) {
-        user = new Person(name, 27);
-        app.users.push(user); 
+        user = app.addUser(name, 27);
     	callback();
     });
 

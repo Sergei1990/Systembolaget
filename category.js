@@ -1,6 +1,7 @@
 module.exports = class Category {
 	
 	constructor(name, allProducts){
+		
 		this.name = name;
 
 		let splitted = name.split(" från ");
@@ -12,8 +13,6 @@ module.exports = class Category {
 				return product.varugrupp === varugrupp;
 			}
 			return product.varugrupp === varugrupp && product.ursprunglandnamn === ursprunglandnamn;
-	});
-	
+	    });	
 	}
-
 }

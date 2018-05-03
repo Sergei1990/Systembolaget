@@ -12,13 +12,12 @@ module.exports = function() {
 
 
 	this.Given(/^that I am a registrered user with a legal age$/, function (callback) {
-	    user = new Person('Dasha', 27);
-        app.users.push(user);                 
+	    user = app.addUser('Dasha', 27);                
         callback();	    
 	});
 
 	this.Given(/^there are (\d+) bottles of beverage with id (\d+) in my shopping cart$/, function (arg1, arg2, callback) {
-        console.warn(app.products[0]);
+        
         if (arg2/1 == 0){	    	
 	    	beverageAmount1 = app.products[arg2/1].prisinklmoms * (arg1/1);
 	    	quantityInStorehouseBefore1 = app.products[arg2/1].iLager;
@@ -43,10 +42,7 @@ module.exports = function() {
             //console.log("ILager after adding " + app.products[arg2/1].iLager);
         }
 
-        //console.log(user.shoppingCart.thingsToBuy);
-
-
-        
+        //console.log(user.shoppingCart.thingsToBuy);       
         
         callback();
     });

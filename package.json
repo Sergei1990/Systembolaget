@@ -5,12 +5,14 @@
   "main": "app.js",
   "scripts": {
     "test": "node node_modules/selenium-cucumber-js/index.js -b phantomjs & exit 0",
-    "william-feature": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/create-sort-function.feature & exit 0",
+    "william-feature": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/create-search-function.feature & exit 0",
+	"Jessica-feature": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/create-age-check.feature & exit 0",
     "kamph-feature": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/add-to-cart.feature & exit 0",
     "remove-from-cart": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/remove-from-cart.feature & exit 0",
     "class-shopping-cart": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/class-shopping-cart.feature & exit 0",
     "add-to-cart": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/add-to-cart.feature & exit 0",
-    "delivery-time": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/delivery-time.feature & exit 0"
+    "delivery-time": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/delivery-time.feature & exit 0",
+    "filtering-function": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/filtering-function.feature & exit 0"
   },
   "author": "",
   "license": "ISC",
