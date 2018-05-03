@@ -9,6 +9,8 @@ let legalAge=20;
 
 this.Given(/^that a person is of legal age to buy alcohol$/, function (callback) {
         user = app.addUser('Maria', 21);
+
+        //console.log(user)
          callback();
        });
 
@@ -36,7 +38,7 @@ this.Given(/^that I am a registrered user with a known age of "([^"]*)"$/, funct
        });
 
  this.When(/^I try to see products on the web site$/, function (callback) {
-         // Write code here that turns the phrase above into concrete actions
+         products = app.products;
          callback();
        });
 

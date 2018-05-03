@@ -18,8 +18,7 @@ Feature: Able to log in to buy beverages
 
 	Scenario Outline:
 		Given that I am in the sytembolagets checkout
-		And click buy button
-		When I fill in email with <"invalid-email"> 
+		When I fill in email with "<invalid-email>" 
 		Then I should get a runtime error
 
 		Examples:
