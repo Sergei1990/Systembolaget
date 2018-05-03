@@ -8,22 +8,47 @@ module.exports = function(){
 	let searchResult;
 	let sortByPrice;
 	let products = []
+  let categories = []
+  let sortByName;
 
 
 		products.sort();
 
 		this.Given(/^that a customer want to sort products by names alphabetically after a search$/, function (callback) {
-         search = app.products[1000178, 1000296, 1000369, 1000372]
+         search = app.products;
          callback();
        });
 
        this.When(/^the customer sorts names alphabetically$/, function (callback) {
         
+        let sortByName = app.products;  
+
          callback();
        });
 
        this.Then(/^the site shows the beverages sorted by names alphabetically$/, function (callback) {
-         app.products.sort();
+         
+         let sortByName = app.products;
+
+         cmp = function(x, y){
+              return x > y ? 1 : x < y ? -1 : 0; 
+          };
+
+          
+          sortByName.sort(function(a, b){
+              
+              return cmp( 
+                  [cmp(a.namn, b.namn), -cmp(a.varnummer, b.varnummer)], 
+                  [cmp(b.namn, a.namn), -cmp(b.varnummer, a.varnummer)]
+                    );
+                      });
+
+            let match = 'Cognac'
+
+            let result = sortByName.filter( obj => {
+              return Object.values( obj ).find( item => item == match );
+            });
+
          callback();
        });
 
@@ -38,11 +63,31 @@ module.exports = function(){
        });
 
        this.Then(/^all products sorts afer price from low to high$/, function (callback) {
-         sortByPrice = [40, 100, 1, 5, 25, 10];
-			sortByPrice.sort(function(a, b){return a - b});
+         
+          let sortByPrice = app.products;
 
-			sortByPrice = [40, 100, 1, 5, 25, 10];
-			sortByPrice.sort(function(a, b){return b - a});
+         cmp = function(x, y){
+              return x > y ? 1 : x < y ? -1 : 0; 
+          };
+
+          
+          sortByPrice.sort(function(a, b){
+              
+              return cmp( 
+                  [cmp(a.prisinklmoms, b.prisinklmoms), -cmp(a.varnummer, b.varnummer)], 
+                  [cmp(b.prisinklmoms, a.prisinklmoms), -cmp(b.varnummer, a.varnummer)]
+                    );
+                      });
+
+            let match = 'Cognac'
+
+            let result = sortByPrice.filter( obj => {
+              return Object.values( obj ).find( item => item == match );
+            });
+
+            //console.log(result);
+
+
          callback();
        });
 
@@ -52,7 +97,19 @@ module.exports = function(){
        });
 
        this.Then(/^the search result list sorts after names in alphabetically order$/, function (callback) {
-         // Write code here that turns the phrase above into concrete actions
+         
+         let sortCategory = app.categories; 
+
+         let match = 'Rött vin från Spanien'
+
+            let result = sortCategory.filter( obj => {
+              return Object.values( obj ).find( item => item == match );
+            });
+
+            //console.log(result);
+
+
+
          callback();
        });
 

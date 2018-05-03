@@ -84,20 +84,32 @@ module.exports = function(){
 
   this.Then(/^the search result list sorts after names$/, function (callback) {
          
-         let search = app.products;
+
+        let sortByName = app.products;  
 
 
-            let match = 'Öl'
+          cmp = function(x, y){
+              return x > y ? 1 : x < y ? -1 : 0; 
+          };
 
+          
+          sortByName.sort(function(a, b){
+              
+              return cmp( 
+                  [cmp(a.namn, b.namn), -cmp(a.varnummer, b.varnummer)], 
+                  [cmp(b.namn, a.namn), -cmp(b.varnummer, a.varnummer)]
+                    );
+                      });
 
-            let result = search.filter( obj => {
+            let match = 'Cognac'
+
+            let result = sortByName.filter( obj => {
               return Object.values( obj ).find( item => item == match );
+            });
 
-              search.sort();
-         
-         });
+          
 
-            console.log(result);
+         // console.log(result);
 
          callback();
        });
