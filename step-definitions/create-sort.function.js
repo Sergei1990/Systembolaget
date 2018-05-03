@@ -8,7 +8,7 @@ module.exports = function(){
 	let searchResult;
 	let sortByPrice;
 	let products = []
-  let category = []
+  let categories = []
   let sortByName;
 
 
@@ -98,7 +98,17 @@ module.exports = function(){
 
        this.Then(/^the search result list sorts after names in alphabetically order$/, function (callback) {
          
-         
+         let sortCategory = app.categories; 
+
+         let match = 'Rött vin från Spanien'
+
+            let result = sortCategory.filter( obj => {
+              return Object.values( obj ).find( item => item == match );
+            });
+
+            //console.log(result);
+
+
 
          callback();
        });
