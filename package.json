@@ -12,7 +12,9 @@
     "class-shopping-cart": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/class-shopping-cart.feature & exit 0",
     "add-to-cart": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/add-to-cart.feature & exit 0",
     "delivery-time": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/delivery-time.feature & exit 0",
-    "filtering-function": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/filtering-function.feature & exit 0"
+    "filtering-function": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/filtering-function.feature & exit 0",
+    "buy-products": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/buy-products.feature & exit 0",
+    "remove-user": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/remove-user.feature & exit 0"  
   },
   "author": "",
   "license": "ISC",

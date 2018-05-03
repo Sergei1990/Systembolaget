@@ -11,29 +11,33 @@ let ShoppingCart = require('./shopping-cart.js');
 class App {
 
 	constructor(){
+
+		this.products = []; // user's available products
+		this.categories = []; //user's available categories
+		this.categoryByName = {};//user's dictionary
+
+
 		let productData = require('./json/sortiment.json');
 		let categoryData = require('./json/categories.json');
 
 		// Make instaces of product from the productData
-		this.products = [];  // 18695 - length
+		this.allProducts = []; //18695 - length 
 		for(let p of productData){
-		  this.products.push(new Product(p));
+		  this.allProducts.push(new Product(p));
 		}
 
 		// make instaces of category from categoryData
-		this.categories = [];  // 587 - length
+		this.allCategories = [];  // 587 - length
 		for(let catName of categoryData){
-			this.categories.push(new Category(catName, this.products));
+			this.allCategories.push(new Category(catName, this.allProducts));
 		}
 
-
+		this.allCategoryByName = {};
 		//Make a dictinary based on category names
-		this.categoryByName = {};
-		for(let category of this.categories){
-			this.categoryByName[category.name] = category;
+		for(let category of this.allCategories){
+			this.allCategoryByName[category.name] = category;
 		}
 
-		//add a list of active/logged in users
 		this.users = [];
 	}
 
@@ -41,31 +45,57 @@ class App {
 		let user = new Person(name,age);
 		this.users.push(user);
 
-		// creat restricted list of products and categories for user under 20:
-		let productData = require('./json/sortiment.json');
-		let categoryData = require('./json/categories.json');
-		if (age < 20){
-			this.products = [];// 106 - length
-			for(let p of productData){
+		// create list of products and categories for user
+
+		this.products = []; // user's available products
+		this.categories = []; //user's available categories
+		this.categoryByName = {};//user's dictionary
+
+		if (age < 20){ //create user's restricted list of products
+			for(let p of this.allProducts){
 				if ((p.alkoholhalt/1) <= 0.5)
-		    		this.products.push(new Product(p));
+		    		this.products.push(p);//106 - length
 			}
-			this.categories = [];// 16 - length
-			for(let catName of categoryData){
-				if (catName.includes("Alkoholfritt"))
-				this.categories.push(new Category(catName, this.products));
+			
+			for(let cat of this.allCategories){
+				if (cat.name.includes("Alkoholfritt"))
+					this.categories.push(cat);// 16 - length
 			}
 		}
-		// console.log("this products " + this.products.length);
-		//console.log("this categories " + this.categories.length);
+		else{ // create full list of products and categories for user with legal age: 			 
+			for(let p of this.allProducts){
+		    	this.products.push(p); //18695 - length
+			}
+			// make instaces of category from categoryData
+			for(let cat of this.allCategories){ 
+				this.categories.push(cat);// 587 length
+			}
+		}
+
+		//Make a dictinary based on category names
+		this.categoryByName = {};
+		for(let category of this.categories){
+			this.categoryByName[category.name] = category;
+		}
 		return user;
 	}	
+
+	removeUser(user){ //log out
+
+		user.shoppingCart.removeAllItems();
+		
+		this.products = [];
+		this.categories = [];
+		this.users = [];
+		this.categoryByName = {};
+	}
 
 	filterFunction(category, // name or null (array of strings or null)
 		    	   country,  // name or null (array of strings or null)
 		    	   isInStore, //true/false, null (array of booleans or null)
 		    	   priceLevel) { // level 1 - <=100, level 2 - (100-500], level 3 - (500-1000], level 4 - >1000  or null
-						 		 // array of int or null
+						 		 // array of int or null		
+
 		let filteredProducts = [];
 		let productsForFiltrering = []; // == this.productss
 		for(let p = 0; p < this.products.length; p++){
@@ -186,7 +216,7 @@ class App {
 
 
  //function is WRONG: this.categories[i].productS - is also array!
- //    findProductInCategory(productToFind){ 
+ //    findProductInCategory(productToFind){  // function doesn't work (return just first category but not all)
  //    	for ( let i = 0; i < this.categories.length; i++){
  //                if(this.categories[i].product.artikelid === productToFind.artikelid){ // det går inte att jämföra två lika objekt om de har två olika adresser
  //                	return i;
@@ -194,12 +224,12 @@ class App {
  //        }
  //        return -1;
 	// }
-	
 
-	checkProductIsInCategory(categoryName, productToFind){ // function doesn't work (return just first category but not all)
+
+	checkProductIsInCategory(categoryName, productToFind){
     	let ind = this.findNameInCategory(categoryName);   	
 		for (let i = 0; i < this.categories[ind].products.length; i++){ 
-			if(this.categories[ind].products[i].artikelid === productToFind.artikelid){ // det går inte att jämföra två lika objekt om de har två olika adresser
+			if(this.categories[ind].products[i].artikelid === productToFind.artikelid){ 
             	return true;
     		}
     	}	        
@@ -208,6 +238,7 @@ class App {
 
 	findNameInCategory(nameToFind){
 		for ( let i = 0; i < this.categories.length; i++){
+
             if(this.categories[i].name === nameToFind){ 
                	return i;                	
         	}
@@ -219,9 +250,13 @@ class App {
 
 
 
-//Create an app to start the application
+//1. Create an app to start the application
 let app = new App();
 module.exports = app;
+// 2. Ask the user about the quick registration to see the products list (new Person(name, age))
+
+
+
 
 //global.app = app;
 
