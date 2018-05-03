@@ -20,6 +20,12 @@ module.exports = class ShoppingCart {
 			"Quantity can't be less that 0"
 		);
 
+		// you can't add more products than we have in a store
+		assert(
+			quantity <= product.iLager,
+			"You added more bevareges than we have in store."
+		);
+
 		// don't allow the product that is already in the cart, but change quantity
 		let productID = product.artikelid;  // taking products id
 		let productExists = false;
