@@ -14,7 +14,9 @@
     "delivery-time": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/delivery-time.feature & exit 0",
     "filtering-function": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/filtering-function.feature & exit 0",
     "buy-products": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/buy-products.feature & exit 0",
-    "remove-user": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/remove-user.feature & exit 0"  
+    "remove-user": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/remove-user.feature & exit 0",
+    "tanjina": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/change-quantity.feature & exit 0"  
+  
   },
   "author": "",
   "license": "ISC",
