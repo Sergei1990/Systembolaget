@@ -7,66 +7,86 @@ module.exports = function(){
 	let user;
 	let legalAge = 20; 
 	let wine = app.products[0];
-	let toBuy;
-
-this.Given(/^that the user has an legal age$/, function (callback) {
-         user = app.addUser('Mattias', 32);
-         callback();
-});
-
-this.Given(/^has a non\-empty shopping cart$/, function (callback) {
-		user = app.addUser('Mattias', 32);
-         app.users[0].shoppingCart.add(wine, 10);
-		callback();
-});
-
-this.When(/^user wants to check out$/, function (callback) {
-         // Write code here that turns the phrase above into concrete actions
-         callback();
-});
-
-this.Then(/^user must enter email to validate legal age$/, function (callback) {
-         // Write code here that turns the phrase above into concrete actions
-         callback();
-});
+	let shoppingCart = new ShoppingCart();
 
 
-//Scenario 2 
+		this.Given(/^that the user has an legal age$/, function (callback) {
+		         user = app.addUser('Mattias', 32);
+		         callback();
+		});
+
+		this.Given(/^has a non\-empty shopping cart$/, function (callback) {
+				 user = app.addUser('Mattias', 32);
+		         user.shoppingCart.add(wine, 10);
+		         assert(
+		            user.shoppingCart.thingsToBuy.length != 0,
+		            "User has an empty cart" 
+		            );
+
+				callback();
+		});
+
+		this.When(/^user wants to check out$/, function (callback) {
+		         
+		         callback();
+		});
+
+		this.Then(/^user must enter email to validate legal age$/, function (callback) {
+		         
+		         callback();
+		});
 
 
-this.Given(/^has a empty shopping cart$/, function (callback) {
- 			app.users[0].shoppingCart.add(wine, 0);
-         callback();
-});
+		//Scenario 2 
 
 
-this.Then(/^a warning should be shown$/, function (callback) {
-         // Write code here that turns the phrase above into concrete actions
-         callback();
-});
+		this.Given(/^has a empty shopping cart$/, function (callback) {
+			user = app.addUser('Mattias', 32);
+		 			user.shoppingCart.add(wine, 0);
+		 			assert(
+		            user.shoppingCart.thingsToBuy.length != 0,
+		            "There are items in a empty shopping cart"    
+		        );
+		         callback();
+		});
+
+
+		this.Then(/^a warning should be shown$/, function (callback) {
+		         
+		         callback();
+		});
 
  // Scenario 3
 
 
-this.Given(/^that I am in the sytembolagets checkout$/, function (callback) {
-         // Write code here that turns the phrase above into concrete actions
-         callback();
-       });
+		this.Given(/^that I am in the sytembolagets checkout$/, function (callback) {
+		        
+		         callback();
+		});
 
-this.Given(/^click buy button$/, function (callback) {
-        //app.users[0].shoppingCart.toBuy(wine, 10); // toBuy not a function
-         callback();
-       });
 
-this.When(/^I fill in email with <"([^"]*)">$/, function (arg1, callback) {
-         // Write code here that turns the phrase above into concrete actions
-         callback();
-       });
+		this.When(/^I fill in email with <"([^"]*)">$/, function (arg1, callback) {
+		        
 
- this.Then(/^I should get a runtime error$/, function (callback) {
-         // Write code here that turns the phrase above into concrete actions
-         callback();
-       });
+		         callback();
+		});
+
+		this.Then(/^I should get a runtime error$/, function (callback) {
+
+		         callback();
+		});
+
+
+
+
+
+
+
+
+   this.When(/^I fill in email with "([^"]*)"$/, function (arg1, callback) {
+                 
+                 callback();
+        });
 
 
 
