@@ -9,6 +9,7 @@ module.exports = class ShoppingCart {
 
 	add(product, quantity) {
 		// check that the product is an instanceOF Product
+
 		assert(
 			product instanceof Product,
 			"Product is not an instance of Product class."
@@ -16,26 +17,26 @@ module.exports = class ShoppingCart {
 
 		// check that quantity is a possitive integer
 		assert(
-			quantity >= 0,
-			"Quantity can't be less that 0"
+			quantity >= 1,
+			"Quantity can't be less than 1"
 		);
 
 		// you can't add more products than we have in a store
 		assert(
-			quantity <= product.iLager,
-			"You added more bevareges than we have in store."
-		);
+        	quantity <=  product.iLager,
+        	'The available quantity of the beverage in the store is ' + product.iLager
+        );
 
 		// don't allow the product that is already in the cart, but change quantity
 		let productID = product.artikelid;  // taking products id
 		let productExists = false;
-    for( let i = 0; i < this.thingsToBuy.length; i++) { // loop through thingsToBuy
-      if(productID === this.thingsToBuy[i].product.artikelid) { // comparing products ID that you add with the one that already exists
+        for( let i = 0; i < this.thingsToBuy.length; i++) { // loop through thingsToBuy
+        	if(productID === this.thingsToBuy[i].product.artikelid) { // comparing products ID that you add with the one that already exists
 				this.thingsToBuy[i].quantity = this.thingsToBuy[i].quantity + quantity; // new quantity add with old quantity
 				//this.changeQuantity(product, (this.thingsToBuy[i].quantity + quantity));
 				productExists = true;
 			}
-	  }
+	    }
 
 		if(productExists === false) {
 				this.thingsToBuy.push({
@@ -65,6 +66,24 @@ module.exports = class ShoppingCart {
 		);
 		let index = this.findProductInCart(product);
 		assert(index >= 0,"Cant change the quantity of a product not in the cart");
+
+		if (this.thingsToBuy[index].quantity < newQuantity){
+			assert(
+				newQuantity - this.thingsToBuy[index].quantity <= product.iLager,
+				"The available quantity of the beverage in the store is " + product.iLager
+			);
+			product.iLager = product.iLager - (newQuantity - this.thingsToBuy[index].quantity);
+		}
+
+		else{
+			assert(
+				newQuantity >= 1,
+				"Quantity of the item in the shopping cart can't be less than 1",
+			);
+
+			product.iLager = product.iLager + (this.thingsToBuy[index].quantity - newQuantity);
+		}
+
 		this.thingsToBuy[index].quantity = newQuantity;
 	}
 
@@ -78,21 +97,11 @@ module.exports = class ShoppingCart {
 		//(app.products.includes(product), "Oh no! Not in app.products!"); // another alternative
 
 		// If variabel app är global in app.js:
-		//assert(global.app, "Can't find a global app :( Please require app ONCE before any other classes!");
+		//assert(global.app, "Can't find a global app :( Please require app ONCE before any other classes!");		
 
-		// //return the products on the storehouse ?????????????????????????????????????????????????????
-		// //app.products is NOT defined?????????????????????????????
-		// let indexInSortiment;  //index of the product in the sortiment (App.products)
-		// for(let i = 0; i < app.products.length; i++){
-		// 	if(app.products[i].artikelid === product.artikelid){
-		// 		indexInSortiment = i;
-		// 	}
-		// }
-		// app.products[indexInSortiment].iLager = app.products[indexInSortiment].iLager + this.thingsToBuy[indexInCart].quantity; 
-        // ?????????????????????????????????????????????????????????????????????????????????????????????
-
-    //return the products on the storehouse:
-    product.iLager = product.iLager + this.thingsToBuy[indexInCart].quantity;
+	    //return the products on the storehouse:
+	    product.iLager = product.iLager + this.thingsToBuy[indexInCart].quantity;
+		
 		//remove item from the cart
 		this.thingsToBuy.splice(indexInCart, 1);
 
