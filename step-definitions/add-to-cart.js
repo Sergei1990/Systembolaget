@@ -14,7 +14,7 @@ module.exports = function(){
   this.Given(/^that I'm in Systembolaget$/, function (callback) {
  	 
  	  if(app.users.includes("Arnold") == false) {
- 		  aPerson = new Person('Arnold', 25);
+ 		  aPerson = app.addUser('Arnold', 25);
  	  }
     callback();
   });
