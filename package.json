@@ -15,7 +15,8 @@
     "filtering-function": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/filtering-function.feature & exit 0",
     "buy-products": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/buy-products.feature & exit 0",
     "remove-user": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/remove-user.feature & exit 0",
-    "quantity-in-storage": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/quantity-in-storage.feature & exit 0",    
+    "quantity-in-storage": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/quantity-in-storage.feature & exit 0",
+    "sum-function": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/sum-function.feature & exit 0",    
     "tanjina": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/change-quantity.feature & exit 0"  
   },
   "author": "",
