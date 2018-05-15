@@ -1,4 +1,4 @@
-Feature: class Shopping-cart
+Feature: Class Shopping-cart
 	As a user 
 	I want to have a shopping cart 
 	To find there items I want to buy 
@@ -18,7 +18,7 @@ Feature: class Shopping-cart
     When I oppen my shopping cart to see the total amount
     Then I can see the total amount for added items
 
-	Scenario: The user wants to find the item in the shopping cart which is there
+  Scenario: The user wants to find the item in the shopping cart which is there
   	Given that I'm a registrered user with a legal age
     And I add 5 bottles of beverage with id 0 in my shopping cart
     And I add 2 bottles of beverage with id 1 in my shopping cart
