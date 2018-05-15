@@ -1,35 +1,41 @@
 let app = require('../app.js')
 let ShoppingCart = require('../shopping-cart.js')
+let Product = require('../product.js');
 
 module.exports = function(){
 
-let renat = app.products[0];
+let renat;
 let user;
+let quantity;
 
 
 this.Given(/^a customer with an empty shopping cart$/, function (callback) {
-        // öka antal av vald produkt
         user = app.addUser('Rutger', 97);
 
-         callback();
-       });
+ callback();
+});
 
 this.When(/^the custumer adds 10 Renat$/, function (callback) {
-         // när knapp klickas på
-		user.shoppingCart.add(renat, 10);
+  quantity=10;
+  
+  renat = app.products.find(function(product) {
+    return product.namn == "Renat";
+  });
 
-         callback();
-       });
+  user.shoppingCart.add(renat, quantity);
+
+
+ callback();
+});
 
 this.Then(/^the quantity of Renat should increase from zero to 10$/, function (callback) {
-         // antal produkter ökar
          let indexOfBeverages = app.users[0].shoppingCart.findProductInCart(renat);
          let amountOfBeverages = app.users[0].shoppingCart.thingsToBuy[indexOfBeverages].quantity;
 
-         assert(amountOfBeverages == 10);
+         assert(amountOfBeverages == quantity);
 
-         callback();
-       });
+ callback();
+});
 
 
 
