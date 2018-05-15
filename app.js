@@ -78,6 +78,9 @@ class App {
 			this.categoryByName[category.name] = category;
 		}
 		return user;
+
+		
+		
 	}	
 
 	removeUser(user){ //log out

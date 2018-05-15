@@ -59,3 +59,7 @@ typings/
 
 
 reports/
+
+features/creating-ageCheck\.feature
+
+step-definitions/creating-ageCheck\.js
