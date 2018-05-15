@@ -30,7 +30,7 @@ module.exports = function(){
     callback();
   });
 
-  this.When(/^I add a bevarege in a cart$/, function (callback) {
+  this.When(/^I add a beverage in a cart$/, function (callback) {
  	  assert.doesNotThrow(function() {
       aPerson.shoppingCart.add(product, quantity);
       },
