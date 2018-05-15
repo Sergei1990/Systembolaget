@@ -7,6 +7,7 @@ module.exports = function(){
 	let beverages;
 	let quantity;
   let user;
+  let product;
 
 
 this.Given(/^that a user have selected an amout of beverages in to the shopping cart$/, function (callback) {
@@ -35,15 +36,16 @@ this.Then(/^the user can see when it will be available again$/, function (callba
 
 
 this.Given(/^that the beverage is not in stock$/, function (callback) {
-         // Write code here that turns the phrase above into concrete actions
-         callback(quantity = 0);
+         quantity = 0
+         callback();
        });
 
 this.When(/^a customer wants to add to cart$/, function (callback) {
         user = app.addUser('Märta', 22);
-        app.users[0].shoppingCart.add(80, quantity); //adds product nr 80, quantity is set to zero.
-         callback();
-       });
+        // app.users[0].shoppingCart.add(80, quantity); //adds product nr 80, quantity is set to zero.
+        user.shoppingCart.add(app.products[0], 10);
+  callback();
+});
 
 this.Then(/^a warning should be shown if the beverage is not in stock$/, function (callback) {
          // kolla om varning fungerar
