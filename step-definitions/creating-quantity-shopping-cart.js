@@ -16,7 +16,7 @@ this.Given(/^a customer with an empty shopping cart$/, function (callback) {
 
 this.When(/^the custumer adds 10 Renat$/, function (callback) {
          // när knapp klickas på
-		app.users[0].shoppingCart.add(renat, 10);
+		user.shoppingCart.add(renat, 10);
 
          callback();
        });
