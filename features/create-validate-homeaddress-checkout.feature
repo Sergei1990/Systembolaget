@@ -23,10 +23,10 @@ Feature: Able to log in to buy beverages
 		Then I should get a runtime error
 
 		Examples:
-		| invalid-home-address	    |
-		| empty string     			|
+		| invalid-home-address|
+		| empty string     		|
 		| number	       			|
 		| boolean	      			|
-		| undefined	       			| 
+		| undefined	        	| 
 		| array		      			| 
 		| object	      			| 

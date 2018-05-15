@@ -6,10 +6,10 @@ Feature: Function filtering by price, category,country, in the storage/not in th
 
 	Scenario Outline: Filter beverages by parameter <parameter> with value <value> 
 		Given that I am a registrered user with age over 20
-	    When I choose to filter the products by parameter "<parameter>" as "<value>"
-	    Then there are just beverages with this parameter on the product's page
+    When I choose to filter the products by parameter "<parameter>" as "<value>"
+    Then there are just beverages with this parameter on the product's page
 
-	    Examples:
+	  Examples:
 		| parameter        | value                       |
 		| category         | Alkoholfritt från Frankrike |
 		| country          | Frankrike                   |
@@ -21,17 +21,17 @@ Feature: Function filtering by price, category,country, in the storage/not in th
 		| prices > 1000    | 4                           |  
         
 
-    Scenario: Filter beverages by several parameters
+  Scenario: Filter beverages by several parameters
 		Given that I am a registrered user with age over 20
-	    When I choose to filter the products by categories "Rött vin" and "Vitt vin"
-	    And by countries "Italien" and "Frankrike"
-	    And which are chipper than 500 kr
-	    Then there are just beverages with chosen parameters on the product page
+    When I choose to filter the products by categories "Rött vin" and "Vitt vin"
+    And by countries "Italien" and "Frankrike"
+    And which are chipper than 500 kr
+    Then there are just beverages with chosen parameters on the product page
 
 	Scenario: Filtering function for the person under 20 years old
 		Given that I am a registrered user with age under 20
-	    When I try to find category "Öl" in the options' list for filtering
-	    Then there are just "Alkoholfritt"-categories which are available
+    When I try to find category "Öl" in the options' list for filtering
+    Then there are just "Alkoholfritt"-categories which are available
 
 	
 

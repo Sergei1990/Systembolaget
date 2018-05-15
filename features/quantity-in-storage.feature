@@ -22,7 +22,7 @@ Feature:
 	    Then the message displays that there are just 4 bottles of beverage in the storehose
 	    And the quantity of the beverage in the shopping cart did not changed
 
-	Scenario Outline: Changing item's quantity in the storage when user changes quantity of the product in the cart
+		Scenario Outline: Changing item's quantity in the storage when user changes quantity of the product in the cart
 	    Given that there is a user with a legal age on the site
 	    And user has 5 items with article 1 in the shopping cart 
 	    And there are 10 bottles of the beverage in the storehouse
@@ -43,7 +43,7 @@ Feature:
 	    Then the message displays that there are just 2 bottles of beverage in the storehose 
 	    And the quantity of the beverage in the shopping cart did not changed
 
-	Scenario: Changing item's quantity in the storage after removing items from the shopping cart
+		Scenario: Changing item's quantity in the storage after removing items from the shopping cart
 	    Given that there is a user with a legal age on the site
 	    And user has 5 items with article 1 in the shopping cart 
 	    And there are 4 bottles of the beverage in the storehouse
@@ -51,7 +51,7 @@ Feature:
 	    Then the shopping cart is empty
 	    And the quantity of the beverage in the storage increased by 5
 
-	Scenario: Changing item's quantity in the storage after removing All items from the shopping cart
+		Scenario: Changing item's quantity in the storage after removing All items from the shopping cart
 	    Given that there is a user with a legal age on the site
 	    And user has 5 items with  article 1 in the shopping cart 
 	    And user has 2 items with  article 1000005 in the shopping cart

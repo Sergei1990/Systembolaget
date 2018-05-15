@@ -23,9 +23,9 @@ module.exports = function() {
 
     this.When(/^I add three different beverages in my shopping cart, (\d+), (\d+), (\d+) in number accordingly$/, function (arg1, arg2, arg3, callback) {
         
-        let b1 = app.products[0];
-        let b2 = app.products[1];
-        let b3 = app.products[2];
+        b1 = app.products[0];
+        b2 = app.products[1];
+        b3 = app.products[2];
 
         user.shoppingCart.add(b1, arg1/1);
         user.shoppingCart.add(b2, arg2/1);

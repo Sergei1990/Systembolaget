@@ -47,7 +47,9 @@ module.exports = function() {
     });
 
     this.Given(/^I have (\d+) beverages with index (\d+) in my shopping cart$/, function (arg1, arg2, callback) {
-        user.shoppingCart.add(app.products[arg1/1], arg2/1);
+        quantity2 = arg2/1;
+        beverage2 = app.products[arg1/1];
+        user.shoppingCart.add(beverage2, quantity2);
         callback();
     });
 
@@ -59,7 +61,7 @@ module.exports = function() {
         callback();
     });
 
-    this.Then(/^the total  amount in the shopping cart is (\d+)$/, function (arg1, callback) {
+    this.Then(/^the total amount in the shopping cart is (\d+)$/, function (arg1, callback) {
         assert(
         	user.shoppingCart.sum() === arg1/1,
         	"The total amount in the shopping cart should be 0 after buying!"

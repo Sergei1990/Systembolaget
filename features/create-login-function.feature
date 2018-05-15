@@ -6,14 +6,14 @@ Feature: Able to log in to buy beverages
 	Scenario:  A person of valid age whit non-empty shopping cart
 		Given that the user has an legal age 
 		And has a non-empty shopping cart
-        When user wants to check out
-        Then user must enter email to validate legal age
+    When user wants to check out
+    Then user must enter email to validate legal age
     
-    Scenario:  A person of valid age whit empty shopping cart
+  Scenario:  A person of valid age whit empty shopping cart
 		Given that the user has an legal age 
 		And has a empty shopping cart
-        When user wants to check out
-        Then a warning should be shown
+    When user wants to check out
+    Then a warning should be shown
 
 
 	Scenario Outline:
@@ -22,10 +22,10 @@ Feature: Able to log in to buy beverages
 		Then I should get a runtime error
 
 		Examples:
-		| invalid-email	   |
-		| empty string     |
+		| invalid-email  |
+		| empty string   |
 		| number	       |
 		| boolean	       |
-		| undefined	       | 
+		| undefined	     | 
 		| array		       | 
 		| object	       | 
