@@ -4,11 +4,7 @@ let Category = require('../category.js');
 let Person = require('../person.js')
 
 module.exports = function(){
-	let user;
-	let legalAge = 20; 
-	let wine = app.products[0];
-	let shoppingCart = new ShoppingCart();
-
+	let user, wine;
 
 		this.Given(/^that the user has an legal age$/, function (callback) {
 		         user = app.addUser('Mattias', 32);
@@ -16,10 +12,10 @@ module.exports = function(){
 		});
 
 		this.Given(/^has a non\-empty shopping cart$/, function (callback) {
-				 user = app.addUser('Mattias', 32);
-		         user.shoppingCart.add(wine, 10);
+			wine = app.products[0];
+		         user.shoppingCart.add(wine, 3);
 		         assert(
-		            user.shoppingCart.thingsToBuy.length != 0,
+		            user.shoppingCart.thingsToBuy.length !== 0,
 		            "User has an empty cart" 
 		            );
 
@@ -41,10 +37,9 @@ module.exports = function(){
 
 
 		this.Given(/^has a empty shopping cart$/, function (callback) {
-			user = app.addUser('Mattias', 32);
-		 			user.shoppingCart.add(wine, 0);
+		 			user.shoppingCart.removeAllItems();
 		 			assert(
-		            user.shoppingCart.thingsToBuy.length != 0,
+		            user.shoppingCart.thingsToBuy.length == 0,
 		            "There are items in a empty shopping cart"    
 		        );
 		         callback();
@@ -55,39 +50,5 @@ module.exports = function(){
 		         
 		         callback();
 		});
-
- // Scenario 3
-
-
-		this.Given(/^that I am in the sytembolagets checkout$/, function (callback) {
-		        
-		         callback();
-		});
-
-
-		this.When(/^I fill in email with <"([^"]*)">$/, function (arg1, callback) {
-		        
-
-		         callback();
-		});
-
-		this.Then(/^I should get a runtime error$/, function (callback) {
-
-		         callback();
-		});
-
-
-
-
-
-
-
-
-   this.When(/^I fill in email with "([^"]*)"$/, function (arg1, callback) {
-                 
-                 callback();
-        });
-
-
 
 }

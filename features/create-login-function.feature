@@ -14,18 +14,3 @@ Feature: Able to log in to buy beverages
 		And has a empty shopping cart
     When user wants to check out
     Then a warning should be shown
-
-
-	Scenario Outline:
-		Given that I am in a sytembolagets checkout
-		When I fill in email with "<invalid-email>" 
-		Then I should get the runtime error
-
-		Examples:
-		| invalid-email  |
-		| empty string   |
-		| number	       |
-		| boolean	       |
-		| undefined	     | 
-		| array		       | 
-		| object	       | 
