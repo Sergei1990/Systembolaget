@@ -10,7 +10,7 @@ module.exports = function(){
 
 this.Given(/^that the user wants to check out whith a non\-empty cart$/, function (callback) {
 		user = app.addUser("Camilla", 25); 
-    	user.shoppingCart.add(app.products[0], 10);
+    	user.shoppingCart.add(app.products[0], 4);
     callback();
 });
 
