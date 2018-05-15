@@ -6,7 +6,7 @@ let Person = require('../person.js')
 module.exports = function(){
 	let error;
 	let user;
-	let postAdress;
+	let postAdr;
 
 this.Given(/^that the user wants to check out whith a non\-empty cart$/, function (callback) {
 		user = app.addUser("Camilla", 25); 
@@ -15,7 +15,7 @@ this.Given(/^that the user wants to check out whith a non\-empty cart$/, functio
 });
 
 this.Given(/^the user has enterd a valid home address$/, function (callback) {
-         user.postAdress = "Stockholm, adressgatan 5"; 
+         user.postAdress = "Stockholm, adressgatan 5";
     callback();
 });
 
@@ -54,7 +54,7 @@ this.Then(/^a warning alerts user about empty cart$/, function (callback) {
    callback();
 });
 
-this.Given(/^that I am in the sytembolagets checkout$/, function (callback) {
+this.Given(/^that I am in the checkout$/, function (callback) {
      
    callback();
 });
@@ -64,8 +64,8 @@ this.When(/^I fill in home address with "([^"]*)"$/, function (arg1, callback) {
    callback();
 });
 
-this.Then(/^I should get a runtime error$/, function (callback) {
- 	assert(
+this.Then(/^I should get an error$/, function (callback) {
+   	assert(
            error !== undefined, 
            "The user has created an email whit wrong syntax"
             );

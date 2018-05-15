@@ -18,15 +18,15 @@ Feature: Able to log in to buy beverages
 
 
 	Scenario Outline:
-		Given that I am in the sytembolagets checkout
+		Given that I am in the checkout
 		When I fill in home address with "<invalid-home-address>" 
-		Then I should get a runtime error
+		Then I should get an error
 
 		Examples:
 		| invalid-home-address|
-		| empty string     		|
-		| number	       			|
-		| boolean	      			|
-		| undefined	        	| 
-		| array		      			| 
-		| object	      			| 
+		| empty string     	  |
+		| number	       	    |
+		| boolean	      	    |
+		| undefined	          | 
+		| array		      	    | 
+		| object	      	    | 
