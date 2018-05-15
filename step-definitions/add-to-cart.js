@@ -10,6 +10,7 @@ module.exports = function(){
 
   let aPerson, product;
   let quantity = 1;
+  let productID;
 
   this.Given(/^that I'm in Systembolaget$/, function (callback) {
  	 
@@ -29,12 +30,24 @@ module.exports = function(){
     callback();
   });
 
-  this.Then(/^I add a bevarege in a cart$/, function (callback) {
+  this.When(/^I add a bevarege in a cart$/, function (callback) {
  	  assert.doesNotThrow(function() {
       aPerson.shoppingCart.add(product, quantity);
       },
  	    "I can't add a beverage to the cart." 
     ); 
+
+    callback();
+  });
+
+  this.Then(/^you have received your product in your cart$/, function (callback) {
+    productID = product.artikelid;
+    for( let i = 0; i < aPerson.shoppingCart.thingsToBuy.length; i++){
+      if(productID === aPerson.shoppingCart.thingsToBuy[i].product.artikelid){
+        console.log(product.namn);
+
+      }
+    }
     callback();
   });
 
