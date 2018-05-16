@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node node_modules/selenium-cucumber-js/index.js -b phantomjs & exit 0",
     "william-feature": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/login-function.feature & exit 0",
-	  "Jessica-feature": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/quantity-shopping-cart.feature & exit 0",
+    "Jessica-feature": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/quantity-shopping-cart.feature & exit 0",
     "kamph-feature": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/add-to-cart.feature & exit 0",
     "remove-from-cart": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/remove-from-cart.feature & exit 0",
     "class-shopping-cart": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/class-shopping-cart.feature & exit 0",
@@ -16,16 +16,18 @@
     "buy-products": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/buy-products.feature & exit 0",
     "remove-user": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/remove-user.feature & exit 0",
     "quantity-in-storage": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/quantity-in-storage.feature & exit 0",
-    "sum-function": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/sum-function.feature & exit 0",    
+    "sum-function": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/sum-function.feature & exit 0",
     "tanjina": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/change-quantity.feature & exit 0",
-    "validate-address": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/validate-homeaddress-checkout.feature & exit 0"  
-  
+    "validate-address": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/validate-homeaddress-checkout.feature & exit 0",
+    "test-test": "node node_modules/selenium-cucumber-js/index.js -b chrome -f ./features/test.feature & exit 0"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.1.2",
     "compression": "^1.7.1",
-    "express": "^4.16.2",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
     "jsonflex": "^1.0.10",
     "selenium-cucumber-js": "^1.5.12"
   }
