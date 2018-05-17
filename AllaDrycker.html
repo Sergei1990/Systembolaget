@@ -9,7 +9,6 @@
 
   <link rel="stylesheet" href="./www/css/main.css">
   <link rel="stylesheet" href="./www/css/libs/bootstrap.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="./fake-module.js"></script>
   <script src="./node_modules/chai/chai.js"></script>
@@ -17,22 +16,17 @@
   <script src="./www/js/libs/gulpfile.js"></script>
   <script src="./www/js/libs/popper.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="./www/js/libs/bootstrap.js"></script>
-  <script src="./www/js/libs/jquery.js"></script>
-  <script src="./www/js/libs/sticky-footer.js"></script>
-  <!-- social media buttons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <script src="./shopping-cart.js"></script>
- 
-  <script src="./category.js"></script>
- 
+  <script src="./www/js/libs/bootstrap.min.js"></script>
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+
+  <script src="./app.js"></script> 
   <script src="./person.js"></script>
   <script src="./product.js"></script>
-  <script src="./app.js"></script>
+  <script src="./category.js"></script>
+  <script src="./shopping-cart.js"></script> 
+  
+  <script type="text/javascript" src="www/js/allaDrycker.js"></script>
 
 
 </head>
@@ -41,27 +35,30 @@
 
 <body>
 <div class="pagewrapper">
-  <!-- <h1>Hello World!</h1>
 
-  <button id="bajs">click me</button>
-  <script src="./test-frontend.js"></script> -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Starsida</a>
+        </li>
 
-  <header>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+        <li class="nav-item active">
+          <a class="nav-link" href="AllaDrycker.html">Alla drycker<span class="sr-only">(current)</span></a>
+        </li>
 
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">Startsida</a>
-      </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Varukorg.html">Varukorg</a>
+        </li>
 
-      <li class="nav-item active">
-        <a class="nav-link" href="AllaDrycker.html">Alla drycker<span class="sr-only">(current)</span></a>
-      </li>
+        <li class="nav-item">
+          <a class="nav-link" href="OmOss.html">Om oss</a>
+        </li>
 
       <li class="nav-item">
         <a class="nav-link" href="Varukorg.html">Varukorg</a>
@@ -82,34 +79,47 @@
 
 
 <main>
+  <div class="container" id="elements"> 
+    <div class="row" id="element1">
+      <div id = "sortOptions" class="col-8 text-left">
+        <fieldset>
+          <legend>Custom forms</legend>
+          <div class="form-group">
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked="">
+              <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" disabled="">
+              <label class="custom-control-label" for="customRadio3">Disabled custom radio</label>
+            </div>
+          </div>         
+        </fieldset>
+      </div> 
+      <div id = "sortButton" class="col-4 text-right">
+         <button id="sortering">Sortering</button>
+      </div>
+    </div><!--class="row" id="element1" -->
+         
+    <div class="row" id="element2">
+      <div id= "productDescription" class="col-4">        
+      </div>
+      <div id= "filterField" class="col-4">        
+      </div>
+    </div> <!--class="row" id="element2" --> 
+  </div> <!--"container" id="elements" -->
+
 </main>
 
-<h1>Välj bland 18000 drycker</h1>
-<h1>Få din beställning hem till dörren</h1>
-
-<footer class="container-fluid bg-dark text-white mt-5">
-  <div class="row py-3">
-    <div class="col-12 col-sm-6 text-sm-center">
-      <div class="d-inline-block text-left ml-5 ml-sm-0">
-        <h4 class="centeredText">Alco Silk Road</h4>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 text-sm-center mt-sm-0">
-      <div class="d-inline-block text-left ml-5 ml-sm-0">
-        <div class="icon-bar">
-          <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-          <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-          <a href="#" class="google"><i class="fa fa-google"></i></a>
-          <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-          <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
+<footer> 
 
 </footer>
 </div> <!-- end of pagewrapper -->
+
 </body>
 
 </html>
