@@ -13,12 +13,15 @@ class module {
 // emulate require
 function require(fileName) {
 
+  // special for json
+  if (fileName.endsWith('.json')){ return $.getJSON(fileName); }
+
   // special for assert
-  if(fileName === 'assert'){return chai.assert;}
+  if(fileName === 'assert'){ return chai.assert; }
 
   // map fileName to className
   let className = fileName.substr(fileName.lastIndexOf('/')+1)
-    .replace(/-[a-z]/g,(found)=>found[1].toUpperCase());
+    .replace(/-[a-z]/g,(found)=>found[1].toUpperCase()).replace('.js', '');
 
   className = className[0].toUpperCase() + className.substr(1);
 
