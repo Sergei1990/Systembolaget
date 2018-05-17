@@ -5,10 +5,11 @@
 
 
   <meta charset="utf-8">
-  <title>Alco Silc Road - Alla Drycker</title>
+  <title>Alco Silk Road - Alla Drycker</title>
 
   <link rel="stylesheet" href="./www/css/main.css">
   <link rel="stylesheet" href="./www/css/libs/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="./fake-module.js"></script>
   <script src="./node_modules/chai/chai.js"></script>
@@ -16,9 +17,14 @@
   <script src="./www/js/libs/gulpfile.js"></script>
   <script src="./www/js/libs/popper.js"></script>
 
-
-  <script src="./www/js/libs/bootstrap.min.js"></script>
-  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="./www/js/libs/bootstrap.js"></script>
+  <script src="./www/js/libs/jquery.js"></script>
+  <script src="./www/js/libs/sticky-footer.js"></script>
+  <!-- social media buttons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <script src="./shopping-cart.js"></script>
  
@@ -33,8 +39,12 @@
 
 <body>
 <div class="pagewrapper">
+  <!-- <h1>Hello World!</h1>
 
+  <button id="bajs">click me</button>
+  <script src="./test-frontend.js"></script> -->
 
+  <header>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
@@ -44,7 +54,7 @@
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="index.html">Starsida</a>
+        <a class="nav-link" href="index.html">Startsida</a>
       </li>
 
       <li class="nav-item active">
@@ -66,25 +76,39 @@
     </form>
   </div>
 </nav>
+</header>
+
+
+<main>
+</main>
 
 <h1>Välj bland 18000 drycker</h1>
-<h1>Här finns alla drycker</h1>
-<span>filtrera</span><br>
-<input type="checkbox" name="sortiment" value="Beer">Öl<br> 
-<input type="checkbox" name="sortiment" value="Cider">Cider<br> 
-<input type="checkbox" name="sortiment" value="Wine">Vin<br> 
-<input type="checkbox" name="sortiment" value="Cider">Cider<br>   
-<input type="checkbox" name="sortiment" value="Whiskey">Whisky<br> 
-<input type="checkbox" name="sortiment" value="Cognac">Cognac<br> 
-<input type="checkbox" name="sortiment" value="Rum">Rom<br> 
-<input type="checkbox" name="sortiment" value="Champagne">Champagne<br> 
-<input type="checkbox" name="sortiment" value="Alcoholfree">Alkoholfritt<br> 
-<footer>
+<h1>Få din beställning hem till dörren</h1>
+
+<footer class="container-fluid bg-dark text-white mt-5">
+  <div class="row py-3">
+    <div class="col-12 col-sm-6 text-sm-center">
+      <div class="d-inline-block text-left ml-5 ml-sm-0">
+        <h4 class="centeredText">Alco Silk Road</h4>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 text-sm-center mt-sm-0">
+      <div class="d-inline-block text-left ml-5 ml-sm-0">
+        <div class="icon-bar">
+          <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+          <a href="#" class="google"><i class="fa fa-google"></i></a>
+          <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </footer>
 
 </div> <!-- end of pagewrapper -->
-
 </body>
 
 </html>
