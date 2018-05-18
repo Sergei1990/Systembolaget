@@ -48,4 +48,10 @@ nav.navbar {
 } 
  
 .modal-body { 
-  top: 100px; 
+  top: 100px;
+ }  
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
