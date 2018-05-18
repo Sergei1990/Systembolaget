@@ -1,5 +1,5 @@
-let assert = require('assert');
-let Product = require('./product.js');
+var assert = require('assert');
+var Product = require('./product.js');
 
 module.exports = class ShoppingCart {
 	
