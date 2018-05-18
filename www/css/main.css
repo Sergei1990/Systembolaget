@@ -1,19 +1,8 @@
-body {
-  background-image: url("pexels-photo-776390.jpeg");
-  background-size: cover;
-  background-attachment: fixed;
-  
-    
-}
-
 .pagewrapper {
 	margin-right: auto; /* 1 */
   margin-left: auto; /* 1 */
 
   max-width: 960px; /* 2 */
-
-  padding-right: 10px; /* 3 */
-  padding-left: 10px; /* 3 */
 }
 
 /* footer things */
@@ -28,3 +17,27 @@ body {
 	margin-top: 16px;
 }
 /* end footer things */
+
+.modal-backdrop {
+   background-image: url("https://images.unsplash.com/photo-1495646613340-29e8262f7a79?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7955f8e4662f8f17d7355c99f96c773d&auto=format&fit=crop&w=2134&q=80");
+}
+
+.modal-content {
+   background-image: url("https://images.unsplash.com/photo-1495808921907-1599ab4d6801?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=00e92a3d44e0674a83ad0efed4ea6d67&auto=format&fit=crop&w=1953&q=80");
+  top: 150px;
+  width: 100%;
+  height: 450px;
+ 
+   background-size: 100%;
+}
+
+.modal-image {
+  position: absolute;
+  top: -170px;
+  left: 170px;
+}
+
+.modal-body {
+  top: 100px;
+}
+
