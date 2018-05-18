@@ -13,9 +13,18 @@ class AllaDrycker {
 		$('#searchbutton').click(()=>{
 			this.searchProducts();
 		});
-	}		
+	
 
+		$("#showMore").click((e)=>{
+			// Prevents a href from re-loading the website
+			e.preventDefault();
+			this.showMoreProducts();
+	 	});
 
+	 	this.quantityOfProductOnPage;
+	 	this.quantityToShow = 50;	 	
+
+	}	
 
 	hideFilters(){
 		$('#sortOptions').hide();
@@ -39,24 +48,21 @@ class AllaDrycker {
 
 	}
 
-	loadProducts(){
-	  	let user = app.addUser("Vasja", 28);
-
-	  	let products = app.products.slice(0, 100);
-	  	this.displayProducts(products);		
-	}
-
 	searchProducts(){
 		let search = $('#search').val();
 	  	let products = app.filterFunction([search], [search], null, null);
 	  	this.displayProducts(products);		
-	}
-    
-	displayProducts(products){
+	}	
 
+	loadProducts(){
+	
 		let $div = $('#productDescription');
 	  	$div.empty();
 
+	  	let user = app.addUser("Vasja", 17);
+
+	  	let products = app.products.slice(0, this.quantityToShow); 
+	
 		for (let i = 0; i < products.length; i++) {
 			$div.append(
 				 '<div class="row pt-1 vertical-align">'
@@ -76,12 +82,56 @@ class AllaDrycker {
 				+       '<p>' + products[i].prisinklmoms + '  SEK </p>'
 				+   '</div>'
 				+   '<div class="col-md-2 text-right">' 
-				+   	'<button id="addButton' + i + '" class="btn btn-secondary my-2 my-sm-0" type="button">Add</button>'   
+				+   	'<button id = "addButton' + i + '" class="btn btn-secondary my-2 my-sm-0" type="submit">Add</button>'   
 				+   '</div>'
 				+'</div>' //class="row"
 	           
-		    );		
-		}
-	}
-}
+		    );
+		    this.quantityOfProductOnPage = i+1;		
+		}		
+	}// loadProducts()
 
+	showMoreProducts(){
+		let $div = $('#productDescription');
+		let products = app.products.slice(this.quantityOfProductOnPage);
+		
+		if (products.length < this.quantityToShow)
+			this.quantityToShow = products.length;
+
+		for (let i = 0; i < this.quantityToShow; i++) {
+			$div.append(
+				 '<div class="row pt-1 vertical-align">'
+				+   '<div class="prodPicture col-md-2">'
+				+       '<img src="www/img/11.jpg" alt="Picture">'
+				+   '</div>'
+				+   '<div id="prodName' + (i+this.quantityOfProductOnPage) + '" class="col-md-3">'
+				+       '<p>' + products[i].namn + '</p>'
+				+   '</div>'
+				+   '<div id="prodAlcohol' + (i+this.quantityOfProductOnPage) + '" class="col-md-2">'
+				+       '<p>' + products[i].alkoholhalt + '  %</p>'
+				+   '</div>'
+				+   '<div id="prodCountry' + (i+this.quantityOfProductOnPage) + '" class="col-md-2">'
+				+       '<p>' + products[i].ursprunglandnamn + '</p>'
+				+   '</div>'
+				+   '<div id="prodPrice' + (i+this.quantityOfProductOnPage) + '" class="col-md-1">'
+				+       '<p>' + products[i].prisinklmoms + '  SEK </p>'
+				+   '</div>'
+				+   '<div class="col-md-2 text-right">' 
+				+   	'<button id="addButton' + (i+this.quantityOfProductOnPage) + '" class="btn btn-secondary my-2 my-sm-0" type="submit">Add</button>'   
+				+   '</div>'
+				+'</div>' //class="row"
+	           
+		    );
+		    this.quantityOfProductOnPage = 1+this.quantityOfProductOnPage;		
+		} //for
+
+		if (app.products.length == this.quantityOfProductOnPage)
+			$("#element3").hide();
+
+	} //showMoreProducts()
+
+} //class
+
+
+
+	
