@@ -1,19 +1,10 @@
-body {
-  /*background-image: url("pexels-photo-776390.jpeg");*/
-  background-size: cover;
-  background-attachment: fixed;
-  
-    
-}
+
 
 .pagewrapper {
 	margin-right: auto; /* 1 */
   margin-left: auto; /* 1 */
 
   max-width: 960px; /* 2 */
-
-  padding-right: 10px; /* 3 */
-  padding-left: 10px; /* 3 */
 }
 
 /* footer things */
@@ -36,7 +27,3 @@ nav.navbar {
   z-index: 1000;
 }
 
-/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-main {
-  padding-top: 60px;
-}
