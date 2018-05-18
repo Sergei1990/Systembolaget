@@ -9,6 +9,10 @@ class AllaDrycker {
 		setTimeout(()=>{
 			this.loadProducts();
 		}, 0);
+
+		$('#searchbutton').click(()=>{
+			this.searchProducts();
+		});
 	}		
 
 
@@ -36,14 +40,22 @@ class AllaDrycker {
 	}
 
 	loadProducts(){
+	  	let user = app.addUser("Vasja", 28);
+
+	  	let products = app.products.slice(0, 100);
+	  	this.displayProducts(products);		
+	}
+
+	searchProducts(){
+		let search = $('#search').val();
+	  	let products = app.filterFunction([search], [search], null, null);
+	  	this.displayProducts(products);		
+	}
+    
+	displayProducts(products){
 
 		let $div = $('#productDescription');
 	  	$div.empty();
-
-	  	let user = app.addUser("Vasja", 28);
-
-	  	let products = app.products.slice(0, 50);
-
 
 		for (let i = 0; i < products.length; i++) {
 			$div.append(
@@ -64,7 +76,7 @@ class AllaDrycker {
 				+       '<p>' + products[i].prisinklmoms + '  SEK </p>'
 				+   '</div>'
 				+   '<div class="col-md-2 text-right">' 
-				+   	'<button id="addButton' + i + '" class="btn btn-secondary my-2 my-sm-0" type="submit">Add</button>'   
+				+   	'<button id="addButton' + i + '" class="btn btn-secondary my-2 my-sm-0" type="button">Add</button>'   
 				+   '</div>'
 				+'</div>' //class="row"
 	           

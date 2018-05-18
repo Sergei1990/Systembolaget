@@ -52,7 +52,7 @@ main {
 nav.navbar {
   position: fixed;
   top: 0;
-  padding: .5rem 5.4rem;
+  padding: .5rem 6rem;
   z-index: 1000;
 }
 
