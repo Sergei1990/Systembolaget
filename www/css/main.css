@@ -24,6 +24,8 @@
   }
 
 main {
+  position: relative;
+  top: 60px;
   margin-right: auto; /* 1 */
   margin-left: auto; /* 1 */
   max-width: 960px; /* 2 */
