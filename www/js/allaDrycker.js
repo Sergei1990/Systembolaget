@@ -9,6 +9,10 @@ class AllaDrycker {
 		setTimeout(()=>{
 			this.loadProducts();
 		}, 0);
+
+		$('#searchbutton').click(()=>{
+			this.searchProducts();
+		});
 	}		
 
 
@@ -36,14 +40,22 @@ class AllaDrycker {
 	}
 
 	loadProducts(){
-
-		let $div = $('#productDescription');
-	  	$div.empty();
-
 	  	let user = app.addUser("Vasja", 28);
 
 	  	let products = app.products.slice(0, 100);
+	  	this.displayProducts(products);		
+	}
 
+	searchProducts(){
+		let search = $('#search').val();
+	  	let products = app.filterFunction([search], [search], null, null);
+	  	this.displayProducts(products);		
+	}
+    
+	displayProducts(products){
+
+		let $div = $('#productDescription');
+	  	$div.empty();
 
 		for (let i = 0; i < products.length; i++) {
 			$div.append(
@@ -69,4 +81,5 @@ class AllaDrycker {
 		}
 	}
 }
+
 
