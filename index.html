@@ -8,47 +8,37 @@
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta charset="utf-8">
   <title>Alco Silk Road</title>
-<link rel="stylesheet" href="./www/css/libs/bootstrap.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <link rel="stylesheet" href="./www/css/main.css">
   <link rel="stylesheet" href="./www/css/libs/bootstrap.css">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+ 
 
   <script src="./fake-module.js"></script>
   <script src="./node_modules/chai/chai.js"></script>
-  <script src="./www/js/libs/jquery.js"></script>
 
-  <!-- <script src="./www/js/libs/gulpfile.js"></script> !!!!!!!!!!!!!!!!!!!!!-->
+  <script src="./www/js/libs/gulpfile.js"></script>
   <script src="./www/js/libs/popper.js"></script>
-
-  <script src="./www/js/libs/bootstrap.js"></script>  
+  <script src="./www/js/libs/bootstrap.js"></script>
+  <script src="./www/js/libs/jquery.js"></script>
+  <script src="./www/js/main.js"></script>
   <script src="./www/js/libs/sticky-footer.js"></script>
   <!-- social media buttons -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">!!!!!!!!!!! -->
-
- <!-- !!!!!!!!!!!!!!!! <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="./www/js/libs/bootstrap.min.js"></script> !!!!!!!!!!!!!!!!!!!!!!-->
- <!--- <script src="./node_modules/jquery/dist/jquery.min.js"></script>-->
+  <script src="./www/js/libs/bootstrap.min.js"></script>
+ <!--- <script src="./node_modules/jquery/dist/jquery.min.js"></script>--->
 
-  <script src="./product.js"></script>
-  <script src="./shopping-cart.js"></script> 
-  <script src="./category.js"></script> 
-  <script src="./person.js"></script>
+
   <script src="./app.js"></script>
-  <script src="./www/js/allaDrycker.js"></script>
-
- 
-  <script src="www/js/index.js"></script>
- 
-
-   <script type="text/javascript">
-    $(document).ready(function(){
-        $("#myModal").modal('show');
-    });
-    </script>
+  <script src="./shopping-cart.js"></script>
+  <script src="./category.js"></script>
+  <script src="./person.js"></script>
+  <script src="./product.js"></script>
 
 </head>
 
@@ -56,13 +46,8 @@
 
 <div class="pagewrapper">
 
-  <!-- <h1>Hello World!</h1>
-
-  <button id="bajs">click me</button>
-  <script src="./test-frontend.js"></script> -->
-
   <header>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Alco Silk Road</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
     <span class="navbar-toggler-icon"></span>
@@ -100,14 +85,16 @@
 
 <main>
 
-    <div id="myModal" class="modal fade">
+    <main>
+
+<!-- ///////The modal for age verification - Gör synlig när den är klar////////-->
+
+    <!--<div id="myModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--->
-                <h4 class="modal-title">Välkommen till Alco Silk Road!</h4>
-            </div>
-            <div class="modal-body">
+            
+            <div class="modal-body text-white">
+                <h2>Välkommen!</h2>
                 <p>Denna webbsida innehåller information om alkoholdrycker. 
                     För att se sortimentet måste du ange ditt namn och din ålder.
 
@@ -120,15 +107,14 @@
                     <div class="form-group">
                         <input type="" class="form-control" placeholder="Ålder">
                     </div>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                    <button type="submit" class="btn btn-primary">OK</button>
+                    <button type="submit" class="btn btn-danger">Avbryt</button>
+                      <div class="modal-image"> <img src="www/img/modal-logo-beer.png">
                 </form>
             </div>
         </div>
     </div>
-</div>
-
-
-
+</div>-->
 
 
 
