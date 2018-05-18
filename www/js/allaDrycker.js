@@ -76,7 +76,7 @@ class AllaDrycker {
 				+       '<p>' + products[i].prisinklmoms + '  SEK </p>'
 				+   '</div>'
 				+   '<div class="col-md-2 text-right">' 
-				+   	'<button id="addButton' + i + '" class="btn btn-secondary my-2 my-sm-0" type="submit">Add</button>'   
+				+   	'<button id="addButton' + i + '" class="btn btn-secondary my-2 my-sm-0" type="button">Add</button>'   
 				+   '</div>'
 				+'</div>' //class="row"
 	           
@@ -84,5 +84,4 @@ class AllaDrycker {
 		}
 	}
 }
-
 
