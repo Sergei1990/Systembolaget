@@ -22,7 +22,7 @@ class AllaDrycker {
 	 	});
 
 	 	this.quantityOfProductOnPage;
-	 	this.quantityToShow = 50;	 	
+	 	this.quantityToShow = 2;	 	
 
 	}	
 
@@ -104,20 +104,20 @@ class AllaDrycker {
 				+   '<div class="prodPicture col-md-2">'
 				+       '<img src="www/img/11.jpg" alt="Picture">'
 				+   '</div>'
-				+   '<div id="prodName' + (i+this.quantityOfProductOnPage) + '" class="col-md-3">'
+				+   '<div id="prodName' + (this.quantityOfProductOnPage) + '" class="col-md-3">'
 				+       '<p>' + products[i].namn + '</p>'
 				+   '</div>'
-				+   '<div id="prodAlcohol' + (i+this.quantityOfProductOnPage) + '" class="col-md-2">'
+				+   '<div id="prodAlcohol' + (this.quantityOfProductOnPage) + '" class="col-md-2">'
 				+       '<p>' + products[i].alkoholhalt + '  %</p>'
 				+   '</div>'
-				+   '<div id="prodCountry' + (i+this.quantityOfProductOnPage) + '" class="col-md-2">'
+				+   '<div id="prodCountry' + (this.quantityOfProductOnPage) + '" class="col-md-2">'
 				+       '<p>' + products[i].ursprunglandnamn + '</p>'
 				+   '</div>'
-				+   '<div id="prodPrice' + (i+this.quantityOfProductOnPage) + '" class="col-md-1">'
+				+   '<div id="prodPrice' + (this.quantityOfProductOnPage) + '" class="col-md-1">'
 				+       '<p>' + products[i].prisinklmoms + '  SEK </p>'
 				+   '</div>'
 				+   '<div class="col-md-2 text-right">' 
-				+   	'<button id="addButton' + (i+this.quantityOfProductOnPage) + '" class="btn btn-secondary my-2 my-sm-0" type="submit">Add</button>'   
+				+   	'<button id="addButton' + (this.quantityOfProductOnPage) + '" class="btn btn-secondary my-2 my-sm-0" type="submit">Add</button>'   
 				+   '</div>'
 				+'</div>' //class="row"
 	           
