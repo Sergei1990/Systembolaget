@@ -1,6 +1,7 @@
-$(start);
 
-function start() {
+class AllaDrycker {
+
+	constructor() {
 
 	$('#sortOptions').hide();
 	$('#filterOptions').hide();
@@ -27,6 +28,12 @@ function start() {
 	  // 	$('#player2').show(200);
 	  //   $('#startsFirst').hide(200);
   	// })
+  	$('#productlist').empty();
 
-	
+  	for(let p of app.allProducts){
+  		$('#productlist').append('<div>'+p.namn+ '</div>')
+  	}
+	}
 }
+
+

@@ -53,6 +53,7 @@ class App {
 		}
 
 		this.users = [];
+		new AllaDrycker();
 	}
 
 	addUser(name,age){
