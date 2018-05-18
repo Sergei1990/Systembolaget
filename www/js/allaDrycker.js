@@ -32,12 +32,7 @@ class AllaDrycker {
 		$('#filtreringOK').click(function() {
 			$('#filterOptions').hide(200);	
 		});	
-		
-   //  $('#optionsRadios1').on('change', function(){ // human vs human
-	  //   $('#player1').show(200);
-	  // 	$('#player2').show(200);
-	  //   $('#startsFirst').hide(200);
-  	// })
+
 	}
 
 	loadProducts(){
