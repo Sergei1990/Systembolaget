@@ -11,6 +11,7 @@ var ShoppingCart = require('./shopping-cart.js');
 class App {
 
 	constructor() {
+
 		let productData;
 		let categoryData;
 
@@ -266,12 +267,10 @@ class App {
 }
 
 
-
 //1. Create an app to start the application
 let app = new App();
 module.exports = app;
 // 2. Ask the user about the quick registration to see the products list (new Person(name, age))
-
 
 
 
