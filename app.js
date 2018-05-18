@@ -3,10 +3,10 @@
 //const flexjson = require('jsonflex')();
 //const compression = require('compression');
 
-let Person = require('./person.js');
-let Product = require('./product.js');
-let Category = require('./category.js');
-let ShoppingCart = require('./shopping-cart.js');
+var Person = require('./person.js');
+var Product = require('./product.js');
+var Category = require('./category.js');
+var ShoppingCart = require('./shopping-cart.js');
 
 class App {
 
@@ -52,6 +52,7 @@ class App {
 		}
 
 		this.users = [];
+		new AllaDrycker();
 	}
 
 	addUser(name,age){
