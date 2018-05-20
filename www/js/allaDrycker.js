@@ -57,7 +57,7 @@ class AllaDrycker {
 	searchProducts(){
 		let search = $('#search').val();
 	  	let products = app.filterFunction([search], [search], null, null);
-	  	this.displayProducts(products);		
+	  	this.displayProducts(products);	
 	}	
 
 	loadProducts(){

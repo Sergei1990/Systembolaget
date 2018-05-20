@@ -25,7 +25,7 @@
 
 main {
   position: relative;
-  top: 60px;
+  /*top: 60px;*/
   margin-right: auto; /* 1 */
   margin-left: auto; /* 1 */
   max-width: 960px; /* 2 */
@@ -51,12 +51,13 @@ main {
 }
 /* end footer things */
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
-nav.navbar {
+
+/*nav.navbar {
   position: fixed;
   top: 0;
   padding: .5rem 6rem;
   z-index: 1000;
-}
+}*/
 
 /*.container {
   position: relative;

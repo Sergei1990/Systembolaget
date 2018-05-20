@@ -53,7 +53,14 @@ class App {
 		}
 
 		this.users = [];
+		
 		new AllaDrycker();
+		new StartPage();
+
+
+		$("#logUtLink").click(()=>{
+			this.clickLogOut();
+		});
 	}
 
 	addUser(name,age){
@@ -264,6 +271,14 @@ class App {
 				return -1;
 				//console.log( "index " + i);
 		}
+
+	clickLogOut(){
+		sessionStorage.clear();
+		this.products = [];
+		this.categories = [];
+		this.users = [];
+		this.categoryByName = {};
+	}
 }
 
 
