@@ -5,7 +5,8 @@ class AllaDrycker {
     
 	  	let user = app.addUser("Vasja", 17);//temporary
 
-
+	  	this.quantityOfProductOnPage = 0;
+	 	this.quantityToShow = 50;
 
 		this.hideFilters();
 
@@ -27,10 +28,15 @@ class AllaDrycker {
 			this.loadProducts();
 	 	});
 
-	 	this.quantityOfProductOnPage = 0;
-	 	this.quantityToShow = 50;	 	
+		setTimeout(()=>{
+			for (let i = 0; i<this.quantityOfProductOnPage; i++){
+				$("#addButton" + i).click(()=>{
+					this.addToCartClick();
+				});
+			}
+		}, 0);	 		 	
 
-	}	
+	} //constructor
 
 	hideFilters(){
 		$('#sortOptions').hide();
@@ -102,6 +108,11 @@ class AllaDrycker {
 				$("#element3").hide();		
 		}		
 	}// loadProducts()
+
+	addToCartClick(){
+		
+
+	}//addToCartClick()
 
 } //class
 
