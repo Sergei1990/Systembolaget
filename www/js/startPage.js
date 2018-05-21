@@ -7,11 +7,11 @@ class StartPage {
 
 	toggleLogOut(){		
 
-		if (!sessionStorage.getItem("userName")){
-			$('#logUtDiv').hide();
-		}
-		else{
-			$('#logUtDiv').show();
-		}
+		// if (!sessionStorage.getItem("userName")){
+		// 	$('#logUtDiv').hide();
+		// }
+		// else{
+		// 	$('#logUtDiv').show();
+		// }
 	}
 }

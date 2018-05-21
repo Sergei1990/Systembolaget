@@ -24,10 +24,11 @@
   }
 
 main {
-  position: relative;
-  /*top: 60px;*/
+  /*position: relative;*/
+  padding-top: 60px;
   margin-right: auto; /* 1 */
   margin-left: auto; /* 1 */
+  padding-bottom: 40px;
   max-width: 960px; /* 2 */
 }
 
@@ -52,12 +53,24 @@ main {
 /* end footer things */
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 
-/*nav.navbar {
+nav.navbar {
   position: fixed;
   top: 0;
   padding: .5rem 6rem;
   z-index: 1000;
-}*/
+}
+
+/*Changing the view of the main and navbar in mobile version*/
+@media (max-width: 960px) {
+  main {
+    top: 50px;
+    padding-bottom: 50px;
+  }
+  nav.navbar {
+    width: 100%;
+    padding: .2rem 2rem
+  }
+} 
 
 /*.container {
   position: relative;
