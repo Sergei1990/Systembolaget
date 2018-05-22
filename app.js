@@ -60,7 +60,7 @@ class App {
 		this.fillCartFromSession();
 
 		$("#logUtLink").click(()=>{
-			this.clickLogOut();
+			this.removeUser(app.users[0]);
 		});
 	} //constructorContinued
 
@@ -109,7 +109,7 @@ class App {
 	removeUser(user){ //log out
 
 		user.shoppingCart.removeAllItems();
-		
+		sessionStorage.clear();
 		this.products = [];
 		this.categories = [];
 		this.users = [];
@@ -272,14 +272,6 @@ class App {
 				return -1;
 				//console.log( "index " + i);
 		}
-
-	clickLogOut(){
-		sessionStorage.clear();
-		this.products = [];
-		this.categories = [];
-		this.users = [];
-		this.categoryByName = {};
-	}
 
 	fillCartFromSession(){
 		// Fill thingsToBuy array with the products from the SessionStorage:
