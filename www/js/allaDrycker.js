@@ -4,9 +4,11 @@ class AllaDrycker {
 	constructor() {
     
 	  	let user = app.addUser("Vasja", 17);//temporary
+	  	sessionStorage.setItem("userName", "Vasja"); //temporary
 
 	  	this.quantityOfProductOnPage = 0;
 	 	this.quantityToShow = 50;
+	 	this.totalQuantityInShoppingCart;
 
 		this.hideFilters();
 
@@ -29,9 +31,10 @@ class AllaDrycker {
 	 	});
 
 		setTimeout(()=>{
-			for (let i = 0; i<this.quantityOfProductOnPage; i++){
-				$("#addButton" + i).click(()=>{
-					this.addToCartClick();
+			for (let j = 0; j<this.quantityOfProductOnPage; j++){
+				$("#addButton" + j).click(()=>{
+					let i = $("#prodId"+j).text();
+					this.addToCartClick(i/1);
 				});
 			}
 		}, 0);	 		 	
@@ -100,6 +103,9 @@ class AllaDrycker {
 				+   '<div class="col-md-2 text-right">' 
 				+   	'<button id = "addButton' + this.quantityOfProductOnPage + '" class="btn btn-secondary my-2 my-sm-0" type="submit">Add</button>'   
 				+   '</div>'
+				+   '<div id="prodId' + this.quantityOfProductOnPage + '" class="d-none">' 
+				+   	'<p>' + products[i].artikelid +'</p>'   
+				+   '</div>'
 				+'</div>' //class="row"
 	           
 		    );
@@ -109,7 +115,25 @@ class AllaDrycker {
 		}		
 	}// loadProducts()
 
-	addToCartClick(){
+	addToCartClick(i){ // i - product's article
+		let ind = app.users[0].shoppingCart.findProductInArrayProducts(i);
+		app.users[0].shoppingCart.add(app.products[ind], 1);
+		
+		// let prodQuantityInShoppingCart = 1;
+
+		// let a = sessionStorage.getItem("amountInStorage"+i); //check if the chosen beverage is already in the cart
+		// if (a != null)
+		// {
+		// 	prodQuantityInShoppingCart = a/1 + 1;
+		// }
+		
+		// let name = $("#prodName"+i).text(); // Nils Oscar Alkoholfr
+		// let price =$("#prodPrice"+i).text();// 15.9 SEK
+		// price = price.replace("  SEK ", ""); // 15.9
+
+		// sessionStorage.setItem(("nameInStorage"+i), name);
+		// sessionStorage.setItem(("priceInStorage"+i), price);
+		// sessionStorage.setItem(("amountInStorage"+i), prodQuantityInShoppingCart);
 		
 
 	}//addToCartClick()

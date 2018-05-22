@@ -57,11 +57,12 @@ class App {
 		new AllaDrycker();
 		new StartPage();
 
+		this.fillCartFromSession();
 
 		$("#logUtLink").click(()=>{
 			this.clickLogOut();
 		});
-	}
+	} //constructorContinued
 
 	addUser(name,age){
 		let user = new Person(name,age);
@@ -278,6 +279,36 @@ class App {
 		this.categories = [];
 		this.users = [];
 		this.categoryByName = {};
+	}
+
+	fillCartFromSession(){
+		// Fill thingsToBuy array with the products from the SessionStorage:
+		let totalQuanArticlesSession = 0;
+		let totalQuanBottlesSession = 0;
+		do{
+			if (sessionStorage.getItem("prodArticleSession"+totalQuanArticlesSession)){
+			// 	break;
+			// }
+				let prodArt = sessionStorage.getItem("prodArticleSession"+totalQuanArticlesSession);
+				let ind = this.users[0].shoppingCart.findProductInArrayProducts(prodArt/1);
+				let quan = sessionStorage.getItem("prodQuantitySession"+totalQuanArticlesSession)/1;
+				this.users[0].shoppingCart.thingsToBuy.push({product: app.products[ind],
+															 quantity: quan
+														    });	
+				app.products[ind].iLager = app.products[ind].iLager - quan; 								    						
+				totalQuanBottlesSession = totalQuanBottlesSession + quan;	
+			}
+			totalQuanArticlesSession++;
+		}while(totalQuanArticlesSession<sessionStorage.length+1)
+
+		//fill the icon of the Shopping Cart in the navbar:
+		if (totalQuanBottlesSession == 0){
+			$('#basketQuantity').hide();
+		}
+		else{
+			$('#basketQuantity').text(totalQuanBottlesSession);
+			$('#basketQuantity').show(200);
+		} 
 	}
 }
 

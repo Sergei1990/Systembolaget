@@ -5,6 +5,8 @@ module.exports = class ShoppingCart {
 	
 	constructor() {
 		this.thingsToBuy = [];
+		
+		
 	}
 
 	add(product, quantity) {
@@ -30,29 +32,71 @@ module.exports = class ShoppingCart {
 		// don't allow the product that is already in the cart, but change quantity
 		let productID = product.artikelid;  // taking products id
 		let productExists = false;
-        for( let i = 0; i < this.thingsToBuy.length; i++) { // loop through thingsToBuy
-        	if(productID === this.thingsToBuy[i].product.artikelid) { // comparing products ID that you add with the one that already exists
-				this.thingsToBuy[i].quantity = this.thingsToBuy[i].quantity + quantity; // new quantity add with old quantity
+
+        for( let j = 0; j < this.thingsToBuy.length; j++) { // loop through thingsToBuy
+        	if(productID === this.thingsToBuy[j].product.artikelid) { // comparing products ID that you add with the one that already exists
+				this.thingsToBuy[j].quantity = this.thingsToBuy[j].quantity + quantity; // new quantity add with old quantity
 				//this.changeQuantity(product, (this.thingsToBuy[i].quantity + quantity));
+					
+					for (let i = 0; i<sessionStorage.length; i++){
+						if(sessionStorage.getItem("prodArticleSession"+i) == productID){
+							sessionStorage.setItem(("prodQuantitySession"+i), this.thingsToBuy[j].quantity);
+							break;
+						}
+					}
+				
 				productExists = true;
 			}
 	    }
 
 		if(productExists === false) {
+			let i;
+			for (i = 0; i<sessionStorage.length; i++){
+				if(!sessionStorage.getItem("prodArticleSession"+i)){
+					break;
+				}
+
+			}
+			sessionStorage.setItem(("prodArticleSession"+i), product.artikelid);
+		
+			sessionStorage.setItem(("prodQuantitySession"+i), quantity);
 				this.thingsToBuy.push({
 				product: product,
 				quantity: quantity
 			});	
+				
 		}
 
 		//remove added quantity from the storehouse:
 		product.iLager  = product.iLager - quantity;
+
+		//desplay quantity of the added beverages on the cart's icon in the navbar
+		let totalQuanBottlesSession = 0;
+		for (let j = 0; j<sessionStorage.length; j++){
+			if(sessionStorage.getItem("prodQuantitySession"+j)){
+				totalQuanBottlesSession = totalQuanBottlesSession+(sessionStorage.getItem("prodQuantitySession"+j))/1;
+			}
+	    }
+		if(totalQuanBottlesSession!=0){
+			$('#basketQuantity').empty()
+			$('#basketQuantity').text(totalQuanBottlesSession);
+			$('#basketQuantity').show(200);
+		}
 	}
 
 	findProductInCart(product) {
 		for(let i = 0; i < this.thingsToBuy.length; i++) {
 			if(this.thingsToBuy[i].product.artikelid === product.artikelid) { // det går inte att jämföra två lika objekt om de har två olika adresser
       //if(this.thingsToBuy[i].product === product){ // fel
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	findProductInArrayProducts(article){
+		for(let i = 0; i < app.products.length; i++) {
+			if((app.products[i].artikelid/1) === article) {      
 				return i;
 			}
 		}
