@@ -112,7 +112,7 @@
   </div>
 </div> <!--end köp! button-->
 
-<div id = "adress">
+<div id = "adress" class="text-center">
   <form>
     <fieldset>
       <legend>Ange din leveransadress för att slutföra köpet:</legend>
@@ -134,7 +134,7 @@
 
       <div class="control-group">
         <label class="control-label">Gatuadress</label>
-        <div class="controls">
+        <div class="controls pt-1">
             <input id="address-line1" name="address-line1" type="text" placeholder="Kortvägen 1A"
             class="input-xlarge">
             <!-- <p class="help-block">example of how to write it</p> -->
@@ -142,14 +142,14 @@
       </div>
       <div class="control-group">
         <label class="control-label">Ort</label>
-        <div class="controls">
+        <div class="controls pt-1">
             <input id="city" name="city" type="text" placeholder="Stockholm" class="input-xlarge">
             <p class="help-block"></p>
         </div>
-        </div>
+      </div>
       <div class="control-group">
         <label class="control-label">Postnummer</label>
-        <div class="controls">
+        <div class="controls pt-1">
             <input id="postal-code" name="postal-code" type="text" placeholder="12 5555"
             class="input-xlarge">
             <p class="help-block"></p>
@@ -162,18 +162,17 @@
         <input type="address" class="form-control" id="exampleAddressInput" placeholder="Address">
       </div> -->
 
-
     </fieldset>
   </form>
  </div> <!-- id = "adress"  -->
 
 <div id = "buyAndEmpty" class ="container">
   <div class = "row">
-    <div class = "col-6 text-center">
+    <div class = "col-lg-6 col-12 mb-3 text-center">
       
     <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">KÖP!</button>
     </div>
-    <div class = "col-6 text-center">
+    <div class = "col-lg-6 col-12 text-center">
       <button id = "buttonEmpty" type="button" class="btn btn-dark" data-toggle="modal">TÖM VARUKORGEN</button>
     </div>
   </div> <!-- class = "row"> -->
