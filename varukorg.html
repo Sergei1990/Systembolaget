@@ -1,21 +1,19 @@
-<<<<<<< Updated upstream
 <!DOCTYPE html><html>
 
 <head>
 
 
-
   <meta charset="utf-8">
-  <title>Alco Silk Road</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Alco Silk Road - Alla Drycker</title>
 
- <link rel="stylesheet" href="./www/css/libs/bootstrap.css">
+  <link rel="stylesheet" href="./www/css/libs/bootstrap.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./www/css/main.css">
 
   <script src="./fake-module.js"></script>
   <script src="./node_modules/chai/chai.js"></script>
   <script src="./www/js/libs/jquery.js"></script>
-
   <script src="./www/js/libs/popper.js"></script>
 
 
@@ -24,12 +22,11 @@
   <!-- social media buttons -->
 
   <script src="./product.js"></script>
-  <script src="./shopping-cart.js"></script>
- 
-  <script src="./category.js"></script>
- 
+  <script src="./shopping-cart.js"></script> 
+  <script src="./category.js"></script> 
   <script src="./person.js"></script>
   <script src="./www/js/allaDrycker.js"></script>
+  <script src="./www/js/varukorg1.js"></script>
   <script src="./www/js/startPage.js"></script>
   <script src="./app.js"></script>
   
@@ -82,19 +79,18 @@
 
 
 <main>
+
   <div id = "logUtDiv" class= "text-right pr-2">
         <a  id="logUtLink" class = "btn" href="index.html">Logga ut</a>
-      </div>
+  </div>
 
-<h1>Välj bland 18000 drycker</h1>
-<h1>Få din beställning hem till dörren</h1>
+  <div id = "addedProducts" class ="container">
+  </div>
+  
 
 
 <!-- Button trigger modal -->
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
-Köp!
-</button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -115,6 +111,73 @@ Köp!
     </div>
   </div>
 </div> <!--end köp! button-->
+
+<div id = "adress">
+  <form>
+    <fieldset>
+      <legend>Ange din leveransadress för att slutföra köpet:</legend>
+
+      
+     <!--  <div class="form-group">
+        <label for="nameInput">Namn</label>
+        <input type="name" class="form-control" id="exampleNameInput" aria-describedby="nameHelp" placeholder="Enter name">
+        <small id="emailHelp" class="form-text text-muted">Please give your full name according to your billing address.</small>
+      </div>
+   -->
+      
+      <!-- <div class="form-group">
+        <form action="/action_page.php">
+          Date of birth:
+        <input type="date" name="bday">
+        </form>
+      </div> -->
+
+      <div class="control-group">
+        <label class="control-label">Gatuadress</label>
+        <div class="controls">
+            <input id="address-line1" name="address-line1" type="text" placeholder="Kortvägen 1A"
+            class="input-xlarge">
+            <!-- <p class="help-block">example of how to write it</p> -->
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Ort</label>
+        <div class="controls">
+            <input id="city" name="city" type="text" placeholder="Stockholm" class="input-xlarge">
+            <p class="help-block"></p>
+        </div>
+        </div>
+      <div class="control-group">
+        <label class="control-label">Postnummer</label>
+        <div class="controls">
+            <input id="postal-code" name="postal-code" type="text" placeholder="12 5555"
+            class="input-xlarge">
+            <p class="help-block"></p>
+        </div>
+      </div>
+   
+  <!-- 
+      <div class="form-group">
+        <label for="addressInput">Home Address</label>
+        <input type="address" class="form-control" id="exampleAddressInput" placeholder="Address">
+      </div> -->
+
+
+    </fieldset>
+  </form>
+ </div> <!-- id = "adress"  -->
+
+<div id = "buyAndEmpty" class ="container">
+  <div class = "row">
+    <div class = "col-6 text-center">
+      
+    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">KÖP!</button>
+    </div>
+    <div class = "col-6 text-center">
+      <button id = "buttonEmpty" type="button" class="btn btn-dark" data-toggle="modal">TÖM VARUKORGEN</button>
+    </div>
+  </div> <!-- class = "row"> -->
+</div> <!-- class ="container" -->
 
 </main>
 
@@ -146,7 +209,9 @@ Köp!
 </body>
 
 </html>
-=======
+
+
+<!-- =======
 <!DOCTYPE html><html>
 
 <head>
@@ -179,7 +244,7 @@ Köp!
   <script src="./varukorg.js"></script>
 
 
-<style>
+ <style>
 	.form-group {width: 100%;}
 	fieldset { width: 400px; margin:auto;}
 	.totals {
@@ -213,17 +278,17 @@ Köp!
     
 
 
-</style>
+</style> -->
 
 
-</head>
+<!-- </head>
 
 <body>
-  <!-- <h1>Hello World!</h1>
+  <h1>Hello World!</h1>
 
   <button id="bajs">click me</button>
   <script src="./test-frontend.js"></script> -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
     <span class="navbar-toggler-icon"></span>
@@ -253,7 +318,7 @@ Köp!
 
 
 
-<h1>Min Varukorg</h1>
+<h1>Min Varukorg</h1> -->
 
 
 
@@ -264,7 +329,7 @@ Köp!
 
 
 
-<table class="table table-hover"> 
+<!-- <table class="table table-hover"> 
 <tbody>	
 
 
@@ -312,65 +377,13 @@ Köp!
 
 
 
-<form>
-  <fieldset>
-  	<legend>User Registration</legend>
-
-    
-    <div class="form-group">
-      <label for="nameInput">Namn</label>
-      <input type="name" class="form-control" id="exampleNameInput" aria-describedby="nameHelp" placeholder="Enter name">
-      <small id="emailHelp" class="form-text text-muted">Please give your full name according to your billing address.</small>
-    </div>
-
-    
-    <div class="form-group">
-    <form action="/action_page.php">
-      Date of birth:
-    <input type="date" name="bday">
-    </form>
-    </div>
 
 
-    <div class="control-group">
-                    <label class="control-label">Gatuadress</label>
-                    <div class="controls">
-                        <input id="address-line1" name="address-line1" type="text" placeholder="address line 1"
-                        class="input-xlarge">
-                        <p class="help-block">example of how to write it</p>
-                    </div>
-                </div>
-    <div class="control-group">
-                    <label class="control-label">Ort</label>
-                    <div class="controls">
-                        <input id="city" name="city" type="text" placeholder="city" class="input-xlarge">
-                        <p class="help-block"></p>
-                    </div>
-                </div>
-    <div class="control-group">
-                    <label class="control-label">Postnummer</label>
-                    <div class="controls">
-                        <input id="postal-code" name="postal-code" type="text" placeholder="zip or postal code"
-                        class="input-xlarge">
-                        <p class="help-block"></p>
-                    </div>
-                </div>
-
-
-    <!-- <div class="form-group">
-      <label for="addressInput">Home Address</label>
-      <input type="address" class="form-control" id="exampleAddressInput" placeholder="Address">
-    </div> -->
-
-    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">Köp!</button>
-
-  </fieldset>
-</form>
-
-<!-- editing ends
+editing ends
  -->
 
-</body>
+<!-- </body>
 
 </html>
->>>>>>> Stashed changes
+>>>>>>> Stashed changes -->
+ 

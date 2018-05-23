@@ -56,6 +56,7 @@ class App {
 		
 		new AllaDrycker();
 		new StartPage();
+		new Varukorg();
 
 		this.fillCartFromSession();
 

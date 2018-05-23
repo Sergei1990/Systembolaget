@@ -30,14 +30,7 @@ class AllaDrycker {
 			this.loadProducts();
 	 	});
 
-		setTimeout(()=>{
-			for (let j = 0; j<this.quantityOfProductOnPage; j++){
-				$("#addButton" + j).click(()=>{
-					let i = $("#prodId"+j).text();
-					this.addToCartClick(i/1);
-				});
-			}
-		}, 0);	 		 	
+				 	
 
 	} //constructor
 
@@ -84,11 +77,11 @@ class AllaDrycker {
 
 		for (let i = 0; i < qty; i++) {
 			$div.append(
-				 '<div class="row pt-1 vertical-align">'
+				 '<div class="row pt-1 vertical-align bg-light">'
 				+   '<div class="prodPicture col-md-2">'
 				+       '<img src="www/img/11.jpg" alt="Picture">'
 				+   '</div>'
-				+   '<div id="prodName' + this.quantityOfProductOnPage + '" class="col-md-3">'
+				+   '<div id="prodName' + this.quantityOfProductOnPage + '" class="col-md-3 font-weight-bold">'
 				+       '<p>' + products[i].namn + '</p>'
 				+   '</div>'
 				+   '<div id="prodAlcohol' + this.quantityOfProductOnPage + '" class="col-md-2">'
@@ -101,7 +94,7 @@ class AllaDrycker {
 				+       '<p>' + products[i].prisinklmoms + '  SEK </p>'
 				+   '</div>'
 				+   '<div class="col-md-2 text-right">' 
-				+   	'<button id = "addButton' + this.quantityOfProductOnPage + '" class="btn btn-secondary my-2 my-sm-0" type="submit">Add</button>'   
+				+   	'<button id = "addButton' + this.quantityOfProductOnPage + '" class="btn btn-secondary my-2 my-sm-0" type="submit">Lägg till</button>'   
 				+   '</div>'
 				+   '<div id="prodId' + this.quantityOfProductOnPage + '" class="d-none">' 
 				+   	'<p>' + products[i].artikelid +'</p>'   
@@ -109,6 +102,14 @@ class AllaDrycker {
 				+'</div>' //class="row"
 	           
 		    );
+
+			let prodId = this.quantityOfProductOnPage;
+
+			$("#addButton" + this.quantityOfProductOnPage).click(()=>{
+				let i = $("#prodId"+prodId).text();
+				this.addToCartClick(i/1);
+			});
+			
 		    this.quantityOfProductOnPage++;
 		    if (app.products.length == this.quantityOfProductOnPage)
 				$("#element3").hide();		
