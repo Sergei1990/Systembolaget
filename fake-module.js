@@ -7,6 +7,7 @@ class module {
 
     // create a global variable with the class name
     this.mem[classDef.name] = classDef;
+
   }
 }
 
@@ -24,6 +25,5 @@ function require(fileName) {
     .replace(/-[a-z]/g,(found)=>found[1].toUpperCase()).replace('.js', '');
 
   className = className[0].toUpperCase() + className.substr(1);
-
   return module.mem[className];
 }

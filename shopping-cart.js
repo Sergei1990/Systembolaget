@@ -5,6 +5,7 @@ module.exports = class ShoppingCart {
 	
 	constructor() {
 		this.thingsToBuy = [];
+				
 	}
 
 	add(product, quantity) {
@@ -30,29 +31,71 @@ module.exports = class ShoppingCart {
 		// don't allow the product that is already in the cart, but change quantity
 		let productID = product.artikelid;  // taking products id
 		let productExists = false;
-        for( let i = 0; i < this.thingsToBuy.length; i++) { // loop through thingsToBuy
-        	if(productID === this.thingsToBuy[i].product.artikelid) { // comparing products ID that you add with the one that already exists
-				this.thingsToBuy[i].quantity = this.thingsToBuy[i].quantity + quantity; // new quantity add with old quantity
+
+        for( let j = 0; j < this.thingsToBuy.length; j++) { // loop through thingsToBuy
+        	if(productID === this.thingsToBuy[j].product.artikelid) { // comparing products ID that you add with the one that already exists
+				this.thingsToBuy[j].quantity = this.thingsToBuy[j].quantity + quantity; // new quantity add with old quantity
 				//this.changeQuantity(product, (this.thingsToBuy[i].quantity + quantity));
+					
+					for (let i = 0; i<localStorage.length; i++){
+						if(localStorage.getItem("prodArticleSession"+i) == productID){
+							localStorage.setItem(("prodQuantitySession"+i), this.thingsToBuy[j].quantity);
+							break;
+						}
+					}
+				
 				productExists = true;
 			}
 	    }
 
 		if(productExists === false) {
+			let i;
+			for (i = 0; i<localStorage.length; i++){
+				if(!localStorage.getItem("prodArticleSession"+i)){
+					break;
+				}
+
+			}
+			localStorage.setItem(("prodArticleSession"+i), product.artikelid);
+		
+			localStorage.setItem(("prodQuantitySession"+i), quantity);
 				this.thingsToBuy.push({
 				product: product,
 				quantity: quantity
 			});	
+				
 		}
 
 		//remove added quantity from the storehouse:
 		product.iLager  = product.iLager - quantity;
+
+		//desplay quantity of the added beverages on the cart's icon in the navbar
+		let totalQuanBottlesSession = 0;
+		for (let j = 0; j<localStorage.length; j++){
+			if(localStorage.getItem("prodQuantitySession"+j)){
+				totalQuanBottlesSession = totalQuanBottlesSession+(localStorage.getItem("prodQuantitySession"+j))/1;
+			}
+	    }
+		if(totalQuanBottlesSession!=0){
+			$('#basketQuantity').empty()
+			$('#basketQuantity').text(totalQuanBottlesSession);
+			$('#basketQuantity').show(200);
+		}
 	}
 
 	findProductInCart(product) {
 		for(let i = 0; i < this.thingsToBuy.length; i++) {
 			if(this.thingsToBuy[i].product.artikelid === product.artikelid) { // det går inte att jämföra två lika objekt om de har två olika adresser
       //if(this.thingsToBuy[i].product === product){ // fel
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	findProductInArrayProducts(article){
+		for(let i = 0; i < app.products.length; i++) {
+			if((app.products[i].artikelid/1) === article) {      
 				return i;
 			}
 		}
@@ -120,16 +163,14 @@ module.exports = class ShoppingCart {
   // how much does everything cost
   // would we like a line sum as well?
 
-    let totalAmmount = 0;
-    for(let thing of this.thingsToBuy) {      
-      let ammountThing = thing.product.prisinklmoms * thing.quantity;
-      totalAmmount = totalAmmount + ammountThing;
-    }
-    return totalAmmount;
-  // loop through thingsToBuy.
-  // get the price of each product and multiply with the quantity
-  // (gives us a line sum)
-  // add a line sums into a total sum
+	    let totalAmmount = 0;
+	    for(let thing of this.thingsToBuy) {      
+	      let ammountThing = thing.product.prisinklmoms * thing.quantity;
+	      totalAmmount = totalAmmount + ammountThing;
+	    }
+	    return totalAmmount;
 	}
+
+	
 
 }

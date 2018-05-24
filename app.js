@@ -7,10 +7,24 @@ var Person = require('./person.js');
 var Product = require('./product.js');
 var Category = require('./category.js');
 var ShoppingCart = require('./shopping-cart.js');
+var AllaDrycker = require('./www/js/allaDrycker.js');
+var StartPage = require('./www/js/startPage.js');
+var Varukorg1 = require('./www/js/varukorg1.js');
 
 class App {
 
 	constructor() {
+
+		// emulate som frontend only objects in Node.js
+		// so that our tests doesn't break
+		if(typeof window === "undefined"){
+			// we are running in Node.js
+			global.localStorage = {
+				getItem : function(){},
+				setItem : function(){},
+				clear: function(){}
+			};
+		}
 
 		let productData;
 		let categoryData;
@@ -56,12 +70,19 @@ class App {
 		
 		new AllaDrycker();
 		new StartPage();
+	
+		new Varukorg1();
 
+		this.fillCartFromSession();
+
+		
+		// Don't run in node js
+		if(typeof window !== "object"){ return; }
 
 		$("#logUtLink").click(()=>{
-			this.clickLogOut();
+			this.removeUser(app.users[0]);
 		});
-	}
+	} //constructorContinued
 
 	addUser(name,age){
 		let user = new Person(name,age);
@@ -108,12 +129,59 @@ class App {
 	removeUser(user){ //log out
 
 		user.shoppingCart.removeAllItems();
-		
+		localStorage.clear();
 		this.products = [];
 		this.categories = [];
 		this.users = [];
 		this.categoryByName = {};
 	}
+
+	searchFunction(word){
+    // A simple for search throug all string properties of a product
+    // and number properties converted to strings
+
+    word = word.toLowerCase();
+
+    return this.allProducts.filter(function(product){
+      for(let key in product){
+        let val = product[key];
+        if(typeof val === 'number'){
+          // convert number to string
+          val += '';
+        }
+        // if still not a string do not search this property
+        if(typeof val !== 'string'){ continue; }
+        // check if the val includes the search word
+        if(val.toLowerCase().includes(word)){
+          return true;
+        }
+      }
+      return false;
+
+ return this.allCategories.filter(function(product){
+      for(let key in product){
+        let val = product[key];
+        if(typeof val === 'number'){
+          // convert number to string
+          val += '';
+        }
+        // if still not a string do not search this property
+        if(typeof val !== 'string'){ continue; }
+        // check if the val includes the search word
+        if(val.toLowerCase().includes(word)){
+          return true;
+        }
+      }
+      return false;
+    });
+  })
+
+}
+
+
+
+
+
 
 	filterFunction(category, // name or null (array of strings or null)
 						 country,  // name or null (array of strings or null)
@@ -272,12 +340,38 @@ class App {
 				//console.log( "index " + i);
 		}
 
-	clickLogOut(){
-		sessionStorage.clear();
-		this.products = [];
-		this.categories = [];
-		this.users = [];
-		this.categoryByName = {};
+	fillCartFromSession(){
+
+		// Don't run in node js
+		if(typeof window !== "object"){ return; }
+
+		// Fill thingsToBuy array with the products from the lockalStorage:
+		let totalQuanArticlesSession = 0;
+		let totalQuanBottlesSession = 0;
+		do{
+			if (localStorage.getItem("prodArticleSession"+totalQuanArticlesSession)){
+			// 	break;
+			// }
+				let prodArt = localStorage.getItem("prodArticleSession"+totalQuanArticlesSession);
+				let ind = this.users[0].shoppingCart.findProductInArrayProducts(prodArt/1);
+				let quan = localStorage.getItem("prodQuantitySession"+totalQuanArticlesSession)/1;
+				this.users[0].shoppingCart.thingsToBuy.push({product: app.products[ind],
+															 quantity: quan
+														    });	
+				app.products[ind].iLager = app.products[ind].iLager - quan; 								    						
+				totalQuanBottlesSession = totalQuanBottlesSession + quan;	
+			}
+			totalQuanArticlesSession++;
+		}while(totalQuanArticlesSession<localStorage.length+1)
+
+		//fill the icon of the Shopping Cart in the navbar:
+		if (totalQuanBottlesSession == 0){
+			$('#basketQuantity').hide();
+		}
+		else{
+			$('#basketQuantity').text(totalQuanBottlesSession);
+			$('#basketQuantity').show(200);
+		} 
 	}
 }
 

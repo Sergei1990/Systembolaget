@@ -1,12 +1,17 @@
 
-class AllaDrycker {
+module.exports = class AllaDrycker {
 
 	constructor() {
     
-	  	let user = app.addUser("Vasja", 17);//temporary
+	  	let user = app.addUser("Vasja", 21);//temporary
+	  	localStorage.setItem("userName", "Vasja"); //temporary
 
 	  	this.quantityOfProductOnPage = 0;
 	 	this.quantityToShow = 50;
+	 	this.totalQuantityInShoppingCart;
+
+	 	// Don't run in node js
+		if(typeof window !== "object"){ return; }
 
 		this.hideFilters();
 
@@ -28,17 +33,12 @@ class AllaDrycker {
 			this.loadProducts();
 	 	});
 
-		setTimeout(()=>{
-			for (let i = 0; i<this.quantityOfProductOnPage; i++){
-				$("#addButton" + i).click(()=>{
-					this.addToCartClick();
-				});
-			}
-		}, 0);	 		 	
+				 	
 
 	} //constructor
 
 	hideFilters(){
+
 		$('#sortOptions').hide();
 		$('#filterOptions').hide();
 
@@ -81,11 +81,11 @@ class AllaDrycker {
 
 		for (let i = 0; i < qty; i++) {
 			$div.append(
-				 '<div class="row pt-1 vertical-align">'
+				 '<div class="row pt-1 vertical-align bg-light">'
 				+   '<div class="prodPicture col-md-2">'
 				+       '<img src="www/img/11.jpg" alt="Picture">'
 				+   '</div>'
-				+   '<div id="prodName' + this.quantityOfProductOnPage + '" class="col-md-3">'
+				+   '<div id="prodName' + this.quantityOfProductOnPage + '" class="col-md-3 font-weight-bold">'
 				+       '<p>' + products[i].namn + '</p>'
 				+   '</div>'
 				+   '<div id="prodAlcohol' + this.quantityOfProductOnPage + '" class="col-md-2">'
@@ -98,18 +98,47 @@ class AllaDrycker {
 				+       '<p>' + products[i].prisinklmoms + '  SEK </p>'
 				+   '</div>'
 				+   '<div class="col-md-2 text-right">' 
-				+   	'<button id = "addButton' + this.quantityOfProductOnPage + '" class="btn btn-secondary my-2 my-sm-0" type="submit">Add</button>'   
+				+   	'<button id = "addButton' + this.quantityOfProductOnPage + '" class="btn btn-secondary my-2 my-sm-0" type="button">Lägg till</button>'   
+				+   '</div>'
+				+   '<div id="prodId' + this.quantityOfProductOnPage + '" class="d-none">' 
+				+   	'<p>' + products[i].artikelid +'</p>'   
 				+   '</div>'
 				+'</div>' //class="row"
 	           
 		    );
+
+			let prodId = this.quantityOfProductOnPage;
+
+			$("#addButton" + this.quantityOfProductOnPage).click(()=>{
+				let i = $("#prodId"+prodId).text();
+				this.addToCartClick(i/1);
+			});
+			
 		    this.quantityOfProductOnPage++;
 		    if (app.products.length == this.quantityOfProductOnPage)
 				$("#element3").hide();		
 		}		
 	}// loadProducts()
 
-	addToCartClick(){
+	addToCartClick(i){ // i - product's article
+		let ind = app.users[0].shoppingCart.findProductInArrayProducts(i);
+		app.users[0].shoppingCart.add(app.products[ind], 1);
+		
+		// let prodQuantityInShoppingCart = 1;
+
+		// let a = localStorage.getItem("amountInStorage"+i); //check if the chosen beverage is already in the cart
+		// if (a != null)
+		// {
+		// 	prodQuantityInShoppingCart = a/1 + 1;
+		// }
+		
+		// let name = $("#prodName"+i).text(); // Nils Oscar Alkoholfr
+		// let price =$("#prodPrice"+i).text();// 15.9 SEK
+		// price = price.replace("  SEK ", ""); // 15.9
+
+		// localStorage.setItem(("nameInStorage"+i), name);
+		// localStorage.setItem(("priceInStorage"+i), price);
+		// localStorage.setItem(("amountInStorage"+i), prodQuantityInShoppingCart);
 		
 
 	}//addToCartClick()

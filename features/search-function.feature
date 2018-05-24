@@ -3,14 +3,14 @@ Feature: Create search function
 
 	Scenario: 
 		Given that a user want to search a beverages by a specific name
-		When the user writes the name of the beverage 
+		When the user searches for the beverage 
 		Then the specific beverage turns up as the result
 
 
 	Scenario: 
-		Given that a customer search after all the beer in the online store
+		Given that a customer search after all the alcoholfree products in the online store
 		When the customer writes beer in the searchfield 
-		Then all the beers the onlie store have to offer shows
+		Then all the beers the online store have to offer shows
 
 	Scenario:
 		Given that a user have a search result of all beer in the online store
