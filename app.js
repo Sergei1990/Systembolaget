@@ -8,9 +8,23 @@ var Product = require('./product.js');
 var Category = require('./category.js');
 var ShoppingCart = require('./shopping-cart.js');
 var AllaDrycker = require('./www/js/allaDrycker.js');
+var StartPage = require('./www/js/startPage.js');
+var Varukorg = require('./www/js/varukorg1.js')
+
 class App {
 
 	constructor() {
+
+		// emulate som frontend only objects in Node.js
+		// so that our tests doesn't break
+		if(typeof window === "undefined"){
+			// we are running in Node.js
+			global.localStorage = {
+				getItem : function(){},
+				setItem : function(){},
+				clear: function(){}
+			};
+		}
 
 		let productData;
 		let categoryData;
@@ -59,6 +73,10 @@ class App {
 		new Varukorg();
 
 		this.fillCartFromSession();
+
+		
+		// Don't run in node js
+		if(typeof window !== "object"){ return; }
 
 		$("#logUtLink").click(()=>{
 			this.removeUser(app.users[0]);
@@ -304,6 +322,10 @@ class App {
 		}
 
 	fillCartFromSession(){
+
+		// Don't run in node js
+		if(typeof window !== "object"){ return; }
+
 		// Fill thingsToBuy array with the products from the lockalStorage:
 		let totalQuanArticlesSession = 0;
 		let totalQuanBottlesSession = 0;

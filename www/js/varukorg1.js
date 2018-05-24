@@ -1,5 +1,5 @@
 
-class Varukorg {
+module.exports = class Varukorg {
 
 	constructor() {
 
@@ -15,6 +15,10 @@ class Varukorg {
 	} //constructor
 
 	loadAddedProducts(){
+
+		// Don't run in node js
+		if(typeof window !== "object"){ return; }
+
 		let container = $("#addedProducts");
 	
 		let totalAmount = 0;

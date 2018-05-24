@@ -1,7 +1,10 @@
 
-class StartPage {
+module.exports = class StartPage {
 
 	constructor() {
+		// Don't run in node js
+		if(typeof window !== "object"){ return; }
+
 		this.toggleLogOut();
 	}
 

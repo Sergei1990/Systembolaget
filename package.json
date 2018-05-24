@@ -19,12 +19,14 @@
     "sum-function": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/sum-function.feature & exit 0",
     "tanjina": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/change-quantity.feature & exit 0",
     "validate-address": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/validate-homeaddress-checkout.feature & exit 0",
-    "test-test": "node node_modules/selenium-cucumber-js/index.js -b chrome -f ./features/test.feature & exit 0"
+    "test-test": "node node_modules/selenium-cucumber-js/index.js -b chrome -f ./features/test.feature & exit 0",
+     "search-function": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/search-function.feature & exit 0"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "chai": "^4.1.2",
+    "cheerio": "^1.0.0-rc.2",
     "compression": "^1.7.1",
     "express": "^4.16.3",
     "jsonflex": "^1.0.10",

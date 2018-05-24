@@ -10,6 +10,9 @@ module.exports = class AllaDrycker {
 	 	this.quantityToShow = 50;
 	 	this.totalQuantityInShoppingCart;
 
+	 	// Don't run in node js
+		if(typeof window !== "object"){ return; }
+
 		this.hideFilters();
 
 		// show the productlist "later" to prevent lag
@@ -35,6 +38,7 @@ module.exports = class AllaDrycker {
 	} //constructor
 
 	hideFilters(){
+
 		$('#sortOptions').hide();
 		$('#filterOptions').hide();
 
