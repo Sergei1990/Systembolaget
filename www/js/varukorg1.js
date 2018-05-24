@@ -4,7 +4,7 @@ class Varukorg {
 	constructor() {
 
 		// let user = app.addUser("Vasja", 17);//temporary
-	 //  	sessionStorage.setItem("userName", "Vasja"); //temporary
+	 //  	localStorage.setItem("userName", "Vasja"); //temporary
 		// setTimeout(()=>{
 		// 	this.loadAddedProducts();
 		// }, 2000);	 
@@ -20,10 +20,10 @@ class Varukorg {
 		let totalAmount = 0;
 		let totalQuantity = 0;
 
-		for (let i=0; i<sessionStorage.length; i++){
+		for (let i=0; i<localStorage.length; i++){
 			// Check if the name exists in the session
-			let prodArt = sessionStorage.getItem("prodArticleSession"+i);
-			let prodQuant = sessionStorage.getItem("prodQuantitySession"+i);
+			let prodArt = localStorage.getItem("prodArticleSession"+i);
+			let prodQuant = localStorage.getItem("prodQuantitySession"+i);
 			let ind = app.users[0].shoppingCart.findProductInArrayProducts(prodArt/1);
 			
 

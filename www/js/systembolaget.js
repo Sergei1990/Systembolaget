@@ -3,7 +3,7 @@
 // function start(){
 
 // $("#logUtLink").click(function() {
-//     sessionStorage.clear();
+//     localStorage.clear();
 // }); 
 
 // }

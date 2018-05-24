@@ -37,9 +37,9 @@ module.exports = class ShoppingCart {
 				this.thingsToBuy[j].quantity = this.thingsToBuy[j].quantity + quantity; // new quantity add with old quantity
 				//this.changeQuantity(product, (this.thingsToBuy[i].quantity + quantity));
 					
-					for (let i = 0; i<sessionStorage.length; i++){
-						if(sessionStorage.getItem("prodArticleSession"+i) == productID){
-							sessionStorage.setItem(("prodQuantitySession"+i), this.thingsToBuy[j].quantity);
+					for (let i = 0; i<localStorage.length; i++){
+						if(localStorage.getItem("prodArticleSession"+i) == productID){
+							localStorage.setItem(("prodQuantitySession"+i), this.thingsToBuy[j].quantity);
 							break;
 						}
 					}
@@ -50,15 +50,15 @@ module.exports = class ShoppingCart {
 
 		if(productExists === false) {
 			let i;
-			for (i = 0; i<sessionStorage.length; i++){
-				if(!sessionStorage.getItem("prodArticleSession"+i)){
+			for (i = 0; i<localStorage.length; i++){
+				if(!localStorage.getItem("prodArticleSession"+i)){
 					break;
 				}
 
 			}
-			sessionStorage.setItem(("prodArticleSession"+i), product.artikelid);
+			localStorage.setItem(("prodArticleSession"+i), product.artikelid);
 		
-			sessionStorage.setItem(("prodQuantitySession"+i), quantity);
+			localStorage.setItem(("prodQuantitySession"+i), quantity);
 				this.thingsToBuy.push({
 				product: product,
 				quantity: quantity
@@ -71,9 +71,9 @@ module.exports = class ShoppingCart {
 
 		//desplay quantity of the added beverages on the cart's icon in the navbar
 		let totalQuanBottlesSession = 0;
-		for (let j = 0; j<sessionStorage.length; j++){
-			if(sessionStorage.getItem("prodQuantitySession"+j)){
-				totalQuanBottlesSession = totalQuanBottlesSession+(sessionStorage.getItem("prodQuantitySession"+j))/1;
+		for (let j = 0; j<localStorage.length; j++){
+			if(localStorage.getItem("prodQuantitySession"+j)){
+				totalQuanBottlesSession = totalQuanBottlesSession+(localStorage.getItem("prodQuantitySession"+j))/1;
 			}
 	    }
 		if(totalQuanBottlesSession!=0){

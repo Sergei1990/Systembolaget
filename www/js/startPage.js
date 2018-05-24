@@ -7,7 +7,7 @@ class StartPage {
 
 	toggleLogOut(){		
 
-		if (!sessionStorage.getItem("userName")){
+		if (!localStorage.getItem("userName")){
 			$('#logUtDiv').hide();
 		}
 		else{

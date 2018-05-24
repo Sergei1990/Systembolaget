@@ -110,7 +110,7 @@ class App {
 	removeUser(user){ //log out
 
 		user.shoppingCart.removeAllItems();
-		sessionStorage.clear();
+		localStorage.clear();
 		this.products = [];
 		this.categories = [];
 		this.users = [];
@@ -275,16 +275,16 @@ class App {
 		}
 
 	fillCartFromSession(){
-		// Fill thingsToBuy array with the products from the SessionStorage:
+		// Fill thingsToBuy array with the products from the lockalStorage:
 		let totalQuanArticlesSession = 0;
 		let totalQuanBottlesSession = 0;
 		do{
-			if (sessionStorage.getItem("prodArticleSession"+totalQuanArticlesSession)){
+			if (localStorage.getItem("prodArticleSession"+totalQuanArticlesSession)){
 			// 	break;
 			// }
-				let prodArt = sessionStorage.getItem("prodArticleSession"+totalQuanArticlesSession);
+				let prodArt = localStorage.getItem("prodArticleSession"+totalQuanArticlesSession);
 				let ind = this.users[0].shoppingCart.findProductInArrayProducts(prodArt/1);
-				let quan = sessionStorage.getItem("prodQuantitySession"+totalQuanArticlesSession)/1;
+				let quan = localStorage.getItem("prodQuantitySession"+totalQuanArticlesSession)/1;
 				this.users[0].shoppingCart.thingsToBuy.push({product: app.products[ind],
 															 quantity: quan
 														    });	
@@ -292,7 +292,7 @@ class App {
 				totalQuanBottlesSession = totalQuanBottlesSession + quan;	
 			}
 			totalQuanArticlesSession++;
-		}while(totalQuanArticlesSession<sessionStorage.length+1)
+		}while(totalQuanArticlesSession<localStorage.length+1)
 
 		//fill the icon of the Shopping Cart in the navbar:
 		if (totalQuanBottlesSession == 0){

@@ -4,7 +4,7 @@ class AllaDrycker {
 	constructor() {
     
 	  	let user = app.addUser("Vasja", 17);//temporary
-	  	sessionStorage.setItem("userName", "Vasja"); //temporary
+	  	localStorage.setItem("userName", "Vasja"); //temporary
 
 	  	this.quantityOfProductOnPage = 0;
 	 	this.quantityToShow = 50;
@@ -122,7 +122,7 @@ class AllaDrycker {
 		
 		// let prodQuantityInShoppingCart = 1;
 
-		// let a = sessionStorage.getItem("amountInStorage"+i); //check if the chosen beverage is already in the cart
+		// let a = localStorage.getItem("amountInStorage"+i); //check if the chosen beverage is already in the cart
 		// if (a != null)
 		// {
 		// 	prodQuantityInShoppingCart = a/1 + 1;
@@ -132,9 +132,9 @@ class AllaDrycker {
 		// let price =$("#prodPrice"+i).text();// 15.9 SEK
 		// price = price.replace("  SEK ", ""); // 15.9
 
-		// sessionStorage.setItem(("nameInStorage"+i), name);
-		// sessionStorage.setItem(("priceInStorage"+i), price);
-		// sessionStorage.setItem(("amountInStorage"+i), prodQuantityInShoppingCart);
+		// localStorage.setItem(("nameInStorage"+i), name);
+		// localStorage.setItem(("priceInStorage"+i), price);
+		// localStorage.setItem(("amountInStorage"+i), prodQuantityInShoppingCart);
 		
 
 	}//addToCartClick()
