@@ -139,27 +139,45 @@ class App {
     // A simple for search throug all string properties of a product
     // and number properties converted to strings
 
-			word = word.toLowerCase();
+    word = word.toLowerCase();
 
-	    	return this.allproducts.filter(function(product){
-	      	for(let key in product){
-	        let val = product[key];
-	        if(typeof val === 'number'){
-	          // convert number to string
-	          val += '';
-	        }
-	        // if still not a string do not search this property
-	        if(typeof val !== 'string'){ continue; }
-	        // check if the val includes the search word
-	        if(val.toLowerCase().includes(word)){
-	          return true;
-	        }
-	      }
-	      return false;
-	    });
-	  }
+    return this.allProducts.filter(function(product){
+      for(let key in product){
+        let val = product[key];
+        if(typeof val === 'number'){
+          // convert number to string
+          val += '';
+        }
+        // if still not a string do not search this property
+        if(typeof val !== 'string'){ continue; }
+        // check if the val includes the search word
+        if(val.toLowerCase().includes(word)){
+          return true;
+        }
+      }
+      return false;
 
-	
+ return this.allCategories.filter(function(product){
+      for(let key in product){
+        let val = product[key];
+        if(typeof val === 'number'){
+          // convert number to string
+          val += '';
+        }
+        // if still not a string do not search this property
+        if(typeof val !== 'string'){ continue; }
+        // check if the val includes the search word
+        if(val.toLowerCase().includes(word)){
+          return true;
+        }
+      }
+      return false;
+    });
+  })
+
+}
+
+
 
 
 
