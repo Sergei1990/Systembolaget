@@ -1,13 +1,13 @@
-
-module.exports = class Varukorg {
+module.exports = class Varukorg1 {
 
 	constructor() {
 
-		// let user = app.addUser("Vasja", 17);//temporary
-	 //  	localStorage.setItem("userName", "Vasja"); //temporary
+		let user = app.addUser("Vasja", 17);//temporary
+	  	localStorage.setItem("userName", "Vasja"); //temporary
 		// setTimeout(()=>{
 		// 	this.loadAddedProducts();
-		// }, 2000);	 
+		// }, 2000);
+        // }	 
   
 	  	this.loadAddedProducts();
 
@@ -82,7 +82,3 @@ module.exports = class Varukorg {
 	}//loadAddedProducts()
 
 } //class
-
-
-
-	
