@@ -9,7 +9,7 @@ var Category = require('./category.js');
 var ShoppingCart = require('./shopping-cart.js');
 var AllaDrycker = require('./www/js/allaDrycker.js');
 var StartPage = require('./www/js/startPage.js');
-var Varukorg = require('./www/js/varukorg1.js')
+var Varukorg1 = require('./www/js/varukorg1.js');
 
 class App {
 
@@ -70,7 +70,8 @@ class App {
 		
 		new AllaDrycker();
 		new StartPage();
-		new Varukorg();
+	
+		new Varukorg1();
 
 		this.fillCartFromSession();
 

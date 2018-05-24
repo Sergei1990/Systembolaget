@@ -3,8 +3,8 @@ module.exports = class AllaDrycker {
 
 	constructor() {
     
-	  	// let user = app.addUser("Vasja", 17);//temporary
-	  	// sessionStorage.setItem("userName", "Vasja"); //temporary
+	  	let user = app.addUser("Vasja", 21);//temporary
+	  	localStorage.setItem("userName", "Vasja"); //temporary
 
 	  	this.quantityOfProductOnPage = 0;
 	 	this.quantityToShow = 50;
