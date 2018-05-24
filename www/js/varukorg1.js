@@ -44,10 +44,10 @@ class Varukorg {
 					    +    '<p>' + app.products[ind].prisinklmoms + '  SEK </p>'
 						+ '</div>'
 					    + '<div class="col-lg-1 text-lg-right col-6 text-center">' 
-					    +    '<button id = "addButton' + i + '" class="btn btn-secondary my-2 my-sm-0" type="submit"> + </button>'   
+					    +    '<button id = "addButton' + i + '" class="btn btn-secondary my-2 my-sm-0" type="button"> + </button>'   
 					    + '</div>'
 					    + '<div class="col-lg-1 text-lg-right col-6 text-center">' 
-					    +    '<button id = "removeButton' + i + '" class="btn btn-secondary my-2 my-sm-0" type="submit"> - </button>'   
+					    +    '<button id = "removeButton' + i + '" class="btn btn-secondary my-2 my-sm-0" type="button"> - </button>'   
 					    + '</div>'					
 				  + '</div>'
 

@@ -7,7 +7,7 @@ var Person = require('./person.js');
 var Product = require('./product.js');
 var Category = require('./category.js');
 var ShoppingCart = require('./shopping-cart.js');
-
+var AllaDrycker = require('./www/js/allaDrycker.js');
 class App {
 
 	constructor() {
@@ -116,6 +116,35 @@ class App {
 		this.users = [];
 		this.categoryByName = {};
 	}
+
+	searchFunction(word){
+    // A simple for search throug all string properties of a product
+    // and number properties converted to strings
+
+			word = word.toLowerCase();
+
+	    	return this.allproducts.filter(function(product){
+	      	for(let key in product){
+	        let val = product[key];
+	        if(typeof val === 'number'){
+	          // convert number to string
+	          val += '';
+	        }
+	        // if still not a string do not search this property
+	        if(typeof val !== 'string'){ continue; }
+	        // check if the val includes the search word
+	        if(val.toLowerCase().includes(word)){
+	          return true;
+	        }
+	      }
+	      return false;
+	    });
+	  }
+
+	
+
+
+
 
 	filterFunction(category, // name or null (array of strings or null)
 						 country,  // name or null (array of strings or null)

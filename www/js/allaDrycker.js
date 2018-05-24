@@ -1,10 +1,10 @@
 
-class AllaDrycker {
+module.exports = class AllaDrycker {
 
 	constructor() {
     
-	  	let user = app.addUser("Vasja", 17);//temporary
-	  	localStorage.setItem("userName", "Vasja"); //temporary
+	  	// let user = app.addUser("Vasja", 17);//temporary
+	  	// sessionStorage.setItem("userName", "Vasja"); //temporary
 
 	  	this.quantityOfProductOnPage = 0;
 	 	this.quantityToShow = 50;
@@ -94,7 +94,7 @@ class AllaDrycker {
 				+       '<p>' + products[i].prisinklmoms + '  SEK </p>'
 				+   '</div>'
 				+   '<div class="col-md-2 text-right">' 
-				+   	'<button id = "addButton' + this.quantityOfProductOnPage + '" class="btn btn-secondary my-2 my-sm-0" type="submit">Lägg till</button>'   
+				+   	'<button id = "addButton' + this.quantityOfProductOnPage + '" class="btn btn-secondary my-2 my-sm-0" type="button">Lägg till</button>'   
 				+   '</div>'
 				+   '<div id="prodId' + this.quantityOfProductOnPage + '" class="d-none">' 
 				+   	'<p>' + products[i].artikelid +'</p>'   
