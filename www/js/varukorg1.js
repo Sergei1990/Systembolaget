@@ -1,9 +1,11 @@
 module.exports = class Varukorg1 {
 
 	constructor() {
-
+		    this.inBrowser = typeof window === 'object';
+    
+    if(!this.inBrowser){ return; }
 		let user = app.addUser("Vasja", 17);//temporary
-	  	localStorage.setItem("userName", "Vasja"); //temporary
+	  	localStorage.setItem("userName", "Vasja"); //temporarye here */	
 		// setTimeout(()=>{
 		// 	this.loadAddedProducts();
 		// }, 2000);

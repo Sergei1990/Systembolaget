@@ -1,11 +1,13 @@
+var app = require('../../app.js');
 
 module.exports = class AllaDrycker {
 
 	constructor() {
-    
+    	 this.inBrowser = typeof window === 'object';
+
+    if(!this.inBrowser){ return; }
 	  	let user = app.addUser("Vasja", 21);//temporary
 	  	localStorage.setItem("userName", "Vasja"); //temporary
-
 	  	this.quantityOfProductOnPage = 0;
 	 	this.quantityToShow = 50;
 	 	this.totalQuantityInShoppingCart;

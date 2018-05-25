@@ -15,20 +15,17 @@ module.exports = function(){
 
 	this.Given(/^that a user want to search a beverages by a specific name$/, function (callback) {
           searchInput = 'Renat';
-          console.log(searchInput);
          callback();
        });
 
   this.When(/^the user searches for the beverage$/, function (callback) {
     searchResult = app.searchFunction(searchInput);
-    console.log(searchResult);
     assert(searchInput = searchResult, "Search result doesn't match. ");
          callback();
        });
 
   this.Then(/^the specific beverage turns up as the result$/, function (callback) {
     console.warn(searchResult);
-    console.log(searchResult);
          assert(searchInput = searchResult, "Search result doesn't match. ");
          callback();
        });
@@ -47,9 +44,10 @@ module.exports = function(){
   this.Then(/^all the beers the online store have to offer shows$/, function (callback) {
     console.warn(Object.keys(app.allCategoryByName));
           let allBeveragesInTheCategoryBeer = app.allCategoryByName['Öl'].products;
-          searchResult =app.searchFunction("Öl");
           console.warn("allBevInCat", allBeveragesInTheCategoryBeer.length);
           console.warn("searchResult", searchResult.length);
+          
+
           // VAD ÄR DET VI SKA KOLLA HÄR? ASSERTA?
           // SKA KATEGORIN ÖLS PRODUKTER VARA SAMMA SOM ALLA PRODUKTER NÄR MAN SÖKER PÅ ÖL
           // OM INTE VAD SKA VI DÅ JÄMFÖRA SÖKRESULTATET MED FÖR ATT VETA OM DET ÄR KORREKT?
@@ -61,14 +59,14 @@ module.exports = function(){
        });
 
   this.Given(/^that a user have a search result of all beer in the online store$/, function (callback) {
-         searchResult = =app.searchFunction("Öl");
+         searchResult = app.allCategoryByName['Öl'].products;
           console.log(searchResult);
          callback();
        });
 
   let sortedByName;
   this.When(/^the user sort by name$/, function (callback) {
-        
+        searchResult = app.searchFunction('Anchor Steam').products;
           sortedByName = app.sortByName();
 
           callback();

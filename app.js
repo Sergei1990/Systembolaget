@@ -9,7 +9,7 @@ var Category = require('./category.js');
 var ShoppingCart = require('./shopping-cart.js');
 var AllaDrycker = require('./www/js/allaDrycker.js');
 var StartPage = require('./www/js/startPage.js');
-var Varukorg1 = require('./www/js/varukorg1.js');
+var Varukorg = require('./www/js/varukorg1.js')
 
 class App {
 
@@ -66,26 +66,22 @@ class App {
 			this.allCategoryByName[category.name] = category;
 		}
 
-
-		$(document).ready(function(){
-        $("#myModal").modal({show: true, backdrop: 'static', keyboard: false});
-
-		});
-
 		this.users = [];
 		
 		new AllaDrycker();
 		new StartPage();
-		new Varukorg1();
+		new Varukorg();
 
 		this.fillCartFromSession();
 
 		
 		// Don't run in node js
 		if(typeof window !== "object"){ return; }
-
-		$("#logUtLink").click(()=>{
+  this.inBrowser = typeof window === 'object';
+    $("#logUtLink").click(()=>{
 			this.removeUser(app.users[0]);
+    if(!this.inBrowser){ return; }
+		
 		});
 	} //constructorContinued
 
@@ -93,22 +89,6 @@ class App {
 		let user = new Person(name,age);
 		this.users.push(user);
 
-		$(document).ready(function () {
-    	function init() {
-        if (localStorage["name"]) {
-            $('#name').val(localStorage["name"]);
-        }
-        if (localStorage["age"]) {
-            $('#age').val(localStorage["age"]);
-            document.getElementById("logname").innerHTML = localStorage.getItem("name");
-		        }
-		    }
-		    init();
-			});
-
-			$('.stored').keyup(function() {
-			    localStorage[$(this).attr('name')] = $(this).val();
-			});
 		// create list of products and categories for user
 
 		this.products = []; // user's available products
@@ -194,6 +174,7 @@ class App {
         }
       }
       return false;
+
     });
   })
 
@@ -394,17 +375,7 @@ class App {
 			$('#basketQuantity').show(200);
 		} 
 	}
-
-
-	clickLogOut(){
-		localStorage.clear();
-		this.products = [];
-		this.categories = [];
-		this.users = [];
-		this.categoryByName = {};
-	}
 }
-
 
 
 //1. Create an app to start the application
