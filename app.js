@@ -66,11 +66,16 @@ class App {
 			this.allCategoryByName[category.name] = category;
 		}
 
+
+		$(document).ready(function(){
+        $("#myModal").modal({show: true, backdrop: 'static', keyboard: false});
+
+		});
+
 		this.users = [];
 		
 		new AllaDrycker();
 		new StartPage();
-	
 		new Varukorg1();
 
 		this.fillCartFromSession();
@@ -88,6 +93,22 @@ class App {
 		let user = new Person(name,age);
 		this.users.push(user);
 
+		$(document).ready(function () {
+    	function init() {
+        if (localStorage["name"]) {
+            $('#name').val(localStorage["name"]);
+        }
+        if (localStorage["age"]) {
+            $('#age').val(localStorage["age"]);
+            document.getElementById("logname").innerHTML = localStorage.getItem("name");
+		        }
+		    }
+		    init();
+			});
+
+			$('.stored').keyup(function() {
+			    localStorage[$(this).attr('name')] = $(this).val();
+			});
 		// create list of products and categories for user
 
 		this.products = []; // user's available products
@@ -373,7 +394,17 @@ class App {
 			$('#basketQuantity').show(200);
 		} 
 	}
+
+
+	clickLogOut(){
+		localStorage.clear();
+		this.products = [];
+		this.categories = [];
+		this.users = [];
+		this.categoryByName = {};
+	}
 }
+
 
 
 //1. Create an app to start the application

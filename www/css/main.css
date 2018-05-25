@@ -1,10 +1,9 @@
 .modal-backdrop { 
-  background-image: url("https://images.unsplash.com/photo-1516491575772-bab9f75948c0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=67c8699f273e4051d9ab9e19c6c83614&auto=format&fit=crop&w=1950&q=80"); 
+  background-image: url("https://images.unsplash.com/photo-1457518919282-b199744eefd6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=684e49aa614d5ae3052d43bc4aa0f286&auto=format&fit=crop&w=1920&q=80"); 
   z-index: 10000;
-} 
+}  
  
 .modal-content {
-   background-image: url("https://images.unsplash.com/photo-1522224050657-33e363782179?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d62e994e28ca145369a54febce32f39a&auto=format&fit=crop&w=2468&q=80"); 
    top: 150px; 
    width: 100%; 
    height: 450px; 
@@ -72,11 +71,6 @@ nav.navbar {
     padding: .2rem 2rem
   }
 } 
-
-/*.container {
-  position: relative;
-  z-index: -1;
-}*/
 
 
 .vertical-align {
