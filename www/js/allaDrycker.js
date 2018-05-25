@@ -79,6 +79,7 @@ module.exports = class AllaDrycker {
 		if(toSearchFor){ 
 			$('#search').val(toSearchFor);
 			products = app.searchFunction(toSearchFor);
+			$("#element3").hide();
 		}
 	
 		let qty;
