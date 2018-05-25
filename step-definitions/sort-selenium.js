@@ -7,9 +7,11 @@ module.exports = function() {
 	let {$, sleep} = require('./funcs');
     
 
-    this.Given(/^I am on the allaDrycker\.html$/, function async (callback) {
+   
+
+    this.Given(/^I am on the "([^"]*)"$/, async function (arg1) {
          // Write code here that turns the phrase above into concrete actions
-         callback();
+        
     });
 
 

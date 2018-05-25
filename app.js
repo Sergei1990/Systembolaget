@@ -68,7 +68,7 @@ class App {
 		}
 
 		this.users = [];
-		
+		new Index();
 		new AllaDrycker();
 		new StartPage();
 		new Varukorg();
@@ -92,7 +92,8 @@ class App {
 	addUser(name,age){
 		let user = new Person(name,age);
 		this.users.push(user);
-
+	
+		
 		// create list of products and categories for user
 
 		this.products = []; // user's available products
