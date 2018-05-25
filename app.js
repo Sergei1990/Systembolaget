@@ -150,7 +150,7 @@ class App {
     	word = word.toLowerCase();
 
     	// CHANGE FROM this.allProducts TO this.products as as soon as app.addUser works!
-    	let a =  this.allProducts.filter(function(product){
+    	let a =  this.products.filter(function(product){
     		let name = ''; 
     		if (typeof product.namn === 'string'){ name += product.namn; }
     		if (typeof product.namn2 === 'string'){ name += ' ' + product.namn2; }
