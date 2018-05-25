@@ -6,9 +6,6 @@ module.exports = class Varukorg {
 
 		// Don't run in node js
 		if(typeof window !== "object"){ return; }
-
-		// let user = app.addUser("Vasja", 17);//temporary
-	    // localStorage.setItem("userName", "Vasja"); //temporary 
   
 	  	this.loadAddedProducts();
 
