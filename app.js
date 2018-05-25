@@ -9,7 +9,7 @@ var Category = require('./category.js');
 var ShoppingCart = require('./shopping-cart.js');
 var AllaDrycker = require('./www/js/allaDrycker.js');
 var StartPage = require('./www/js/startPage.js');
-var Varukorg = require('./www/js/varukorg.js')
+var Varukorg = require('./www/js/varukorg.js');
 
 class App {
 
@@ -34,6 +34,7 @@ class App {
 				productData = await require('./json/sortiment.json');
 				categoryData = await require('./json/categories.json');
 				this.constructorContinued(productData, categoryData);
+				this.allProductsLoaded = true;
 			})();
 		} else {
 			productData = require('./json/sortiment.json');
@@ -77,16 +78,14 @@ class App {
 		
 		// Don't run in node js
 		if(typeof window !== "object"){ return; }
-  this.inBrowser = typeof window === 'object';
-    $("#logUtLink").click(()=>{
+  
+  		this.inBrowser = typeof window === 'object';
+    	$("#logUtLink").click(()=>{
 			this.removeUser(app.users[0]);
-    if(!this.inBrowser){ return; }
-		
 		});
 
 		$(document).ready(function(){
-        $("#myModal").modal({show: true, backdrop: 'static', keyboard: false});
-
+        	$("#myModal").modal({show: true, backdrop: 'static', keyboard: false});
 		});
 	} //constructorContinued
 
@@ -146,49 +145,17 @@ class App {
     // A simple for search throug all string properties of a product
     // and number properties converted to strings
 
-    word = word.toLowerCase();
+    	word = word.toLowerCase();
 
-    return this.allProducts.filter(function(product){
-      for(let key in product){
-        let val = product[key];
-        if(typeof val === 'number'){
-          // convert number to string
-          val += '';
-        }
-        // if still not a string do not search this property
-        if(typeof val !== 'string'){ continue; }
-        // check if the val includes the search word
-        if(val.toLowerCase().includes(word)){
-          return true;
-        }
-      }
-      return false;
-
- return this.allCategories.filter(function(product){
-      for(let key in product){
-        let val = product[key];
-        if(typeof val === 'number'){
-          // convert number to string
-          val += '';
-        }
-        // if still not a string do not search this property
-        if(typeof val !== 'string'){ continue; }
-        // check if the val includes the search word
-        if(val.toLowerCase().includes(word)){
-          return true;
-        }
-      }
-      return false;
-
-    });
-  })
-}
-
-
-
-
-
-
+    	// CHANGE FROM this.allProducts TO this.products as as soon as app.addUser works!
+    	let a =  this.allProducts.filter(function(product){
+    		let name = ''; 
+    		if (typeof product.namn === 'string'){ name += product.namn; }
+    		if (typeof product.namn2 === 'string'){ name += ' ' + product.namn2; }
+    		return name.toLowerCase().includes(word);
+    	});
+    	return a;
+  	}
 
 	filterFunction(category, // name or null (array of strings or null)
 						 country,  // name or null (array of strings or null)
@@ -383,8 +350,9 @@ class App {
 }
 
 
+
 //1. Create an app to start the application
-let app = new App();
+var app = new App();
 module.exports = app;
 // 2. Ask the user about the quick registration to see the products list (new Person(name, age))
 

@@ -3,9 +3,9 @@ var app = require('../../app.js');
 module.exports = class AllaDrycker {
 
 	constructor() {
-    	 this.inBrowser = typeof window === 'object';
+    // 	 this.inBrowser = typeof window === 'object';
 
-    if(!this.inBrowser){ return; }
+    // if(!this.inBrowser){ return; }
 	  	let user = app.addUser("Vasja", 21);//temporary
 	  	localStorage.setItem("userName", "Vasja"); //temporary
 	  	this.quantityOfProductOnPage = 0;
@@ -18,12 +18,12 @@ module.exports = class AllaDrycker {
 		// show the productlist "later" to prevent lag
 		setTimeout(()=>{
 			$('#productDescription').empty();
-			this.loadProducts();
+			let interval = setInterval(() => {
+				if(!app.allProductsLoaded){ return; }
+				clearInterval(interval);
+				this.loadProducts();
+			}, 100);
 		}, 0);
-
-		$('#searchbutton').click(()=>{
-			this.searchProducts();
-		});
 	
 
 		$("#showMore").click((e)=>{
@@ -32,6 +32,8 @@ module.exports = class AllaDrycker {
 			//this.showMoreProducts();
 			this.loadProducts();
 	 	});
+
+
 
 				 	
 
@@ -59,18 +61,20 @@ module.exports = class AllaDrycker {
 		});	
 
 	}
-
-	searchProducts(){
-		let search = $('#search').val();
-	  	let products = app.filterFunction([search], [search], null, null);
-	  	this.displayProducts(products);	
-	}	
+		
 
 	loadProducts(){
 	
 		let $div = $('#productDescription');
 	  	// $div.empty();
 	  	let products = app.products.slice(this.quantityOfProductOnPage); 
+
+	  	// Check if this is a search and then let products be the result of the search instead
+		let toSearchFor = decodeURIComponent(location.search.substr(location.search.indexOf('searchinput=') + 'searchinput='.length).split('&')[0]);
+		if(toSearchFor){ 
+			$('#search').val(toSearchFor);
+			products = app.searchFunction(toSearchFor);
+		}
 	
 		let qty;
 

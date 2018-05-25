@@ -65,24 +65,18 @@ module.exports = function(){
        });
 
   let sortedByName;
-  this.When(/^the user sort by name$/, function (callback) {
-        searchResult = app.searchFunction('Anchor Steam').products;
-          sortedByName = app.sortByName();
-
-          callback();
+  this.When(/^the user searches by name$/, function (callback) {
+        searchResult = app.searchFunction('Anchor Steam');
+        callback();
 
        });
         
 
-  this.Then(/^the search result list sorts after names$/, function (callback) {
+  this.Then(/^the search result list should be correct according to the sortiment$/, function (callback) {
 
 
-        let sortedByNameForThisTest = searchResult.slice().sort(function(a, b){
-            return a.namn > b.namn ? 1 : -1;
-        });
-
-
-         assert.deepEqual(sortedByNameForThisTest, sortedByName, "Not correctly sorted by name!");
+        assert(searchResult.length === 1, "Didn't find exactly ONE Anchor Steam");
+        assert(searchResult[0].namn === "Anchor Steam Beer",'Found the wrong product.');  
 
          callback();
        });

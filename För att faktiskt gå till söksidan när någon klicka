@@ -1,0 +1,9 @@
+För att faktiskt gå till söksidan när någon klickat på sök
+
+let searchPhrase = "Möet & Chadon" // läs från input fält
+location.href = '/AllaDrycker.html?searchinput=' + encodeURIComponent(searchPhrase)
+
+
+För att läsa av vad som står efter searchinput= in en URL
+
+let toSearchFor = decodeURIComponent(location.search.substr(location.search.indexOf('searchinput=') + 'searchinput='.length).split('&')[0]);

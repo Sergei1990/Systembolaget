@@ -14,5 +14,5 @@ Feature: Create search function
 
 	Scenario:
 		Given that a user have a search result of all beer in the online store
-		When the user sort by name
-		Then the search result list sorts after names
+		When the user searches by name
+		Then the search result list should be correct according to the sortiment
