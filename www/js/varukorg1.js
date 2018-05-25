@@ -2,6 +2,9 @@ module.exports = class Varukorg1 {
 
 	constructor() {
 
+		// Don't run in node js
+		if(typeof window !== "object"){ return; }
+
 		let user = app.addUser("Vasja", 17);//temporary
 	  	localStorage.setItem("userName", "Vasja"); //temporary
 		// setTimeout(()=>{
@@ -16,8 +19,7 @@ module.exports = class Varukorg1 {
 
 	loadAddedProducts(){
 
-		// Don't run in node js
-		if(typeof window !== "object"){ return; }
+		
 
 		let container = $("#addedProducts");
 	
