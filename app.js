@@ -9,7 +9,7 @@ var Category = require('./category.js');
 var ShoppingCart = require('./shopping-cart.js');
 var AllaDrycker = require('./www/js/allaDrycker.js');
 var StartPage = require('./www/js/startPage.js');
-var Varukorg1 = require('./www/js/varukorg1.js');
+var Varukorg = require('./www/js/varukorg.js');
 
 class App {
 
@@ -67,16 +67,13 @@ class App {
 		}
 
 
-		$(document).ready(function(){
-        $("#myModal").modal({show: true, backdrop: 'static', keyboard: false});
-
-		});
+		
 
 		this.users = [];
 		
 		new AllaDrycker();
 		new StartPage();
-		new Varukorg1();
+		new Varukorg();
 
 		this.fillCartFromSession();
 
@@ -86,6 +83,11 @@ class App {
 
 		$("#logUtLink").click(()=>{
 			this.clickLogOut();
+		});
+
+		$(document).ready(function(){
+        $("#myModal").modal({show: true, backdrop: 'static', keyboard: false});
+
 		});
 	} //constructorContinued
 

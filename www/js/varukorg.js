@@ -1,24 +1,22 @@
-module.exports = class Varukorg1 {
+module.exports = class Varukorg {
+
 
 	constructor() {
 
+console.log("hej");
 		// Don't run in node js
 		if(typeof window !== "object"){ return; }
 
-		let user = app.addUser("Vasja", 17);//temporary
-	  	localStorage.setItem("userName", "Vasja"); //temporary
-		// setTimeout(()=>{
-		// 	this.loadAddedProducts();
-		// }, 2000);
-        // }	 
+		// let user = app.addUser("Vasja", 17);//temporary
+	    // localStorage.setItem("userName", "Vasja"); //temporary 
   
 	  	this.loadAddedProducts();
+
 
 	  	
 	} //constructor
 
 	loadAddedProducts(){
-
 		
 
 		let container = $("#addedProducts");
