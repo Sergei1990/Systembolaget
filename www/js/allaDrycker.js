@@ -5,9 +5,18 @@ module.exports = class AllaDrycker {
 	constructor() {
     	 this.inBrowser = typeof window === 'object';
 
+		// Don't run in node js
+		if(typeof window !== "object"){ return; }
+
+        let name = localStorage.getItem("userName");
+        let age = localStorage.getItem("userAge");
+        if (!name && !age){
+        	return
+        }
+	  	app.addUser(name, age/1);
+	  	// localStorage.setItem("userName", "Vasja"); //temporary
+
     if(!this.inBrowser){ return; }
-	  	let user = app.addUser("Vasja", 21);//temporary
-	  	localStorage.setItem("userName", "Vasja"); //temporary
 	  	this.quantityOfProductOnPage = 0;
 	 	this.quantityToShow = 50;
 	 	this.totalQuantityInShoppingCart;

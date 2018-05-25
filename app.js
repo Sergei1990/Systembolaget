@@ -9,7 +9,8 @@ var Category = require('./category.js');
 var ShoppingCart = require('./shopping-cart.js');
 var AllaDrycker = require('./www/js/allaDrycker.js');
 var StartPage = require('./www/js/startPage.js');
-var Varukorg = require('./www/js/varukorg.js')
+var Varukorg = require('./www/js/varukorg.js');
+var Index = require('./www/js/index.js');
 
 class App {
 
@@ -67,7 +68,7 @@ class App {
 		}
 
 		this.users = [];
-		
+		new Index();
 		new AllaDrycker();
 		new StartPage();
 		new Varukorg();
@@ -93,7 +94,8 @@ class App {
 	addUser(name,age){
 		let user = new Person(name,age);
 		this.users.push(user);
-
+	
+		
 		// create list of products and categories for user
 
 		this.products = []; // user's available products
@@ -384,7 +386,7 @@ class App {
 
 
 //1. Create an app to start the application
-let app = new App();
+var app = new App();
 module.exports = app;
 // 2. Ask the user about the quick registration to see the products list (new Person(name, age))
 
