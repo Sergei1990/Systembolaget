@@ -3,7 +3,7 @@ module.exports = class Varukorg {
 
 	constructor() {
 
-console.log("hej");
+
 		// Don't run in node js
 		if(typeof window !== "object"){ return; }
 
