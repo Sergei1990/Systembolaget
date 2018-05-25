@@ -83,6 +83,11 @@ class App {
     if(!this.inBrowser){ return; }
 		
 		});
+
+		$(document).ready(function(){
+        $("#myModal").modal({show: true, backdrop: 'static', keyboard: false});
+
+		});
 	} //constructorContinued
 
 	addUser(name,age){
