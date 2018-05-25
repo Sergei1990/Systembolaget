@@ -10,6 +10,7 @@ var ShoppingCart = require('./shopping-cart.js');
 var AllaDrycker = require('./www/js/allaDrycker.js');
 var StartPage = require('./www/js/startPage.js');
 var Varukorg = require('./www/js/varukorg.js');
+var Index = require('./www/js/index.js');
 
 class App {
 
