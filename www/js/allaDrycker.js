@@ -87,7 +87,7 @@ module.exports = class AllaDrycker {
 			$div.append(
 				 '<div class="row pt-1 vertical-align bg-light">'
 				+   '<div class="prodPicture col-md-2">'
-				+       '<img src="www/img/11.jpg" alt="Picture">'
+				+       '<img src="www/img/alcoholpic.jpg" alt="Picture">'
 				+   '</div>'
 				+   '<div id="prodName' + this.quantityOfProductOnPage + '" class="col-md-3 font-weight-bold">'
 				+       '<p>' + products[i].namn + '</p>'
