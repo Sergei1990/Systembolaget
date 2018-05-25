@@ -85,7 +85,7 @@ class App {
 		if(typeof window !== "object"){ return; }
 
 		$("#logUtLink").click(()=>{
-			this.removeUser(app.users[0]);
+			this.clickLogOut();
 		});
 	} //constructorContinued
 
