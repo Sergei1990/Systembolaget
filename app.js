@@ -18,11 +18,26 @@ class App {
 
 		// emulate som frontend only objects in Node.js
 		// so that our tests doesn't break
-		if(typeof window === "undefined"){
+		if (typeof window === "undefined"){
+
 			// we are running in Node.js
 			global.localStorage = {
-				getItem : function(){},
-				setItem : function(){},
+
+				// data : {},
+				// getItem : function(key){
+				// 	console.log("I am in get");
+				// 	return this.data[key];
+
+				// },
+				// setItem : function(key, value){
+				// 	this.data[key] = value;
+				// 	console.log("I am in set");
+				// },
+				// clear: function(){
+				// 	this.data = {};
+				// }
+				getItem: function(){},
+				setItem: function(){},
 				clear: function(){}
 			};
 		}
@@ -88,6 +103,8 @@ class App {
 		$(document).ready(function(){
         	$("#myModal").modal({show: true, backdrop: 'static', keyboard: false});
 		});
+
+
 	} //constructorContinued
 
 	addUser(name,age){
@@ -348,8 +365,107 @@ class App {
 			$('#basketQuantity').text(totalQuanBottlesSession);
 			$('#basketQuantity').show(200);
 		} 
-	}
-}
+	}//fillCartFromSession()
+
+	sortProducts(option, productsToSort){ //option: "az", "za", "highPrice", "lowPrice", "land"
+
+		let sortArray = [];
+
+		if (option == "az"){
+
+			sortArray = productsToSort.sort(function(product1, product2){
+				let namePr1;
+				let namePr2;
+				if (isNaN(product1.namn))
+					namePr1 = product1.namn.toUpperCase();
+				else 
+					namePr1 = product1.namn
+
+				if (isNaN(product2.namn))
+					namePr2 = product2.namn.toUpperCase();
+				else 
+					namePr2 = product1.namn
+
+				if (namePr1 < namePr2) {
+				    return -1;
+				}
+				  if (namePr1 > namePr2) {
+				    return 1;
+				}
+				  // names must be equal
+				return 0; 
+			});
+		} //option == "az"
+
+		if (option == "za"){
+			sortArray = productsToSort.sort(function(product1, product2){
+				let namePr1;
+				let namePr2;
+				if (isNaN(product1.namn))
+					namePr1 = product1.namn.toUpperCase();
+				else 
+					namePr1 = product1.namn
+
+				if (isNaN(product2.namn))
+					namePr2 = product2.namn.toUpperCase();
+				else 
+					namePr2 = product1.namn
+
+				if (namePr1 > namePr2) {
+				    return -1;
+				}
+				  if (namePr1 < namePr2) {
+				    return 1;
+				}
+				  // names must be equal
+				return 0; 
+			});
+		}
+
+		if (option == "highPrice"){
+			
+			sortArray = productsToSort.sort(function(product1, product2) {
+		  		return product2.prisinklmoms - product1.prisinklmoms;
+			});
+		}
+
+		if (option == "lowPrice"){
+			sortArray = productsToSort.sort(function(product1, product2) {
+		  		return product1.prisinklmoms - product2.prisinklmoms;
+			});
+		}
+
+		if (option == "land"){
+			sortArray = productsToSort.sort(function(product1, product2){
+				// let namePr1;
+				// // let namePr2;
+				// if (isNaN(product1.namn))
+					let countryPr1 = product1.ursprunglandnamn.toUpperCase();
+				// else 
+				// 	namePr1 = product1.namn
+
+				// if (isNaN(product2.namn))
+					let countryPr2 = product2.ursprunglandnamn.toUpperCase();
+				// else 
+				// 	namePr2 = product1.namn
+
+				if (countryPr1 < countryPr2) {
+				    return -1;
+				}
+				  if (countryPr1 > countryPr2) {
+				    return 1;
+				}
+				  // names must be equal
+				return 0; 
+			});
+
+		}
+
+		return sortArray;
+
+	}//sortProducts()
+
+} //class
 
 
 

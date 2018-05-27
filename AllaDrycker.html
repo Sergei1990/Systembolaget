@@ -27,9 +27,9 @@
   <script src="./shopping-cart.js"></script> 
   <script src="./category.js"></script> 
   <script src="./person.js"></script>
-  <script src="./www/js/allaDrycker.js"></script>
   <script src="./www/js/varukorg.js"></script>
   <script src="./www/js/startPage.js"></script>
+  <script src="./www/js/allaDrycker.js"></script>
   <script src="./app.js"></script>
 
 </head>
@@ -90,7 +90,7 @@
 
         <div class="row pb-1" id="element1">
 
-          <div id = "sort" class="col-md-6">
+          <div id = "sort" class="col-lg-6 col-6">
 
             <div  class="text-center mt-1">
               <button id = "sortButton" class="btn btn-secondary my-2 my-sm-0" type="submit">Sortering</button>
@@ -104,23 +104,23 @@
                   <div class="form-group">
                     <div class="custom-control custom-radio">
                       <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked="">
-                      <label class="custom-control-label" for="customRadio1">A-Z</label>
+                      <label id="customLabel1" class="custom-control-label" for="customRadio1">A-Z</label>
                     </div>
                     <div class="custom-control custom-radio">
-                      <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                      <label class="custom-control-label" for="customRadio2">Z-A</label>
+                      <input type="radio" id="customRadio2"  name="customRadio" class="custom-control-input">
+                      <label id="customLabel2" class="custom-control-label" for="customRadio2">Z-A</label>
                     </div>
                     <div class="custom-control custom-radio">
                       <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
-                      <label class="custom-control-label" for="customRadio3">Högsta priser</label>
+                      <label id="customLabel3" class="custom-control-label" for="customRadio3">Högsta priser</label>
                     </div>
                     <div class="custom-control custom-radio">
                       <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
-                      <label class="custom-control-label" for="customRadio4">Lägsta priser</label>
+                      <label id="customLabel4" class="custom-control-label" for="customRadio4">Lägsta priser</label>
                     </div>
                     <div class="custom-control custom-radio">
                       <input type="radio" id="customRadio5" name="customRadio" class="custom-control-input">
-                      <label class="custom-control-label" for="customRadio5">Ursprungsland</label>
+                      <label id="customLabel5" class="custom-control-label" for="customRadio5">Ursprungsland</label>
                     </div>            
                   </div> <!-- class="form-group"  -->       
                 </fieldset>
@@ -134,7 +134,7 @@
 
           </div> <!-- id = "sort" -->
 
-          <div id = "filter" class="col-md-6">
+          <div id = "filter" class="col-lg-6 col-6">
             <div class="text-center mt-1">
                <button id = "filterButton" class="btn btn-secondary my-2 my-sm-0" type="submit">Filtrering</button>
             </div>

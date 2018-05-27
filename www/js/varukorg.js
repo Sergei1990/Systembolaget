@@ -33,7 +33,7 @@ module.exports = class Varukorg {
 		    	container.append(
 		    		'<div class="row vertical-align mb-1 bg-light">'
 		    		    + '<div class="d-none d-md-block col-lg-3">'
-						+    '<img src="www/img/11.jpg" alt="Picture">'
+						+    '<img src="www/img/alcoholpic.jpg" alt="Picture">'
 						+ '</div>'
 		    			+ '<div class="col-lg-3 text-lg-left col-md-12 text-center font-weight-bold">'
 		    			+    '<p>' + app.products[ind].namn + '</p>'

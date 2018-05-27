@@ -13,13 +13,11 @@ module.exports = class Index {
 
 	logIn(){
 		let name =  $('#name').val();
-		console.log(name);
 		
 		let age =  $('#age').val();
-		console.log(age);
 		if (name == "" || age == "")
 			{
-				return
+				location.href = 'http://localhost:3000/index.html';
 			}
 		else{
 			
