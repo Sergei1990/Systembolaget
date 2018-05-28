@@ -103,7 +103,7 @@ class App {
 		$(document).ready(function(){
         	$("#myModal").modal({show: true, backdrop: 'static', keyboard: false});
         	//Make button disabled
-		      $("button[type=submit]").attr("disabled", "disabled");
+		      $("button[type=button]").attr("disabled", "disabled");
 		      
 		      $('input, text').change(function(){
 		       // Validate the inputs
@@ -122,7 +122,7 @@ class App {
  
             // If form is validated enable form
             if(Validate == true) { 
-				$("button[type=submit]").removeAttr("disabled");
+				$("button[type=button]").removeAttr("disabled");
 	      	}
       	});
  
