@@ -20,6 +20,7 @@ module.exports = function() {
         assert(fieldAge, "The #age-input-field doesn't exist");
         if(fieldAge){
         	await fieldAge.sendKeys(arg2);
+            await fieldName.click();
         }
 
         let button = await $("#welcomeBtn");
