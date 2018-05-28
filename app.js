@@ -102,7 +102,33 @@ class App {
 
 		$(document).ready(function(){
         	$("#myModal").modal({show: true, backdrop: 'static', keyboard: false});
-		});
+        	//Make button disabled
+		      $("button[type=submit]").attr("disabled", "disabled");
+		      
+		      $('input, text').change(function(){
+		       // Validate the inputs
+            	let Validate;
+			
+			    let name = $('#name').val();
+			    let age = $('#age').val();
+			
+            	if ( name == ' ' && age == ' ' ) {
+                  Validate = false;
+            } 
+             
+            else if ( name != '' && age != '' ) {   
+                  	Validate = true;
+	     	}
+ 
+            // If form is validated enable form
+            if(Validate == true) { 
+				$("button[type=submit]").removeAttr("disabled");
+	      	}
+      	});
+ 
+		      $('input:first').trigger('change');
+
+			});
 
 
 	} //constructorContinued
