@@ -3,15 +3,15 @@ Feature: Clicking on navbar pages
 
 	Scenario Outline: Click on a menu pages and see that the page changes
 		Given that I am on a startpage
-		When I click on a page <page>
-		Then a page displays <text>
+		When I click on a page "<page>"
+		Then a page displays "<text>"
 
 		Examples:
-		| page                                   | text                  |
-		| http://localhost:3000/index.html       | Rött vin              |
-		| http://localhost:3000/AllaDrycker.html | Nils Oscar Alkoholfri |
-		| http://localhost:3000/OmOss.html       | Om Alco Silk Road     |
-		| http://localhost:3000/Varukorg.html    | Gatuadress            |
+		| page         | text                  |
+		| #mainPage    | Rött vin              |
+		| #allaDrycker | Sortering             |
+		| #omOss       | Om Alco Silk Road     |
+		| #varukorg    | Gatuadress            |
 
 	Scenario: Click on search field and write something
 		Given that I am on the mainpage
