@@ -100,23 +100,22 @@
             
             <div class="modal-body text-center text-white bg-dark">
                 <h2>Välkommen!</h2>
-                <p>Denna webbsida innehåller information om alkoholdrycker. 
+                <p>Denna webbsida innehåller information om alkoholhaltiga drycker. 
                     För att se sortimentet måste du ange ditt namn och din ålder.
 
-                    För att se alla drycker måste du vara över 20 år.
+                    För att få tillgång till alla drycker måste du vara över 20 år.
                     För dig som är under 20 år går det bra att handla alkoholfritt.</p>
                 
-                    <div id="login-form" action="#">
+                    <div id="login-form text-center" action="#">
                     <div class="control-group">
-                      <label for="name">Namn:</label>
-                      <input class="input-xlarge stored" type="text" name="name" id="name" placeholder="Joline" />
+                      <label for="name" class="grey-text">Namn</label>
+                      <input class="form-control" type="text" name="name" id="name" placeholder="Joline">
                     </div>
-                    <label for="age">Ålder:</label>
-                      <input class="input-xlarge stored" type="number" name="age" id="age" placeholder="20" />
+                      <label for="age" class="grey-text mt-2">Ålder</label>
+                      <input class="form-control" type="text" name="age" id="age" placeholder="20">
                     </div>
-                    <div class="modal-footer">
-                    <button id = "welcomeBtn" type="button" class="btn btn-success" onclick="location.href='startpage.html';">Välkommen</button>
-                      <div class="modal-image"> <img src="www/img/modal-logo-beer.png">
+                    <div class="m-footer d-block mt-3">
+                    <button id = "welcomeBtn" type="submit" class="btn btn-success" onclick="location.href='startpage.html';">Välkommen</button>
             </div>
         </div>
     </div>

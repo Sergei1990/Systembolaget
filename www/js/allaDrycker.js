@@ -13,9 +13,11 @@ module.exports = class AllaDrycker {
         
    		if (!name || !age){
         	return
+        	
         }
 
 	  	app.addUser(name, age/1);
+	  	document.getElementById("logname").innerHTML = localStorage.getItem("userName");
 	  	
 	  	this.productsToDisplay = [];
 	  	this.quantityOfProductOnPage = 0;
