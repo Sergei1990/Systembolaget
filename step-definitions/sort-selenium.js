@@ -56,9 +56,8 @@ module.exports = function() {
         optionID = arg1;
         let sortOption = await $(optionID);
   		await sortOption.click();
-        await sleep (2000);
+        // await sleep (2000);
         	       
-    	// }
     });
 
     this.When(/^click on the OK\-button "([^"]*)"$/, async function (arg1) {
