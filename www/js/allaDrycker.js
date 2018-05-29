@@ -50,6 +50,7 @@ module.exports = class AllaDrycker {
 
 	 	$("#sortOk").click(()=>{
 	 		this.quantityOfProductOnPage = 0;
+	 		$('#productDescription').empty();
 
 	 		let sortArray = [];
 	 		
@@ -92,6 +93,14 @@ module.exports = class AllaDrycker {
         	else
         		$("#countriesListFilter").hide(200);    
         });
+
+        $('#filtreringOK').click(()=>{
+        	$('#filterOptions').hide(200);
+			$("#countriesListFilter").hide(200);
+			$("#categoriesListFilter").hide(200);
+			$("#pricesListFilter").hide(200);
+        	this.filterWithOptions();	
+		});	
 				 	
 
 	} //constructor
@@ -105,41 +114,43 @@ module.exports = class AllaDrycker {
 		$("#pricesListFilter").hide();
 
 		$('#sortButton').click(function() {
-			$('#sortOptions').show(200);	
+			$('#sortOptions').show(200);
 		});
 
 		$('#filterButton').click(function() {
-			$('#filterOptions').show(200);	
+			$('#filterOptions').show(200);
+			if ($('#customCheck2').prop("checked"))   
+        		$("#pricesListFilter").show(200);
+        	if ($('#customCheck3').prop("checked"))    
+        		$("#categoriesListFilter").show(200);
+        	if ($('#customCheck4').prop("checked"))     
+        		$("#countriesListFilter").show(200);	
 		});
 
 		$('#sorteringOK').click(function() {
 			$('#sortOptions').hide(200);	
 		});
-
-		$('#filtreringOK').click(function() {
-			$('#filterOptions').hide(200);
-			$("#countriesListFilter").hide(200);
-			$("#categoriesListFilter").hide(200);
-			$("#pricesListFilter").hide(200);	
-		});	
-
 	}
 		
 
 	loadProducts(){
 	
 		let $div = $('#productDescription');
-	  	$div.empty();
-	  	let products = this.productsToDisplay.slice(this.quantityOfProductOnPage); 
+
+	  	let products; 
 
 	  	// Check if this is a search and then let products be the result of the search instead
 		let toSearchFor = decodeURIComponent(location.search.substr(location.search.indexOf('searchinput=') + 'searchinput='.length).split('&')[0]);
 		if(toSearchFor){ 
 			$('#search').val(toSearchFor);
 			products = app.searchFunction(toSearchFor);
+			$('#productDescription').empty();
+			this.quantityOfProductOnPage = 0;
 			$("#element3").hide();
 		}
-	
+		else{
+			products = this.productsToDisplay.slice(this.quantityOfProductOnPage); 
+		}
 		let qty;
 
 		if (products.length < this.quantityToShow)
@@ -183,9 +194,16 @@ module.exports = class AllaDrycker {
 			});
 			
 		    this.quantityOfProductOnPage++;
+
 		    if (this.productsToDisplay.length == this.quantityOfProductOnPage)
-				$("#element3").hide();		
-		}		
+				$("#element3").hide();
+			else
+				$("#element3").show();
+
+		} //for	
+
+		console.log("this.quantityOfProductOnPage", this.quantityOfProductOnPage);
+console.log("this.productsToDisplay.length", this.productsToDisplay.length);	
 	}// loadProducts()
 
 
@@ -230,13 +248,11 @@ module.exports = class AllaDrycker {
 				$("#catLF").append(	
 					  '<div class="custom-control custom-checkbox  d-lg-inline-block align-top col-lg-3">'
 					+     '<input type="checkbox" class="custom-control-input" id="catCustomCheck' + i + '">'
-	                +     '<label class="custom-control-label" for="catCustomCheck' + i + '">' + categoriesInFiltering[i] + '</label>'	
+	                +     '<label id="labCatCustomCheck' + i + '" class="custom-control-label" for="catCustomCheck' + i + '">' + categoriesInFiltering[i] + '</label>'	
 					+'</div>'
 				);
 			}
 
-
-///////////////////////////////////////////////////////////////////////////////////////
             //Prices pricesListFilter
 			$("#pricesListFilter").append(
 			     '<div class="col-lg-12 mb-1">Välj priser:</div>'  
@@ -244,27 +260,26 @@ module.exports = class AllaDrycker {
 				+   '<fieldset>'     
 				+      '<div class="form-group col-lg-12">'				
 				+         '<div class="custom-control custom-checkbox col-lg-3 d-lg-inline-block">'
+				+           '<input type="checkbox" class="custom-control-input" id="prCustomCheck0">'
+                +           '<label class="custom-control-label" for="prCustomCheck0">  <=100 SEK  </label>'	
+				+         '</div>'
+				+         '<div class="custom-control custom-checkbox col-lg-3 d-lg-inline-block">'
 				+           '<input type="checkbox" class="custom-control-input" id="prCustomCheck1">'
-                +           '<label class="custom-control-label" for="prCustomCheck1">  <=100 SEK  </label>'	
+                +           '<label class="custom-control-label" for="prCustomCheck1">  100 - 500 SEK  </label>'	
 				+         '</div>'
 				+         '<div class="custom-control custom-checkbox col-lg-3 d-lg-inline-block">'
 				+           '<input type="checkbox" class="custom-control-input" id="prCustomCheck2">'
-                +           '<label class="custom-control-label" for="prCustomCheck2">  100 - 500 SEK  </label>'	
+                +           '<label class="custom-control-label" for="prCustomCheck2">  500 - 1000 SEK  </label>'	
 				+         '</div>'
 				+         '<div class="custom-control custom-checkbox col-lg-3 d-lg-inline-block">'
 				+           '<input type="checkbox" class="custom-control-input" id="prCustomCheck3">'
-                +           '<label class="custom-control-label" for="prCustomCheck3">  500 - 1000 SEK  </label>'	
-				+         '</div>'
-				+         '<div class="custom-control custom-checkbox col-lg-3 d-lg-inline-block">'
-				+           '<input type="checkbox" class="custom-control-input" id="prCustomCheck4">'
-                +           '<label class="custom-control-label" for="prCustomCheck4">  >1000 SEK  </label>'	
+                +           '<label class="custom-control-label" for="prCustomCheck3">  >1000 SEK  </label>'	
 				+         '</div>'
 				+      '</div>' //class="form-group col-lg-12"
 				+   '</fieldset>' 
 				+'</div>' // div class="col-lg-12"
 	        ); 
-
-//////////////////////////////////////////////////////////////////////////////////		    
+	    
 			//Countries countriesListFilter
 			let countriesInFiltering = [];
 			countriesInFiltering.push(app.products[0].ursprunglandnamn);
@@ -301,17 +316,81 @@ module.exports = class AllaDrycker {
 				$("#clf").append(	
 				  '<div class="custom-control custom-checkbox d-lg-inline-block align-top col-lg-2">'
 				+     '<input type="checkbox" class="custom-control-input" id="countryCustomCheck' + i + '">'
-                +     '<label class="custom-control-label" for="countryCustomCheck' + i + '">' + countriesInFiltering[i] + '</label>'	
+                +     '<label id="labCountryCustomCheck' + i + '" class="custom-control-label" for="countryCustomCheck' + i + '">' + countriesInFiltering[i] + '</label>'	
 				+'</div>'
 				);
 			}
-
-			
-			// $("#countriesListFilter").append(
-			// 	countriesListFilter
-	  //       );  
-
-
 	} //loadFilters
+
+
+	filterWithOptions(){
+
+		this.quantityOfProductOnPage = 0;
+		$('#productDescription').empty();
+
+		let categoryOption = [];  // name or null (array of strings or null)
+		let countryOption = [];   // name or null (array of strings or null)
+		let inStore = [];  //true/false, null (array of booleans or null)
+		let priceLevel = []; // level 1 - <=100, level 2 - (100-500], level 3 - (500-1000], level 4 - >1000  or null
+							 // array of int or null
+		let filteredProducts = [];
+
+        // categories
+		if ($("#customCheck3").prop("checked")){
+			
+			let quantityOfCategories = $("#catLF").children().length;
+			for(let i = 0; i<quantityOfCategories; i++){
+				if ($("#catCustomCheck"+i).prop("checked")){
+					let categoryToPush = $("#labCatCustomCheck"+i).text();
+					categoryOption.push(categoryToPush);
+				}
+			}
+		}
+		else{
+			categoryOption = null;
+		}
+
+		// countries
+		if ($("#customCheck4").prop("checked")){
+		
+			let quantityOfCountries = $("#clf").children().length;
+			for(let i = 0; i<quantityOfCountries; i++){
+				if ($("#countryCustomCheck"+i).prop("checked")){
+					let countryToPush = $("#labCountryCustomCheck"+i).text();
+					countryOption.push(countryToPush);
+				}
+			}
+		}
+		else{
+			countryOption = null;
+		}
+
+		// inStore
+		if ($("#customCheck1").prop("checked")){
+			inStore.push(true);
+		}
+		else{
+			inStore = null;
+		}
+
+		// priceLevel
+		if ($("#customCheck2").prop("checked")){
+			for (let i = 0; i < 4; i++){
+				if ($("#prCustomCheck"+i).prop("checked")){
+					priceLevel.push(i+1);
+				}
+
+			}
+		}
+		else{
+			priceLevel = null;
+		}
+		filteredProducts = app.filterFunction(categoryOption, countryOption, inStore, priceLevel);
+
+		this.productsToDisplay = filteredProducts;
+		this.loadProducts();
+		
+
+	}//filterWithOptions
 
 } //class			

@@ -1,7 +1,7 @@
 class search {
 
   constructor(){
-    this.search = app.allproducts;
+    this.search = app.products;
   }
 
   search(word){
