@@ -21,7 +21,8 @@
     "tanjina": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/change-quantity.feature & exit 0",
     "validate-address": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/validate-homeaddress-checkout.feature & exit 0",
     "test-test": "node node_modules/selenium-cucumber-js/index.js -b chrome -f ./features/test.feature & exit 0",
-     "search-function": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/search-function.feature & exit 0",
+    "search-function": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/search-function.feature & exit 0",
+    "filter-selenium": "node node_modules/selenium-cucumber-js/index.js -b chrome -f ./features/filter-selenium.feature & exit 0",
     "sort-selenium": "node node_modules/selenium-cucumber-js/index.js -b chrome -f ./features/sort-selenium.feature & exit 0"
   },
   "author": "",

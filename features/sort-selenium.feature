@@ -7,18 +7,18 @@ Feature: Sortering of the products
 	Scenario Outline: Sort the products' list by parameter <parameter> 
 		Given that the user is "Anna" who is 22 years old 
 		And the user is on the "http://localhost:3000/AllaDrycker.html"
-	    When I click on "#sortButton"
+	    When user click on "#sortButton"
 	    And choose to sort the products by parameter with radio-button "<value>"
 	    And click on the OK-button "#sortOk"
 	    Then the list of the products is sorted according to the chosen parameter
 
         Examples:
-		| parameter     |value         |		
-		| A-Z           |#customLabel1 |
-		| Z-A           |#customLabel2 |
-		| Högsta priser |#customLabel3 |
-		| Lägsta priser |#customLabel4 |
-		| Ursprungsland |#customLabel5 |
+		| parameter        |value         |		
+		| A-Z              |#customLabel1 |
+		| Z-A              |#customLabel2 |
+		| Högsta priser    |#customLabel3 |
+		| Lägsta priser    |#customLabel4 |
+		| Ursprungsländerd |#customLabel5 |
 
 
 	

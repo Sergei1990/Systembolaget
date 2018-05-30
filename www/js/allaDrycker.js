@@ -36,7 +36,7 @@ module.exports = class AllaDrycker {
 				clearInterval(interval);
 				this.productsToDisplay = app.products;
 				this.loadProducts();
-				this.loadFilters(); //////////////////////////////////////////////////////////////////////
+				this.loadFilters(); 
 			}, 100);
 		}, 0);
 	
@@ -261,19 +261,19 @@ console.log("this.productsToDisplay.length", this.productsToDisplay.length);
 				+      '<div class="form-group col-lg-12">'				
 				+         '<div class="custom-control custom-checkbox col-lg-3 d-lg-inline-block">'
 				+           '<input type="checkbox" class="custom-control-input" id="prCustomCheck0">'
-                +           '<label class="custom-control-label" for="prCustomCheck0">  <=100 SEK  </label>'	
+                +           '<label class="custom-control-label" for="prCustomCheck0" id="prLabCheck0">  <=100 SEK  </label>'	
 				+         '</div>'
 				+         '<div class="custom-control custom-checkbox col-lg-3 d-lg-inline-block">'
 				+           '<input type="checkbox" class="custom-control-input" id="prCustomCheck1">'
-                +           '<label class="custom-control-label" for="prCustomCheck1">  100 - 500 SEK  </label>'	
+                +           '<label class="custom-control-label" for="prCustomCheck1" id="prLabCheck1">  100 - 500 SEK  </label>'	
 				+         '</div>'
 				+         '<div class="custom-control custom-checkbox col-lg-3 d-lg-inline-block">'
 				+           '<input type="checkbox" class="custom-control-input" id="prCustomCheck2">'
-                +           '<label class="custom-control-label" for="prCustomCheck2">  500 - 1000 SEK  </label>'	
+                +           '<label class="custom-control-label" for="prCustomCheck2" id="prLabCheck2">  500 - 1000 SEK  </label>'	
 				+         '</div>'
 				+         '<div class="custom-control custom-checkbox col-lg-3 d-lg-inline-block">'
 				+           '<input type="checkbox" class="custom-control-input" id="prCustomCheck3">'
-                +           '<label class="custom-control-label" for="prCustomCheck3">  >1000 SEK  </label>'	
+                +           '<label class="custom-control-label" for="prCustomCheck3" id="prLabCheck3">  >1000 SEK  </label>'	
 				+         '</div>'
 				+      '</div>' //class="form-group col-lg-12"
 				+   '</fieldset>' 
@@ -301,7 +301,7 @@ console.log("this.productsToDisplay.length", this.productsToDisplay.length);
 
 
 			$("#countriesListFilter").append(
-			    '<div class="mb-1 col-lg-12">Välj länder:</div>'
+			    '<div class="mb-1 col-lg-12">Välj ursprungsländer:</div>'
 			    +'<div class="col-lg-12">' 
 				+   '<fieldset>'     
 				+      '<div id="clf" class="form-group col-lg-12">'

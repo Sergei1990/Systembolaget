@@ -44,7 +44,7 @@ module.exports = function() {
         assert (URL == expectedURL, "The user is not on the page AllaDrycker")
     });
 
-    this.When(/^I click on "([^"]*)"$/, async function (arg1) {
+    this.When(/^user click on "([^"]*)"$/, async function (arg1) {
     	let sortBtn = await $(arg1);
         assert(sortBtn, "The " + arg1 + " doesn't exist");
         if (sortBtn) {
