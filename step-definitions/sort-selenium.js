@@ -53,13 +53,16 @@ module.exports = function() {
         await sleep(2000);
     });
 
-    this.When(/^choose to sort the products by parameter with radio\-button "([^"]*)"$/, async function (arg1) {
-        optionID = arg1;
-        let sortOption = await $(optionID);
-  		await sortOption.click();
-        // await sleep (2000);
-        	       
-    });
+    this.When(/^choose to sort the products by parameter "([^"]*)"$/, async function (arg1) {
+
+        let t = "//div[@id='sortOptions']//label[contains(text(),'" + arg1 + "')]";
+        //console.log(t);
+        let optionIDArray = await driver.findElements(by.xpath(t));
+        //console.log(optionIDArray);
+        assert(optionIDArray.length == 1, "There is several sorting options with the same name " + arg1 );
+        optionID = optionIDArray[0];
+        await optionID .click();
+       });
 
     this.When(/^click on the OK\-button "([^"]*)"$/, async function (arg1) {
         let sortOKbtn = await $(arg1);
@@ -150,7 +153,7 @@ module.exports = function() {
     		let countryArray =[];
             for (let i = 0; i<50; i++){
                 let div = await $("#prodCountry" + i);
-                assert(div, "No products on the page after sortering");
+                assert(div, "No products on the page after sorting");
                 if(div){
                     countryInDiv = await div.getText();
                     countryArray.push(countryInDiv.toLowerCase());
