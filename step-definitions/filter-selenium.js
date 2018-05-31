@@ -4,7 +4,6 @@ module.exports = function() {
 
     let {$, sleep} = require('./funcs');
 
-    let chosenParameter; //#prLabCheck2,    #labCatCustomCheck20
     let parameter;   //Kategorier
     let parameter1;  //Gin
     let parameter2;  //Brandy och Vinsprit
@@ -46,50 +45,73 @@ module.exports = function() {
                
     });
 
-    this.Then(/^parameter I lager "([^"]*)" is checked by default$/, async function (arg1) {
-        let checkedOption = await $(arg1);
-        let isChecked = await checkedOption.isSelected();
-        assert(isChecked, "Filtering's parameter I Lager is not checked by default");
+    this.Then(/^parameter "([^"]*)" is checked by default$/, async function (arg1) {
+       // let path ="//div[@id='filterOptions']//div[contains(label[contains(text(),'" + arg1 + "')])]//input[@type='checkbox']";
+        let pathLab = "//div[@id='filterOptions']//label[contains(text(),'" + arg1 + "')]";
+        let labelArray = await driver.findElements(by.xpath(pathLab));
+        assert(labelArray.length == 1, "There is several filter options with the same name " + arg1 );
+        let label = labelArray[0]; // webElement label
+        let ind = await label.getAttribute("id"); // id of label  optionCheck1
+        let indInput = ind.replace("option", "#custom"); //id+# of input #customCheck1
+        let input = await $(indInput);
+        let isChecked = await input.isSelected();
+        assert(isChecked, "Filtering's parameter '" + arg1 + "' is not checked by default");               
+        
     });
 
-    this.When(/^user choose to filter the products by "([^"]*)" "([^"]*)" with check\-box "([^"]*)"$/, async function (arg1, arg2, arg3) {
+    this.When(/^user choose to filter the products by "([^"]*)" "([^"]*)"$/, async function (arg1, arg2) {
+    
+        let pathLab;
         if (arg1 == "option"){
             parameter = arg2;
-            chosenParameter = arg3;
+            pathLab = "//div[@id='filterOptions']//label[contains(text(),'" + arg2 + "')]";
         }
-        if (arg1 == "option1"){
+        if (arg1 == "option1"){          
             parameter1 = arg2;
-            chosenParameter = arg3;
+            pathLab = "//div[@id='ListsOfFilters']//label[contains(text(),'" + arg2 + "')]";
         }
         if (arg1 == "option2"){
-            parameter2 = arg2; 
-            chosenParameter = arg3;
+            parameter2 = arg2;
+            pathLab = "//div[@id='ListsOfFilters']//label[contains(text(),'" + arg2 + "')]";
         }
-        let optionToFilter = await $(chosenParameter); 
-        assert(optionToFilter, "The checkbox " + chosenParameter + " doesn't exist");
-        await optionToFilter.click();
-        assert(optionToFilter.isSelected(), "Filtering's input " + chosenParameter + " is not clickable");
+                
+        let labelArray = await driver.findElements(by.xpath(pathLab));
+       
+        let label = labelArray[0]; // webElement label
+        await label.click();
+        let indLabel = await label.getAttribute("id"); // id of label  optionCheck1
+        let indInput;
+        if (arg1 == "option"){
+            indInput = indLabel.replace("option", "#custom"); //id+# of input #customCheck1
+        }
+
+        if (arg1 != "option"){
+            if (parameter == "Priser")
+                indInput = indLabel.replace("prLab", "#prCustom"); //id+# of input #customCheck1
+            if (parameter == "Kategorier")
+                indInput = indLabel.replace("labCat", "#cat"); //id+# of input #customCheck
+            if (parameter == "Ursprungsländer")
+                indInput = indLabel.replace("labCountry", "#country"); //id+# of input #customCheck
+        }
+
+        let input = await $(indInput); //webElement input
+        
+        assert(input.isSelected(), "Filtering's input '" + arg2 + "' is not selected after click");
 
         await sleep (1000);
     });
 
-    // Koden till detta steg finns i sort-selenium.js:
-    // And click on the OK-button "#filterOK"
-
     this.Then(/^the list of the products is filtered according to the chosen parameter$/, async function () {
-        // console.log("parameter", parameter);
-        // console.log("parameter1", parameter1)
-        // console.log("parameter2", parameter2)
 
         let prodDiv = await $("#productDescription"); 
         assert(prodDiv, "The container #productDescription doesn't exist");
-        // let quantityOfProdOnPage = await prodDiv.childElementCount;
+   
         let ind = 0;
         let filterIsWorking = false;
         
         do{
 
-            if(parameter == "Priser"){ // if filtering by prices
+            if(parameter == "Priser"){ 
                 let priceDiv = await $("#prodPrice"+ind);
                 if(!priceDiv){
                     break;
@@ -106,7 +128,7 @@ module.exports = function() {
                 }
             } 
 
-            if(parameter == "Kategorier"){ // if filtering by categories
+            if(parameter == "Kategorier"){
 
                 let spritDiv = await $("#prodAlcohol"+ind);
                 if(!spritDiv){
@@ -126,14 +148,14 @@ module.exports = function() {
                 // console.log("filterIsWorking"+ind, filterIsWorking);
             }   
 
-            if(parameter == "Ursprungsländer"){ // if filtering by länder
+            if(parameter == "Ursprungsländer"){
+
                 let countryDiv = await $("#prodCountry"+ind);
                 if(!countryDiv){
                     break;
                 }
                 let country = await countryDiv.getText();
-                
-               // console.log(country);
+               
                 if (country  == parameter1 || country  == parameter2){
                     filterIsWorking = true;
                 }
@@ -145,14 +167,17 @@ module.exports = function() {
             }
 
             ind++;
+
+
         }while (true)
 
-        assert (filterIsWorking == true, "Filtering is not working correctly for the chosen parameter " +  chosenParameter);
+        assert (filterIsWorking == true, "Filtering is not working correctly for the chosen parameter " +  parameter);
         
-    });
+        
+    });   
 
 
-    //////-----------------------------------------SCENARIO 2 --------------------------------------------------------------------
+    // //////-----------------------------------------SCENARIO 2 --------------------------------------------------------------------
 
 
     this.Then(/^just one category "([^"]*)" is available$/, async function (categoryUnderAge) {
@@ -195,7 +220,7 @@ module.exports = function() {
             ind++;
         }while(true)
 
-        assert (filterIsWorking == true, "The product list of the under age oerson should not contain beverages over 0.5% of the alcohol " +  chosenParameter);
+        assert (filterIsWorking == true, "The product list of the under age person should not contain beverages over 0.5% of the alcohol " +  parameter);
         
     });
     
