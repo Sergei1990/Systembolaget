@@ -34,10 +34,13 @@ module.exports = function(){
   });
 
   this.Given(/^I logg in$/, async function() {
-    let inputUsername = await driver.findElement(by.css('input#inputUsername'));
+    // fill in username
+    let inputUsername = await driver.findElement(by.css('input#name'));
     inputUsername.sendKeys('Marcus');
-    let inputAge = await driver.findElement(by.css('input#inputAge'));
+    // fill in age
+    let inputAge = await driver.findElement(by.css('input#age'));
     inputAge.sendKeys(44);
+    // press button
     let welcomeButton = await driver.findElement(by.css('#welcomeBtn'));
     await welcomeButton.click();
   });
@@ -53,26 +56,23 @@ module.exports = function(){
   });
 
   this.When(/^press search button$/, async function() {
-    let searchButton = await driver.findElement(by.css('#searchButton'))
+    let searchButton = await driver.findElement(by.css('#searchButton'));
     await searchButton.click();
   });
 
   this.Then(/^I can see all corona products$/, async function() {
-
     let body = await driver.findElement(by.css('#productDescription'));
-
-    let searchedItem;
+    let searchedItem, bodyText;
 
     for (let i = 0; i < 10; i++){
-    let bodyText = await body.getText();
-  
+      bodyText = await body.getText();
       if (bodyText.includes('Corona Extra')) {
         searchedItem = true;
         break;
       }
       await sleep(1000);
     }
-  });
 
+  });
 
 }
