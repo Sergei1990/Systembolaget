@@ -8,10 +8,16 @@ module.exports = class Varukorg {
 		if(typeof window !== "object"){ return; }
   
 	  	this.loadAddedProducts();
-
-
 	  	
-	} //constructor
+	  $("#buttonEmpty").click(function() {
+	  	for (let i=0; i<localStorage.length; i++){
+	  		localStorage.removeItem("prodArticleSession" + i);
+	  		localStorage.removeItem("prodQuantitySession" + i);
+	    }
+	    location.reload();
+		});
+
+		} //constructor
 
 	loadAddedProducts(){
 		
