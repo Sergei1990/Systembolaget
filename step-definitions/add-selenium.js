@@ -16,7 +16,7 @@ module.exports = function() {
         arg2--; // element 0 is first
         let buttonName = "#addButton"+arg2;
         let button = await $(buttonName);
-
+        assert(button, "#addButton" +arg2+ " does not exist");
 
         for (let i = 0; i< arg1; i++){
             await button.click();
@@ -54,10 +54,9 @@ module.exports = function() {
 
     this.Then(/^the current quantity of the added products displays on the shopping cart's icon$/, async function () {
 
-        totalAmount = price1*quantity1 + price2*quantity2;
-        totalQuantity = (quantity1 + quantity2)
-        
+        totalAmount = price1*quantity1 + price2*quantity2;       
         let shoppingCartIcon = await $("#basketQuantity");
+        assert (shoppingCartIcon, "#basketQuantity does not exist");
         let valueShoppingCartIcon = await shoppingCartIcon.getText();
         
         assert(valueShoppingCartIcon/1 == totalQuantity, "The quantity of the added products is not correct on the shopping cart's icon")
@@ -133,7 +132,40 @@ module.exports = function() {
         let totAmValue = await totAmDiv.getText();
         let totalAmountCart = (totAmValue.replace("SEK", ""))/1;
         assert(totalAmountCart == totalAmount, "The total amount of the added products is not correct in the shopping cart");
-        
+
+        totalQuantity = 0; // förbereddelser inför nästa scenario
+        totalAmount = 0;
+        quantity1 = 0;
+        quantity2 = 0
+            
     });    
     
+    //------------------------------------SCENARIO 2------------------------------------------------------------------------
+
+
+    
+
+    this.When(/^the user clicks on the Plus\-button to add (\d+) bottles of the beverage (\d+) in the shopping cart's list$/, async function (arg1, arg2) {
+        arg2--; // element 0 is first
+        let buttonName = "#addButtonV"+arg2;
+        let button = await $(buttonName);
+        assert(button, "#addButtonV" +arg2+ " does not exist");
+
+        for (let i = 0; i< arg1; i++){
+            await button.click();
+            await sleep(2000);
+        
+            if (arg2/1 == 0){
+                quantity1++;
+                totalAmount = totalAmount + price1;
+            }
+            if (arg2/1 == 4){
+                quantity2++;
+                totalAmount = totalAmount + price2;
+            }
+
+            totalQuantity++;
+        }
+  
+    });
 }
