@@ -142,12 +142,30 @@ module.exports = class ShoppingCart {
 		//assert(global.app, "Can't find a global app :( Please require app ONCE before any other classes!");		
 
 	    //return the products on the storehouse:
-	    product.iLager = product.iLager + this.thingsToBuy[indexInCart].quantity;
+	    product.iLager = product.iLager + 1;
 		
-		//remove item from the cart
-		this.thingsToBuy.splice(indexInCart, 1);
+		//remove item from the cart if its quantity = 0
+		if (this.thingsToBuy[indexInCart].quantity<1){
+			this.thingsToBuy.splice(indexInCart, 1);
+		}
+		else{
+			this.thingsToBuy[indexInCart].quantity--;
+		}
 
-	}
+		let totalQuanBottlesSession = 0;
+
+		for (let i = 0; i<localStorage.length; i++){
+			if(localStorage.getItem("prodArticleSession"+i) == product.artikelid){
+				localStorage.setItem("prodQuantitySession" + i, this.thingsToBuy[indexInCart].quantity);    
+			}
+			totalQuanBottlesSession = totalQuanBottlesSession +(localStorage.getItem("prodQuantitySession"+i))/1;
+		}
+		if(totalQuanBottlesSession!=0){
+			$('#basketQuantity').empty()
+			$('#basketQuantity').text(totalQuanBottlesSession);
+			$('#basketQuantity').show(200);
+		}
+	} //remove
 
 	removeAllItems() {
 		//this.thingsToBuy = [];

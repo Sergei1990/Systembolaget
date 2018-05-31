@@ -38,7 +38,8 @@ class App {
 				// }
 				getItem: function(){},
 				setItem: function(){},
-				clear: function(){}
+				clear: function(){},
+				removeItem: function(){}
 			};
 		}
 

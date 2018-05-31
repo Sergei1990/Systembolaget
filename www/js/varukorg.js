@@ -28,9 +28,19 @@ module.exports = class Varukorg {
 		let totalQuantity = 0;
 
 		for (let i=0; i<localStorage.length; i++){
+			let prodQuant = localStorage.getItem("prodQuantitySession"+i);
+			if (prodQuant/1 == 0){
+				localStorage.removeItem("prodQuantitySession"+i);
+				localStorage.removeItem("prodArticleSession"+i);
+			}
+
+		}
+
+		for (let i=0; i<localStorage.length; i++){
 			// Check if the name exists in the session
 			let prodArt = localStorage.getItem("prodArticleSession"+i);
 			let prodQuant = localStorage.getItem("prodQuantitySession"+i);
+
 			let ind = app.users[0].shoppingCart.findProductInArrayProducts(prodArt/1);
 			
 
@@ -69,6 +79,11 @@ module.exports = class Varukorg {
 					let j = $("#prodIdV"+i).text();
 					this.addClick(j/1, i);
 			    });
+
+			    $("#removeButtonV" + i).click(()=>{
+					let j = $("#prodIdV"+i).text();
+					this.removeClick(j/1, i);
+			    });
 		    }
 		    // totalQuantity = totalQuantity + prodQuant;
 
@@ -105,8 +120,31 @@ module.exports = class Varukorg {
 		let prodQ = $('#prodQuantityV'+i).text();
 		$('#totalAmountV').children("h4").text(totalAmount + " SEK");
 		$('#prodQuantityV'+i).children("p").text(prodQ/1 + 1);
+		prodQ++;
+		if (prodQ > 0){
+			$('#removeButtonV'+i).prop("disabled", false);
+		}
 
 	}//addTClick()
 
+	removeClick(j, i){ // j - product's article, i -nr of the row in the Shopping cart
+		let ind = app.users[0].shoppingCart.findProductInArrayProducts(j);
+		app.users[0].shoppingCart.remove(app.products[ind], 1);
+
+		let totalAmount = 0;
+		let totalQuantity = 0;		
+		for (let a=0; a<app.users[0].shoppingCart.thingsToBuy.length; a++){		    
+		    totalAmount = totalAmount + app.users[0].shoppingCart.thingsToBuy[a].quantity*app.users[0].shoppingCart.thingsToBuy[a].product.prisinklmoms;
+		}		
+		let prodQ = $('#prodQuantityV'+i).text();
+		$('#totalAmountV').children("h4").text(totalAmount + " SEK");
+		$('#prodQuantityV'+i).children("p").text(prodQ/1 - 1);
+		prodQ--;
+
+		if (prodQ < 1){
+			$('#removeButtonV'+i).prop("disabled", true);
+		}
+
+	}//addTClick()
 
 } //class
