@@ -29,8 +29,17 @@ module.exports = function(){
   // 2nd Scenarion
 
   this.Given(/^that I am on the mainpage$/, async function() {
-    return helpers.loadPage('http://localhost:3000/startpage.html').then(async function() {
-    });
+    await helpers.loadPage('http://localhost:3000/index.html');
+    await sleep(2000);
+  });
+
+  this.Given(/^I logg in$/, async function() {
+    let inputUsername = await driver.findElement(by.css('input#inputUsername'));
+    inputUsername.sendKeys('Marcus');
+    let inputAge = await driver.findElement(by.css('input#inputAge'));
+    inputAge.sendKeys(44);
+    let welcomeButton = await driver.findElement(by.css('#welcomeBtn'));
+    await welcomeButton.click();
   });
 
   this.When(/^I click on search field$/, async function() {
@@ -44,18 +53,25 @@ module.exports = function(){
   });
 
   this.When(/^press search button$/, async function() {
-    let searchBotton = await driver.findElement(by.css('#searchButton'))
+    let searchButton = await driver.findElement(by.css('#searchButton'))
+    await searchButton.click();
   });
 
   this.Then(/^I can see all corona products$/, async function() {
-    return helpers.loadPage('http://localhost:3000/AllaDrycker.html?searchinput=corona').then(async function() {
-    });
-    let body = await driver.findElement(by.css('body'));
+
+    let body = await driver.findElement(by.css('#productDescription'));
+
+    let searchedItem;
+
+    for (let i = 0; i < 10; i++){
     let bodyText = await body.getText();
-    assert(
-      bodyText.includes('Corona Extra'),
-      "Couldn't find the text"
-    );
+  
+      if (bodyText.includes('Corona Extra')) {
+        searchedItem = true;
+        break;
+      }
+      await sleep(1000);
+    }
   });
 
 
