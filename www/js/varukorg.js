@@ -8,10 +8,16 @@ module.exports = class Varukorg {
 		if(typeof window !== "object"){ return; }
   
 	  	this.loadAddedProducts();
-
-
 	  	
-	} //constructor
+	  $("#buttonEmpty").click(function() {
+	  	for (let i=0; i<localStorage.length; i++){
+	  		localStorage.removeItem("prodArticleSession" + i);
+	  		localStorage.removeItem("prodQuantitySession" + i);
+	    }
+	    location.reload();
+		});
+
+		} //constructor
 
 	loadAddedProducts(){
 		
@@ -35,13 +41,13 @@ module.exports = class Varukorg {
 		    		    + '<div class="d-none d-md-block col-lg-3">'
 						+    '<img src="www/img/alcoholpic.jpg" alt="Picture">'
 						+ '</div>'
-		    			+ '<div class="col-lg-3 text-lg-left col-md-12 text-center font-weight-bold">'
+		    			+ '<div id="prodNameV' + i + '" class="col-lg-3 text-lg-left col-md-12 text-center font-weight-bold">'
 		    			+    '<p>' + app.products[ind].namn + '</p>'
 		    			+ '</div>'
-		    			+ '<div class="col-lg-2 text-lg-center text-center">'
+		    			+ '<div id="prodQuantityV' + i + '" class="col-lg-2 text-lg-center text-center">'
 		    			+    '<p>' + prodQuant + '</p>'
 		    			+ '</div>'
-		    			+ '<div class="col-lg-2 text-lg-center text-center">'
+		    			+ '<div id="prodPriceV' + i + '" class="col-lg-2 text-lg-center text-center">'
 					    +    '<p>' + app.products[ind].prisinklmoms + '  SEK </p>'
 						+ '</div>'
 					    + '<div class="col-lg-1 text-lg-right col-6 text-center">' 
@@ -67,7 +73,7 @@ module.exports = class Varukorg {
 				+ '<div class="col-6 col-sm-10 text-right">'
 					+ '<h4>Total summa: </h4>'
 				+ '</div>'
-				+ '<div class="col-6 col-sm-2">'
+				+ '<div id="totalAmountV" class="col-6 col-sm-2">'
 					+ '<h4>' + totalAmount + ' SEK</h4>'
 				+'</div>'
 
