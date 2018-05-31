@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "node node_modules/selenium-cucumber-js/index.js -b phantomjs & exit 0",
-    "william-feature": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/login-function.feature & exit 0",
+    "william-feature": "node node_modules/selenium-cucumber-js/index.js -b chrome -f ./features/logout-selenium.feature & exit 0",
     "Jessica-feature": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/quantity-shopping-cart.feature & exit 0",
     "kamph-feature": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/add-to-cart.feature & exit 0",
     "remove-from-cart": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/remove-from-cart.feature & exit 0",
