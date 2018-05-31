@@ -84,9 +84,10 @@ class App {
 		}
 
 		this.users = [];
+
 		new Index();
-		new AllaDrycker();
 		new StartPage();
+		new AllaDrycker();	
 		new Varukorg();
 
 		this.fillCartFromSession();

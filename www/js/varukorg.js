@@ -51,16 +51,24 @@ module.exports = class Varukorg {
 					    +    '<p>' + app.products[ind].prisinklmoms + '  SEK </p>'
 						+ '</div>'
 					    + '<div class="col-lg-1 text-lg-right col-6 text-center">' 
-					    +    '<button id = "addButton' + i + '" class="btn btn-secondary my-2 my-sm-0" type="button"> + </button>'   
+					    +    '<button id = "addButtonV' + i + '" class="btn btn-secondary my-2 my-sm-0" type="button"> + </button>'   
 					    + '</div>'
 					    + '<div class="col-lg-1 text-lg-right col-6 text-center">' 
-					    +    '<button id = "removeButton' + i + '" class="btn btn-secondary my-2 my-sm-0" type="button"> - </button>'   
-					    + '</div>'					
+					    +    '<button id = "removeButtonV' + i + '" class="btn btn-secondary my-2 my-sm-0" type="button"> - </button>'   
+					    + '</div>'
+					    +   '<div id="prodIdV' + i + '" class="d-none">' 
+						+   	'<p>' + app.products[ind].artikelid +'</p>'   
+						+   '</div>'					
 				  + '</div>'
 
 				);
 
 				totalAmount = totalAmount + (app.products[ind].prisinklmoms)*(prodQuant);
+				/////////////////////////////////////////////////////////////////////////////////////////////
+				$("#addButtonV" + i).click(()=>{
+					let j = $("#prodIdV"+i).text();
+					this.addClick(j/1, i);
+			    });
 		    }
 		    // totalQuantity = totalQuantity + prodQuant;
 
@@ -83,5 +91,22 @@ module.exports = class Varukorg {
         if(totalAmount == 0)
         	$("#buyAndEmpty").hide();
 	}//loadAddedProducts()
+
+
+	addClick(j, i){ // j - product's article, i -nr of the row in the Shopping cart
+		let ind = app.users[0].shoppingCart.findProductInArrayProducts(j);
+		app.users[0].shoppingCart.add(app.products[ind], 1);
+
+		let totalAmount = 0;
+		let totalQuantity = 0;		
+		for (let a=0; a<app.users[0].shoppingCart.thingsToBuy.length; a++){		    
+		    totalAmount = totalAmount + app.users[0].shoppingCart.thingsToBuy[a].quantity*app.users[0].shoppingCart.thingsToBuy[a].product.prisinklmoms;
+		}		
+		let prodQ = $('#prodQuantityV'+i).text();
+		$('#totalAmountV').children("h4").text(totalAmount + " SEK");
+		$('#prodQuantityV'+i).children("p").text(prodQ/1 + 1);
+
+	}//addTClick()
+
 
 } //class

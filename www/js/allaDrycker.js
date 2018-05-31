@@ -1,5 +1,3 @@
-//var app = require('../../app.js');
-
 module.exports = class AllaDrycker {
 
 	constructor() {
@@ -202,8 +200,8 @@ module.exports = class AllaDrycker {
 
 		} //for	
 
-		console.log("this.quantityOfProductOnPage", this.quantityOfProductOnPage);
-console.log("this.productsToDisplay.length", this.productsToDisplay.length);	
+		// console.log("this.quantityOfProductOnPage", this.quantityOfProductOnPage);
+  //       console.log("this.productsToDisplay.length", this.productsToDisplay.length);	
 	}// loadProducts()
 
 

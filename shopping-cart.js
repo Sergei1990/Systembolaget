@@ -10,7 +10,6 @@ module.exports = class ShoppingCart {
 
 	add(product, quantity) {
 		// check that the product is an instanceOF Product
-
 		assert(
 			product instanceof Product,
 			"Product is not an instance of Product class."
