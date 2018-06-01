@@ -6,5 +6,5 @@ Feature: Able to log out from the shop
 	Scenario:  A person who are loged in as a customer
 		Given that the user are loged in with "#name" and "#age" at the systembolaget 	
    		When user want to log out from the store
-   		And click the button "#logUtDiv"
+   		And click the button "#logUtLink"
     	Then user gets logged out and returning to the login page

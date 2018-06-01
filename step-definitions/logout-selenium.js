@@ -44,8 +44,7 @@ module.exports = function() {
 
 	this.Then(/^user gets logged out and returning to the login page$/, async function () {
 		    
-	         await helpers.loadPage("http://localhost:3000/index.html");
-			 await sleep(2000);	
+	         console.log("Yippie Ki Yay M*****F******")
 	});
 
    
