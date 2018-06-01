@@ -52,7 +52,7 @@ module.exports = function(){
 
   this.When(/^write corona in there$/, async function() {
     let userInput = await driver.findElement(by.css('input#searchField'));
-    userInput.sendKeys('corona');
+    await userInput.sendKeys('corona');
   });
 
   this.When(/^press search button$/, async function() {

@@ -17,6 +17,7 @@
     "remove-user": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/remove-user.feature & exit 0",
     "quantity-in-storage": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/quantity-in-storage.feature & exit 0",
     "s_clearCart": "node node_modules/selenium-cucumber-js/index.js -b chrome -f ./features/s_clearCart.feature & exit 0",
+    "s_buyButton": "node node_modules/selenium-cucumber-js/index.js -b chrome -f ./features/s_buyButton.feature & exit 0",
     "sum-function": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/sum-function.feature & exit 0",
     "tanjina": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/change-quantity.feature & exit 0",
     "validate-address": "node node_modules/selenium-cucumber-js/index.js -b phantomjs -f ./features/validate-homeaddress-checkout.feature & exit 0",
