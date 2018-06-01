@@ -17,6 +17,14 @@ module.exports = class Varukorg {
 	    location.reload();
 		});
 
+	  $("#button-close1").click(function() {
+	  	for (let i=0; i<localStorage.length; i++){
+	  		localStorage.removeItem("prodArticleSession" + i);
+	  		localStorage.removeItem("prodQuantitySession" + i);
+	    }
+	    location.reload();
+		});
+
 		} //constructor
 
 	loadAddedProducts(){

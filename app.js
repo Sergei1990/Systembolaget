@@ -16,6 +16,8 @@ class App {
 
 	constructor() {
 
+		this.inBrowser = typeof window === "object";
+
 		// emulate som frontend only objects in Node.js
 		// so that our tests doesn't break
 		if (typeof window === "undefined"){
@@ -83,6 +85,12 @@ class App {
 		for(let category of this.allCategories){
 			this.allCategoryByName[category.name] = category;
 		}
+
+		if(this.inBrowser){
+			$(document).ready(function(){
+	        	$("#myModal").modal({show: true, backdrop: 'static', keyboard: false});
+	        });
+	    }
 
 		this.users = [];
 
@@ -167,11 +175,11 @@ class App {
 			}
 		}
 
-		//Make a dictinary based on category names
-		this.categoryByName = {};
+		//Make a dictionary based on category names
+		/*this.categoryByName = {};
 		for(let category of this.categories){
 			this.categoryByName[category.name] = category;
-		}
+		}*/
 		return user;
 
 		
