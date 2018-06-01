@@ -12,11 +12,11 @@ module.exports = function() {
 	        await sleep(2000);
 	        let fieldName = await $("#name");
 	        assert(fieldName, "The #name-input-field doesn't exist");
-	        await fieldName.sendKeys(arg1);
+	        await fieldName.sendKeys("William");
 
 	        let fieldAge = await $("#age");
 	        assert(fieldAge, "The #age-input-field doesn't exist");
-        	await fieldAge.sendKeys(arg2);
+        	await fieldAge.sendKeys(33);
             await fieldName.click();
 
 	        let button = await $("#welcomeBtn");
@@ -33,8 +33,9 @@ module.exports = function() {
 
 	 this.When(/^click the button "([^"]*)"$/, async function (arg1) {
 		    console.log("hej3")
-			user = app.addUser("Marek", 29);
+			
 	        let logUtLink = await $(arg1);
+	        console.log(logUtLink);
         assert(logUtLink, "The " + arg1 + " doesn't exist");
         if (logUtLink) {
 	       await logUtLink.click();
@@ -44,7 +45,7 @@ module.exports = function() {
 
 	this.Then(/^user gets logged out and returning to the login page$/, async function () {
 		    console.log("hej4")
-	         
+	         await helpers.loadPage("http://localhost:3000/index.html");
 	});
 
    

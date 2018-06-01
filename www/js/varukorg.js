@@ -157,9 +157,5 @@ module.exports = class Varukorg {
 
 } //class
 
-$(document).ready(function(){
-        	$("#exampleModal").modal({show: false});
-        	
 
-			});
 
