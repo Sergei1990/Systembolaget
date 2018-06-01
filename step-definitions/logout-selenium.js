@@ -22,20 +22,19 @@ module.exports = function() {
 	        let button = await $("#welcomeBtn");
 	    	assert(button, "The #welcomeBtn doesn't exist");
 		    await button.click();
-		    console.log("hej")
+		    
 	});
 
 	this.When(/^user want to log out from the store$/, async function () {
-		    console.log("hej2")
+		    
 	 		await helpers.loadPage("http://localhost:3000/startpage.html");
 	        await sleep(2000);
     });
 
 	 this.When(/^click the button "([^"]*)"$/, async function (arg1) {
-		    console.log("hej3")
+		    
 			
 	        let logUtLink = await $(arg1);
-	        console.log(logUtLink);
         assert(logUtLink, "The " + arg1 + " doesn't exist");
         if (logUtLink) {
 	       await logUtLink.click();
@@ -44,8 +43,9 @@ module.exports = function() {
 	});
 
 	this.Then(/^user gets logged out and returning to the login page$/, async function () {
-		    console.log("hej4")
+		    
 	         await helpers.loadPage("http://localhost:3000/index.html");
+			 await sleep(2000);	
 	});
 
    
