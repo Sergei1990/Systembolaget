@@ -57,21 +57,27 @@ this.When(/^the customer has filled in correct information$/, async function () 
 
     let inputCity = await driver.findElement(by.css('input#city'));
     await inputCity.sendKeys("Stockholm");
+    await sleep(500); 
 
     let inputPostalcode = await driver.findElement(by.css('input#postal-code'));
     await inputPostalcode.sendKeys(11266);
+    await sleep(500); 
 
     let cardNumber = await driver.findElement(by.css('input#cardNumber'));
     await cardNumber.sendKeys("5555 6666 7777 9999");
+    await sleep(500); 
 
     let expityMonth = await driver.findElement(by.css('input#expityMonth'));
     await expityMonth.sendKeys(11);
+    await sleep(500); 
 
     let expityYear = await driver.findElement(by.css('input#expityYear'));
     await expityYear.sendKeys(89);
+    await sleep(500); 
 
     let cvCode = await driver.findElement(by.css('input#cvCode'));
     await cvCode.sendKeys(567);
+    await sleep(500); 
 
 });
 

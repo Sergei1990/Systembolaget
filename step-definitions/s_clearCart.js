@@ -16,10 +16,12 @@ module.exports = function(){
     // fill in age
     let inputAge = await driver.findElement(by.css('input#age'));
     await inputAge.sendKeys(44);
+    await sleep(500); 
     await inputUsername.click();
     // press welcome button
     let welcomeButton = await driver.findElement(by.css('#welcomeBtn'));
     await welcomeButton.click();
+    await sleep(500); 
     // press Alla drycker
     let allaDrycker = await driver.findElement(by.css('#allaDrycker'));
     await allaDrycker.click();
@@ -28,7 +30,9 @@ module.exports = function(){
     let prod1 = await driver.findElement(by.css('#addButton0'));
     let prod2 = await driver.findElement(by.css('#addButton1'));
     await prod1.click();
+    await sleep(500); 
     await prod2.click();
+    await sleep(500); 
 
   });
 
