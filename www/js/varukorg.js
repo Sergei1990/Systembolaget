@@ -156,3 +156,10 @@ module.exports = class Varukorg {
 	}//addTClick()
 
 } //class
+
+$(document).ready(function(){
+        	$("#exampleModal").modal({show: false});
+        	
+
+			});
+

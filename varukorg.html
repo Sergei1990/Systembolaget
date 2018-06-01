@@ -81,20 +81,97 @@
 
 
 <main>
-  <div id="logname" class= "text-right mr-4"></div>
+  <div id="logname" class= "text-right mr-3"></div>
   <div id = "logUtDiv" class= "text-right pr-2">
         <a  id="logUtLink" class = "btn" href="index.html">Logga ut</a>
   </div>
 
   <div id = "addedProducts" class ="container">
   </div>
-  
 
 
-<!-- Button trigger modal -->
+          <div id = "adress" class="text-center">
+          <form>
+            <fieldset>
+              <legend>Ange din leveransadress för att slutföra köpet:</legend>
+              <div class="control-group">
+                <label class="control-label">Gatuadress</label>
+                <div class="controls pt-1">
+                    <input id="address-line1" name="address-line1" type="text" placeholder="Kortvägen 1A"
+                    class="input-xlarge">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Ort</label>
+                <div class="controls pt-1">
+                    <input id="city" name="city" type="text" placeholder="Stockholm" class="input-xlarge">
+                    <p class="help-block"></p>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Postnummer</label>
+                <div class="controls pt-1">
+                    <input id="postal-code" name="postal-code" type="text" placeholder="12 5555"
+                    class="input-xlarge">
+                    <p class="help-block"></p>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+         </div>
+
+  <div class="d-flex justify-content-center mt-3">
+    
+        <div class="col-xs-12 col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">
+                        Kort Betalning
+                    </h3>
+                    <div class="checkbox pull-right">
+                        <label>
+                            <input type="checkbox" />
+                            Kom ihåg
+                        </label>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                    <div class="form-group">
+                        <label for="cardNumber">
+                            KORTNUMMER</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                                required autofocus />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7 col-md-7">
+                            <div class="form-group">
+                                <label for="expityMonth">
+                                    DATUM</label>
+                                <div class="col-xs-6 col-lg-6 pl-ziro">
+                                    <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+                                </div>
+                                <div class="col-xs-6 col-lg-6 pl-ziro">
+                                    <input type="text" class="form-control" id="expityYear" placeholder="YY" required /></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-5 col-md-5 pull-right">
+                            <div class="form-group">
+                                <label for="cvCode">
+                                    CVC KOD</label>
+                                <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
 
 
-<!-- Modal -->
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -114,73 +191,20 @@
       </div>
     </div>
   </div>
-</div> <!--end köp! button-->
-
-<div id = "adress" class="text-center">
-  <form>
-    <fieldset>
-      <legend>Ange din leveransadress för att slutföra köpet:</legend>
-
-      
-     <!--  <div class="form-group">
-        <label for="nameInput">Namn</label>
-        <input type="name" class="form-control" id="exampleNameInput" aria-describedby="nameHelp" placeholder="Enter name">
-        <small id="emailHelp" class="form-text text-muted">Please give your full name according to your billing address.</small>
-      </div>
-   -->
-      
-      <!-- <div class="form-group">
-        <form action="/action_page.php">
-          Date of birth:
-        <input type="date" name="bday">
-        </form>
-      </div> -->
-
-      <div class="control-group">
-        <label class="control-label">Gatuadress</label>
-        <div class="controls pt-1">
-            <input id="address-line1" name="address-line1" type="text" placeholder="Kortvägen 1A"
-            class="input-xlarge">
-            <!-- <p class="help-block">example of how to write it</p> -->
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label">Ort</label>
-        <div class="controls pt-1">
-            <input id="city" name="city" type="text" placeholder="Stockholm" class="input-xlarge">
-            <p class="help-block"></p>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label">Postnummer</label>
-        <div class="controls pt-1">
-            <input id="postal-code" name="postal-code" type="text" placeholder="12 5555"
-            class="input-xlarge">
-            <p class="help-block"></p>
-        </div>
-      </div>
-   
-  <!-- 
-      <div class="form-group">
-        <label for="addressInput">Home Address</label>
-        <input type="address" class="form-control" id="exampleAddressInput" placeholder="Address">
-      </div> -->
-
-    </fieldset>
-  </form>
- </div> <!-- id = "adress"  -->
-
+</div> 
+<!--end köp! button-->
+<div class="d-flex justify-content-center">
+  <div class="row">
 <div id = "buyAndEmpty" class ="container">
   <div class = "row">
-    <div class = "col-lg-6 col-12 mb-3 text-center">
-      
-    <button type="button" id = "buy-button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">KÖP!</button>
+    <div class = "col-12 mb-3 text-center">
+       <button type="button" id = "buy-button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">GENOMFÖR KÖP</button>
     </div>
-    <div class = "col-lg-6 col-12 text-center">
-      <button id = "buttonEmpty" type="button" class="btn btn-dark" data-toggle="modal">TÖM VARUKORGEN</button>
+    <div class = "col-12 mb-3 text-center">
+      <button id = "buttonEmpty" type="button" class="btn btn-danger" data-toggle="modal">TÖM VARUKORGEN</button>
     </div>
   </div> <!-- class = "row"> -->
-</div> <!-- class ="container" -->
+</div></div> <!-- class ="container" -->
 
 </main>
 

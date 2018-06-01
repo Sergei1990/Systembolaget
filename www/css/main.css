@@ -1,6 +1,5 @@
 .modal-backdrop { 
   background-image: url("https://images.unsplash.com/photo-1457518919282-b199744eefd6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=684e49aa614d5ae3052d43bc4aa0f286&auto=format&fit=crop&w=1920&q=80"); 
-  z-index: 10000;
 }  
  
 .modal-content {
@@ -83,5 +82,14 @@ nav.navbar {
   color: white;
   font-size: 15px;
 
+}
+
+
+.checkbox.pull-right { 
+  margin: 0; 
+}
+
+.pl-ziro { 
+  padding-left: 0px; 
 }
 
