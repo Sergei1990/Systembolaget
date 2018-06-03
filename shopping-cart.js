@@ -119,14 +119,28 @@ module.exports = class ShoppingCart {
 
 		else{
 			assert(
-				newQuantity >= 1,
-				"Quantity of the item in the shopping cart can't be less than 1",
+				newQuantity >= 0,
+				"Quantity of the item in the shopping cart can't be less than 0",
 			);
 
 			product.iLager = product.iLager + (this.thingsToBuy[index].quantity - newQuantity);
 		}
 
 		this.thingsToBuy[index].quantity = newQuantity;
+
+		let totalQuanBottlesSession = 0;
+
+		for (let i = 0; i<localStorage.length; i++){
+			if(localStorage.getItem("prodArticleSession"+i) == product.artikelid){
+				localStorage.setItem("prodQuantitySession" + i, this.thingsToBuy[index].quantity);    
+			}
+			totalQuanBottlesSession = totalQuanBottlesSession +(localStorage.getItem("prodQuantitySession"+i))/1;
+		}
+		if(totalQuanBottlesSession!=0){
+			$('#basketQuantity').empty()
+			$('#basketQuantity').text(totalQuanBottlesSession);
+			$('#basketQuantity').show(200);
+		}
 	}
 
 	remove(product) {
@@ -142,36 +156,15 @@ module.exports = class ShoppingCart {
 		//assert(global.app, "Can't find a global app :( Please require app ONCE before any other classes!");		
 
 	    //return the products on the storehouse:
-	    product.iLager = product.iLager + 1;
+	    product.iLager = product.iLager + this.thingsToBuy[indexInCart].quantity;
 		
-		//remove item from the cart if its quantity = 0
-		if (this.thingsToBuy[indexInCart].quantity<1){
-			this.thingsToBuy.splice(indexInCart, 1);
-		}
-		else{
-			this.thingsToBuy[indexInCart].quantity--;
-		}
-
-		let totalQuanBottlesSession = 0;
-
-		for (let i = 0; i<localStorage.length; i++){
-			if(localStorage.getItem("prodArticleSession"+i) == product.artikelid){
-				localStorage.setItem("prodQuantitySession" + i, this.thingsToBuy[indexInCart].quantity);    
-			}
-			totalQuanBottlesSession = totalQuanBottlesSession +(localStorage.getItem("prodQuantitySession"+i))/1;
-		}
-		if(totalQuanBottlesSession!=0){
-			$('#basketQuantity').empty()
-			$('#basketQuantity').text(totalQuanBottlesSession);
-			$('#basketQuantity').show(200);
-		}
+		this.thingsToBuy.splice(indexInCart, 1);				
+		
 	} //remove
 
 	removeAllItems() {
-		//this.thingsToBuy = [];
-		// removing with returning the products in the storehouse
-		//for (let thing of this.thingsToBuy){
-		for (let i = this.thingsToBuy.length - 1; i >= 0; i--){				
+		
+		for (let i = this.thingsToBuy.length - 1; i >= 0; i--){							
 			this.remove(this.thingsToBuy[i].product); 
 	    }
 	}

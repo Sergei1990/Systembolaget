@@ -33,6 +33,7 @@ module.exports = function() {
     });
 
     this.Then(/^the items in the shopping cart are returned into the storage$/, function (callback) {
+        
         assert(
         	quantityInStorageBefore1 === product1.iLager &&
         	quantityInStorageBefore2 === product2.iLager,

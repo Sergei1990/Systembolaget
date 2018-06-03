@@ -136,8 +136,9 @@ module.exports = class Varukorg {
 	}//addTClick()
 
 	removeClick(j, i){ // j - product's article, i -nr of the row in the Shopping cart
+		let  newQuantity = ($('#prodQuantityV'+i).text())/1 -1;
 		let ind = app.users[0].shoppingCart.findProductInArrayProducts(j);
-		app.users[0].shoppingCart.remove(app.products[ind], 1);
+		app.users[0].shoppingCart.changeQuantity(app.products[ind], newQuantity);
 
 		let totalAmount = 0;
 		let totalQuantity = 0;		
@@ -156,6 +157,5 @@ module.exports = class Varukorg {
 	}//addTClick()
 
 } //class
-
 
 
